@@ -1,0 +1,26 @@
+[
+  {
+    "source_type": "chart_model",
+    "name": "Python Graph Gallery repository",
+    "url": "https://github.com/holtzy/The-Python-Graph-Gallery",
+    "note": "Repository source for Python Graph Gallery, used as script/model inspiration."
+  },
+  {
+    "source_type": "chart_model",
+    "name": "Percent stacked barplot notebook",
+    "url": "https://github.com/holtzy/The-Python-Graph-Gallery/blob/f891a0f0c901331d66044f8e4cc96a983c45bd0c/src/notebooks/13-percent-stacked-barplot.ipynb",
+    "note": "Percent-stacked idea: bars normalized to 100. Adapted here as progress ranking normalized to rank 1."
+  },
+  {
+    "source_type": "chart_model",
+    "name": "Lollipop chart notebook",
+    "url": "https://github.com/holtzy/The-Python-Graph-Gallery/blob/f891a0f0c901331d66044f8e4cc96a983c45bd0c/src/notebooks/web-lollipop-plot-with-python-the-office.ipynb",
+    "note": "Lollipop grammar: hlines + scatter + annotations. Included as alternate style, but not recommended as final."
+  },
+  {
+    "source_type": "site_context",
+    "name": "Merateonline event article",
+    "url": "https://www.merateonline.it/notizie/156019/merate-trasporto-pubblico-sul-territorio-il-7-un-incontro",
+    "note": "Public-event context for the graphic: local transport in Meratese, students, workers, commuters."
+  }
+]

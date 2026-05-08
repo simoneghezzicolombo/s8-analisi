@@ -1,0 +1,10 @@
+period_id,period_label,proxy_campaign,months_covered,tipo_giorno,days_weight,calendar_basis
+ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,"01,02,03,04,10,11,12",Feriale,145,Calendario 2025; festività nazionali italiane trattate come Festivo
+ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,"01,02,03,04,10,11,12",Sabato,29,Calendario 2025; festività nazionali italiane trattate come Festivo
+ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,"01,02,03,04,10,11,12",Festivo,38,Calendario 2025; festività nazionali italiane trattate come Festivo
+spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,"05,06,09",Feriale,63,Calendario 2025; festività nazionali italiane trattate come Festivo
+spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,"05,06,09",Sabato,13,Calendario 2025; festività nazionali italiane trattate come Festivo
+spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,"05,06,09",Festivo,15,Calendario 2025; festività nazionali italiane trattate come Festivo
+estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,"07,08",Feriale,43,Calendario 2025; festività nazionali italiane trattate come Festivo
+estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,"07,08",Sabato,9,Calendario 2025; festività nazionali italiane trattate come Festivo
+estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,"07,08",Festivo,10,Calendario 2025; festività nazionali italiane trattate come Festivo

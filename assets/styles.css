@@ -324,9 +324,22 @@ main section {
 }
 
 .links a,
-.dataset-list a {
+.dataset-list a,
+.source-links a {
   color: var(--teal);
   font-weight: 700;
+}
+
+.source-links {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.source-links a {
+  margin-right: 12px;
+  white-space: nowrap;
 }
 
 .tag {

@@ -1,0 +1,58 @@
+line_code,line_name,source_type,url_or_note,method_status,data_year
+FL1,FL1 Fiumicino Aeroporto – Roma – Fara Sabina/Orte,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Lazio.pdf,S,2025 stimato
+FL1,FL1 Fiumicino Aeroporto – Roma – Fara Sabina/Orte,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+FL1,FL1 Fiumicino Aeroporto – Roma – Fara Sabina/Orte,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/FL_lines,S,2025 stimato
+Metromare,Roma-Lido / Metromare,primary,https://www.regione.lazio.it/sites/default/files/documentazione/2025/Cotral_Carta_della_Qualita%CC%80_e_dei_Servizi_2025.pdf,R,2024
+Metromare,Roma-Lido / Metromare,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Cotral,R,2024
+S5,S5 Varese – Milano Passante – Treviglio,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+S5,S5 Varese – Milano Passante – Treviglio,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+S5,S5 Varese – Milano Passante – Treviglio,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+S8,S8 Lecco – Carnate – Milano Porta Garibaldi,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+S8,S8 Lecco – Carnate – Milano Porta Garibaldi,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+S8,S8 Lecco – Carnate – Milano Porta Garibaldi,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+FL3,FL3 Roma – Cesano – Viterbo,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Lazio.pdf,S,2025 stimato
+FL3,FL3 Roma – Cesano – Viterbo,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+FL3,FL3 Roma – Cesano – Viterbo,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/FL_lines,S,2025 stimato
+RE6,RE6 Milano – Brescia – Verona,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+RE6,RE6 Milano – Brescia – Verona,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+RE6,RE6 Milano – Brescia – Verona,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+Roma-Viterbo,Roma Nord / Roma – Civita Castellana – Viterbo,primary,https://www.regione.lazio.it/sites/default/files/documentazione/2025/Cotral_Carta_della_Qualita%CC%80_e_dei_Servizi_2025.pdf,R,2024
+Roma-Viterbo,Roma Nord / Roma – Civita Castellana – Viterbo,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Cotral,R,2024
+S6,S6 Novara – Milano Passante – Treviglio/Pioltello,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+S6,S6 Novara – Milano Passante – Treviglio/Pioltello,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+S6,S6 Novara – Milano Passante – Treviglio/Pioltello,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+FL5,FL5 Roma – Civitavecchia,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Lazio.pdf,S,2025 stimato
+FL5,FL5 Roma – Civitavecchia,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+FL5,FL5 Roma – Civitavecchia,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/FL_lines,S,2025 stimato
+Firenze-Pistoia-Lucca,Firenze – Pistoia – Lucca/Viareggio,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Toscana.pdf,S,2025 stimato
+Firenze-Pistoia-Lucca,Firenze – Pistoia – Lucca/Viareggio,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+Firenze-Pistoia-Lucca,Firenze – Pistoia – Lucca/Viareggio,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenitalia,S,2025 stimato
+Bologna-Piacenza-Milano,Bologna – Piacenza – Milano,primary,https://mobilita.regione.emilia-romagna.it/ferrovie/dati-e-progetti/frequentazioni,R/S,2025
+Bologna-Piacenza-Milano,Bologna – Piacenza – Milano,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenitalia,R/S,2025
+S1,S1 Saronno – Milano Passante – Lodi,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+S1,S1 Saronno – Milano Passante – Lodi,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+S1,S1 Saronno – Milano Passante – Lodi,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+FL8,FL8 Roma – Nettuno,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Lazio.pdf,S,2025 stimato
+FL8,FL8 Roma – Nettuno,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+FL8,FL8 Roma – Nettuno,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/FL_lines,S,2025 stimato
+FL4,FL4 Roma – Castelli Romani,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Lazio.pdf,S,2025 stimato
+FL4,FL4 Roma – Castelli Romani,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+FL4,FL4 Roma – Castelli Romani,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/FL_lines,S,2025 stimato
+FL6,FL6 Roma – Frosinone/Cassino,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Lazio.pdf,S,2025 stimato
+FL6,FL6 Roma – Frosinone/Cassino,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+FL6,FL6 Roma – Frosinone/Cassino,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/FL_lines,S,2025 stimato
+S11,S11 Chiasso – Seregno – Milano Porta Garibaldi,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+S11,S11 Chiasso – Seregno – Milano Porta Garibaldi,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+S11,S11 Chiasso – Seregno – Milano Porta Garibaldi,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+RE80,RE80 Locarno – Chiasso – Como – Milano Centrale,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+RE80,RE80 Locarno – Chiasso – Como – Milano Centrale,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+RE80,RE80 Locarno – Chiasso – Como – Milano Centrale,color,https://www.flagcolorcodes.com/ticino,L25,2025
+S13,S13 Pavia – Milano Passante – Milano Bovisa,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+S13,S13 Pavia – Milano Passante – Milano Bovisa,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+S13,S13 Pavia – Milano Passante – Milano Bovisa,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+S9,S9 Saronno – Seregno – Milano San Cristoforo – Albairate,primary,https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj,L25,2025
+S9,S9 Saronno – Seregno – Milano San Cristoforo – Albairate,secondary,file uploaded in conversation: Dati_di_frequentazione_delle_linee_del_servizio_ferroviario_regionale_20260424.csv,L25,2025
+S9,S9 Saronno – Seregno – Milano San Cristoforo – Albairate,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenord,L25,2025
+Padova-Venezia,Padova – Venezia Mestre/Venezia S.L.,primary,https://www.trenitalia.com/content/dam/trenitalia/regionale/carte-dei-servizi/2025/Carta_Servizi_2025_Veneto.pdf,S,2025 stimato
+Padova-Venezia,Padova – Venezia Mestre/Venezia S.L.,secondary,https://www.rietinvetrina.it/rapporto-pendolaria-2019-la-tratta-fl1-fiumicino-fara-sabina-la-piu-frequentata/,S,2025 stimato
+Padova-Venezia,Padova – Venezia Mestre/Venezia S.L.,color,https://en.wikipedia.org/wiki/Module:Adjacent_stations/Trenitalia,S,2025 stimato

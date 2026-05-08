@@ -251,12 +251,6 @@ async function chartTop20() {
 
 async function chartMetro() {
   const rows = await loadCSV(DATASETS.metro);
-  for (const row of rows) {
-    if (row.servizio === "Genova Metro") {
-      row.passeggeri_annui = 12600000;
-      row.passeggeri_annui_label = "12,6 mln";
-    }
-  }
   rows.sort((a, b) => a.passeggeri_annui - b.passeggeri_annui);
   return render("plot-metro", [{
     type: "bar",
@@ -264,8 +258,13 @@ async function chartMetro() {
     x: rows.map((d) => d.passeggeri_annui / 1_000_000),
     y: rows.map((d) => d.servizio),
     marker: { color: rows.map((d) => d.servizio.includes("S8") ? COLORS.s8 : "#b7c5c7") },
-    customdata: rows.map((d) => [d.passeggeri_annui_label, d.freq_label, d.fonte_pass_desc]),
-    hovertemplate: "<b>%{y}</b><br>Passeggeri annui: %{customdata[0]}<br>Frequenza: %{customdata[1]}<br><extra>%{customdata[2]}</extra>"
+    customdata: rows.map((d) => [
+      d.passeggeri_annui_label || `${(d.passeggeri_annui / 1_000_000).toLocaleString("it-IT", { maximumFractionDigits: 2 })} mln`,
+      d.frequenza_box || d.freq_label,
+      d.tipo_dato_passeggeri || "",
+      d.note || ""
+    ]),
+    hovertemplate: "<b>%{y}</b><br>Passeggeri annui: %{customdata[0]}<br>Frequenza: %{customdata[1]}<br>Tipo dato: %{customdata[2]}<br><extra>%{customdata[3]}</extra>"
   }], {
     title: { text: "La S8 ha numeri da metropolitana", x: 0, font: { size: 18 } },
     xaxis: { title: "Milioni di passeggeri annui" },

@@ -1,0 +1,10 @@
+line_code,line_name_raw,period_id,period_label,proxy_campaign,tipo_giorno,daily_travellers_thousand,days_weight,annual_contribution_mln,formula
+S8,TOTALE,,,,,,365,14.8063,somma contributi
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,30.5,29,0.8845,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,17.0,38,0.646,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,47.2,63,2.9736000000000002,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,30.0,13,0.39,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,15.5,15,0.2325,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,40.9,43,1.7587000000000002,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,32.0,9,0.288,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,15.1,10,0.151,daily_travellers_thousand × days_weight / 1000

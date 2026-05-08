@@ -3,3 +3,6 @@ numpy
 matplotlib
 Pillow
 openpyxl
+plotly
+folium
+branca

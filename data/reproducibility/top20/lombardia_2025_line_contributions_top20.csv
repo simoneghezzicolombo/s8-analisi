@@ -1,0 +1,82 @@
+line_code,line_name_raw,period_id,period_label,proxy_campaign,tipo_giorno,daily_travellers_thousand,days_weight,annual_contribution_mln,formula
+S5,S5 Varese - Milano Passante - Treviglio,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,58.4,145,8.468,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,43.3,29,1.2556999999999998,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,30.8,38,1.1704,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,53.1,63,3.3453000000000004,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,38.1,13,0.4953,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,32.8,15,0.49199999999999994,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,44.9,43,1.9307,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,18.0,9,0.162,daily_travellers_thousand × days_weight / 1000
+S5,S5 Varese - Milano Passante - Treviglio,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,16.5,10,0.165,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,51.6,145,7.482,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,30.5,29,0.8845,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,17.0,38,0.646,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,47.2,63,2.9736000000000002,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,30.0,13,0.39,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,15.5,15,0.2325,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,40.9,43,1.7587000000000002,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,32.0,9,0.288,daily_travellers_thousand × days_weight / 1000
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,15.1,10,0.151,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,36.1,145,5.2345,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,39.3,29,1.1396999999999997,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,33.0,38,1.254,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,40.5,63,2.5515,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,48.1,13,0.6253000000000001,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,44.3,15,0.6645,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,38.5,43,1.6555,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,42.8,9,0.3852,daily_travellers_thousand × days_weight / 1000
+RE6,Verona - Brescia - Milano,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,42.4,10,0.424,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,42.6,145,6.177,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,26.1,29,0.7569000000000001,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,19.1,38,0.7258000000000001,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,41.9,63,2.6397,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,22.1,13,0.2873,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,16.6,15,0.24900000000000003,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,34.3,43,1.4748999999999999,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,18.8,9,0.16920000000000002,daily_travellers_thousand × days_weight / 1000
+S6,S6 Novara - Milano Passante - Treviglio,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,13.5,10,0.135,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,35.5,145,5.1475,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,22.5,29,0.6525,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,16.0,38,0.608,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,33.0,63,2.079,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,22.6,13,0.2938,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,15.4,15,0.231,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,26.1,43,1.1222999999999999,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,18.6,9,0.1674,daily_travellers_thousand × days_weight / 1000
+S1,S1 Saronno - Milano Passante - Lodi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,12.5,10,0.125,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,32.5,145,4.7125,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,20.2,29,0.5858,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,16.6,38,0.6308,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,28.7,63,1.8080999999999998,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,17.2,13,0.2236,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,13.5,15,0.2025,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,24.1,43,1.0363,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,15.4,9,0.1386,daily_travellers_thousand × days_weight / 1000
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,12.7,10,0.127,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,26.3,145,3.8135,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,23.3,29,0.6757000000000001,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,20.4,38,0.7751999999999999,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,27.5,63,1.7325,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,25.6,13,0.3328,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,22.5,15,0.3375,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,24.9,43,1.0707,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,19.0,9,0.171,daily_travellers_thousand × days_weight / 1000
+RE80,Locarno - Chiasso - Como - Milano Cle,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,14.7,10,0.147,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,27.2,145,3.944,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,18.4,29,0.5336,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,13.8,38,0.5244,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,25.2,63,1.5876,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,17.0,13,0.221,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,13.7,15,0.2055,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,22.5,43,0.9675,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,15.1,9,0.1359,daily_travellers_thousand × days_weight / 1000
+S13,S13 Pavia - Milano Passante - Milano Bovisa,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,13.1,10,0.131,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Feriale,30.8,145,4.466,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Sabato,11.6,29,0.3364,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,ordinario_novembre_proxy,Ordinario (proxy novembre),c2025Novembre,Festivo,11.8,38,0.4484,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Feriale,25.9,63,1.6317,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Sabato,14.0,13,0.182,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,spalla_maggio_proxy,Spalla/inizio estate (proxy maggio),c2025Maggio,Festivo,9.4,15,0.141,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Feriale,17.7,43,0.7611,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Sabato,6.4,9,0.0576,daily_travellers_thousand × days_weight / 1000
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,estate_luglio_proxy,Estate/vacanza (proxy luglio),c2025Luglio,Festivo,6.7,10,0.067,daily_travellers_thousand × days_weight / 1000

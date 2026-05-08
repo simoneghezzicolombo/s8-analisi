@@ -1,0 +1,10 @@
+line_code,line_name_raw,annual_mln,input_cells,line_name,central_mln,rank,check_vs_top20_mln
+S5,S5 Varese - Milano Passante - Treviglio,17.4844,9,S5 Varese – Milano Passante – Treviglio,17.4844,3,0.0
+S8,S8 Lecco - Carnate - Milano Pta Garibaldi,14.8063,9,S8 Lecco – Carnate – Milano Porta Garibaldi,14.8063,4,0.0
+RE6,Verona - Brescia - Milano,13.934199999999999,9,RE6 Milano – Brescia – Verona,13.9342,6,-1.7763568394002505e-15
+S6,S6 Novara - Milano Passante - Treviglio,12.614799999999999,9,S6 Novara – Milano Passante – Treviglio/Pioltello,12.6148,8,-1.7763568394002505e-15
+S1,S1 Saronno - Milano Passante - Lodi,10.4265,9,S1 Saronno – Milano Passante – Lodi,10.4265,12,0.0
+S11,S11 Chiasso - Seregno - Milano Pta Garibaldi,9.4652,9,S11 Chiasso – Seregno – Milano Porta Garibaldi,9.4652,16,0.0
+RE80,Locarno - Chiasso - Como - Milano Cle,9.0559,9,RE80 Locarno – Chiasso – Como – Milano Centrale,9.0559,17,0.0
+S13,S13 Pavia - Milano Passante - Milano Bovisa,8.2505,9,S13 Pavia – Milano Passante – Milano Bovisa,8.2505,18,0.0
+S9,S9 Saronno - Seregno - Milano S.Cristoforo - Albairate,8.0912,9,S9 Saronno – Seregno – Milano San Cristoforo – Albairate,8.0912,19,0.0
