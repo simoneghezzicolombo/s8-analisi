@@ -3,577 +3,237 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>S8 Milano-Lecco | Simone Ghezzi Colombo</title>
-  <meta name="description" content="Dati, grafici e metodologia sulla linea S8 Milano-Lecco e sulle stazioni del Meratese.">
-  <style>
-    :root {
-      --bg: #f7fbfb;
-      --bg-soft: #eef7f6;
-      --surface: #ffffff;
-      --surface-2: #f3faf9;
-      --text: #17313a;
-      --muted: #60777d;
-      --line: #d8e7e5;
-      --teal: #177a74;
-      --teal-2: #3aa9a2;
-      --teal-soft: #dff3f0;
-      --s8-green: #1f642c;
-      --s8-pink: #f2b8c1;
-      --shadow: 0 10px 30px rgba(23, 49, 58, 0.07);
-      --radius: 22px;
-      --max: 1120px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      line-height: 1.65;
-      background:
-        radial-gradient(circle at top right, rgba(58,169,162,0.11), transparent 22%),
-        linear-gradient(180deg, #fbfefd 0%, #f7fbfb 100%);
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .shell {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(247, 251, 251, 0.86);
-      border-bottom: 1px solid rgba(23, 49, 58, 0.06);
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      padding: 16px 0;
-    }
-
-    .brand {
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      font-size: 0.96rem;
-    }
-
-    .navlinks {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .navlinks a {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .navlinks a:hover { color: var(--teal); }
-
-    .hero {
-      padding: 72px 0 38px;
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 34px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--teal);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.77rem;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 26px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--teal), transparent);
-    }
-
-    h1 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.8rem, 5.6vw, 5rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      max-width: 10ch;
-    }
-
-    .hero-subtitle {
-      margin: 18px 0 0;
-      font-size: clamp(1.08rem, 2vw, 1.25rem);
-      color: #28454d;
-      max-width: 42ch;
-      line-height: 1.35;
-    }
-
-    .hero-copy {
-      margin-top: 20px;
-      color: var(--muted);
-      max-width: 66ch;
-      font-size: 1rem;
-    }
-
-    .actions,
-    .tags,
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .actions { margin-top: 24px; }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: #26434b;
-      font-size: 0.92rem;
-      font-weight: 700;
-      box-shadow: 0 6px 18px rgba(23, 49, 58, 0.05);
-    }
-
-    .button.primary {
-      background: var(--teal);
-      color: #ffffff;
-      border-color: var(--teal);
-    }
-
-    .button:hover {
-      border-color: #b8d6d1;
-      color: var(--teal);
-    }
-
-    .button.primary:hover { color: #ffffff; }
-
-    .hero-panel {
-      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-
-    .hero-panel img {
-      border-radius: 16px;
-      background: var(--s8-green);
-    }
-
-    .hero-panel-caption {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    section { padding: 32px 0; }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.55rem, 2.1vw, 2rem);
-      letter-spacing: -0.03em;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 58ch;
-    }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      padding-top: 10px;
-      border-top: 1px solid var(--line);
-    }
-
-    .metric,
-    .card,
-    .note {
-      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .metric { padding: 20px; }
-
-    .metric strong {
-      display: block;
-      color: var(--teal);
-      font-size: 1.55rem;
-      line-height: 1.05;
-      margin-bottom: 8px;
-    }
-
-    .metric span {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .figure-frame {
-      padding: 12px;
-      background: var(--s8-green);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .figure-frame img { border-radius: 10px; }
-
-    .card-body { padding: 20px; }
-
-    .project-kind {
-      color: var(--teal);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.75rem;
-      margin-bottom: 8px;
-    }
-
-    .card h3,
-    .note h3 {
-      margin: 0 0 10px;
-      font-size: 1.12rem;
-    }
-
-    .card p,
-    .note p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .tag {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #f8fcfb;
-      border: 1px solid var(--line);
-      color: #3f5960;
-      font-size: 0.84rem;
-    }
-
-    .tags { margin-top: 16px; }
-
-    .links {
-      margin-top: auto;
-      padding-top: 18px;
-    }
-
-    .links a {
-      color: var(--teal);
-      font-weight: 700;
-    }
-
-    .note {
-      padding: 22px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .note-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-    }
-
-    .source-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .source-list a {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--line);
-      color: #35535a;
-    }
-
-    .source-list a span:last-child {
-      color: var(--teal);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    footer {
-      padding: 28px 0 42px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero,
-      .metric-grid,
-      .grid,
-      .note-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .shell { width: min(var(--max), calc(100% - 24px)); }
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .navlinks {
-        gap: 14px;
-        overflow-x: auto;
-        white-space: nowrap;
-        width: 100%;
-        padding-bottom: 2px;
-      }
-      .hero { padding: 34px 0 24px; }
-      h1 {
-        font-size: clamp(2.35rem, 11vw, 3.35rem);
-        max-width: none;
-      }
-      .hero-panel-caption,
-      .source-list a {
-        flex-direction: column;
-        gap: 4px;
-      }
-    }
-  </style>
+  <title>S8 Milano-Lecco | Dati e grafici interattivi</title>
+  <meta name="description" content="Pagina interattiva con dati, grafici e metodologia sulla linea S8 Milano-Lecco e sulle stazioni del Meratese.">
+  <meta name="theme-color" content="#177a74">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
 </head>
 <body>
   <header class="topbar">
     <div class="shell nav">
-      <a class="brand" href="https://simoneghezzicolombo.github.io/">Simone Ghezzi Colombo</a>
-      <nav class="navlinks">
-        <a href="#data">Data</a>
-        <a href="#figures">Figures</a>
-        <a href="#method">Method</a>
+      <a class="brand" href="#top">S8 Milano-Lecco</a>
+      <nav class="navlinks" aria-label="Navigazione principale">
+        <a href="#risultati">Risultati</a>
+        <a href="#grafici">Grafici</a>
+        <a href="#metodo">Metodo</a>
+        <a href="#dataset">Dataset</a>
         <a href="https://github.com/simoneghezzicolombo/s8-analisi" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://simoneghezzicolombo.github.io/#projects">Portfolio</a>
       </nav>
     </div>
   </header>
 
-  <main class="shell">
+  <main class="shell" id="top">
     <section class="hero">
       <div>
-        <div class="eyebrow">Public Transport · Open Government Data · Territorial Analysis</div>
+        <div class="eyebrow">Trasporto pubblico · Open data · Analisi territoriale</div>
         <h1>S8 Milano-Lecco</h1>
-        <p class="hero-subtitle">Dati, grafici e metodologia sulla linea S8 Lecco-Carnate-Milano e sulle stazioni del Meratese.</p>
-        <p class="hero-copy">Un repository pubblico pensato per rendere verificabili e riutilizzabili i dati presentati: ogni grafico ha il suo CSV, le fonti sono esplicitate e i principali dati grezzi sono disponibili per controllo.</p>
+        <p class="subtitle">
+          Dati e grafici interattivi sulla linea S8 Lecco-Carnate-Milano e sulle stazioni del Meratese.
+        </p>
+        <p class="hero-copy">
+          Questa pagina raccoglie la versione esplorabile dei grafici della presentazione: passando il mouse si leggono i valori puntuali, dalla legenda si possono isolare le serie, e dalla barra strumenti dei grafici si può zoomare o scaricare un'immagine.
+        </p>
         <div class="actions">
-          <a class="button primary" href="data/manifest.csv">Download manifest CSV</a>
-          <a class="button" href="presentation/comparazione_s8_a_varie_linee_italiane.pdf">Presentation PDF</a>
-          <a class="button" href="docs/metodologia.md">Methodology</a>
-          <a class="button" href="https://github.com/simoneghezzicolombo/s8-analisi" target="_blank" rel="noreferrer">GitHub repository</a>
+          <a class="btn primary" href="#grafici">Esplora i grafici</a>
+          <a class="btn" href="data/manifest.csv">Scarica manifest CSV</a>
+          <a class="btn" href="presentation/comparazione_s8_a_varie_linee_italiane.pdf">Presentazione PDF</a>
+          <a class="btn" href="docs/metodologia.md">Metodologia completa</a>
         </div>
       </div>
 
-      <div class="hero-panel">
-        <img src="figures/06_saliti_per_corsa_stazioni_s8.png" alt="Scatter plot of Lombardy stations and S8 station growth">
-        <div class="hero-panel-caption">
-          <span>Public-facing mirror of the presentation figures.</span>
-          <span>Updated May 2026.</span>
-        </div>
-      </div>
+      <aside class="card">
+        <div class="eyebrow">Lettura sintetica</div>
+        <p>
+          La S8 non appare come una linea locale marginale: cresce più delle altre linee suburbane considerate, ha volumi annui comparabili ad alcune metropolitane italiane e mostra una crescita molto marcata nelle stazioni del Meratese.
+        </p>
+        <p>
+          Il punto più interessante è che la crescita non è concentrata solo nella punta 7-9: una quota molto ampia avviene nel resto della giornata, suggerendo un uso più ordinario e distribuito del treno.
+        </p>
+      </aside>
     </section>
 
-    <section id="data">
+    <section id="risultati">
       <div class="section-head">
-        <h2>Key findings</h2>
-        <p>Four headline numbers from the published datasets, useful as a quick entry point before opening the CSV files.</p>
+        <h2>Quattro numeri chiave</h2>
+        <p>Una lettura rapida prima di entrare nei grafici interattivi.</p>
       </div>
-
-      <div class="metric-grid">
-        <div class="metric"><strong>+57.7%</strong><span>S8 2025 compared with 2019, indexed on weekday users.</span></div>
-        <div class="metric"><strong>14.8 mln</strong><span>Estimated annual passengers on the S8 corridor.</span></div>
-        <div class="metric"><strong>+94.4%</strong><span>Growth of the four Meratese stations from 2019 to 2025.</span></div>
-        <div class="metric"><strong>87.6%</strong><span>Meratese growth occurring outside the 7-9 morning peak.</span></div>
-      </div>
-    </section>
-
-    <section class="note-grid">
-      <div class="note">
-        <div class="project-kind">How to read this repository</div>
-        <h3>One figure, one dataset</h3>
-        <p>The file <a href="data/manifest.csv">data/manifest.csv</a> links each presentation slide to the corresponding PNG figure, processed CSV dataset, and short source note. This is the fastest path for institutional reuse.</p>
-      </div>
-
-      <div class="note">
-        <div class="project-kind">Recommended citation</div>
-        <h3>Source note</h3>
-        <p>Analisi di Simone Ghezzi Colombo su dati Regione Lombardia, Trenord e fonti indicate nei dataset.</p>
+      <div class="takeaways">
+        <div class="takeaway"><strong>+57,7%</strong><span>S8 nel 2025 rispetto al 2019, indice sugli utenti/giorno feriale.</span></div>
+        <div class="takeaway"><strong>14,8 mln</strong><span>Stima dei passeggeri annui della S8 Lecco-Carnate-Milano.</span></div>
+        <div class="takeaway"><strong>+94,4%</strong><span>Crescita 2019-2025 delle quattro stazioni meratesi considerate.</span></div>
+        <div class="takeaway"><strong>87,6%</strong><span>Quota della crescita meratese fuori dalla fascia 7-9.</span></div>
       </div>
     </section>
 
-    <section id="figures">
+    <section id="grafici">
       <div class="section-head">
-        <h2>Figures and datasets</h2>
-        <p>Presentation-ready figures mirrored with direct links to the underlying CSV files.</p>
+        <h2>Grafici interattivi</h2>
+        <p>Ogni grafico è collegato al proprio CSV. I PNG statici restano disponibili come immagine pronta da scaricare.</p>
       </div>
 
-      <div class="grid">
-        <article class="card">
-          <div class="figure-frame"><img src="figures/01_linee_suburbane_indice_2019_100.png" alt="Linee suburbane Trenord index 2019=100"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 4</div>
-            <h3>Linee suburbane Trenord</h3>
-            <p>S8, S1/S12, S5, S6 and total Trenord, indexed to 2019=100.</p>
-            <div class="tags"><span class="tag">2019-2025</span><span class="tag">Index</span></div>
-            <div class="links"><a href="data/processed/linee_s_indice_2019_2025.csv">Dataset CSV</a><a href="figures/01_linee_suburbane_indice_2019_100.png">PNG</a></div>
+      <div class="chart-stack">
+        <figure class="figure-card">
+          <h3>1. Evoluzione delle linee suburbane Trenord</h3>
+          <div class="plot-frame">
+            <div id="plot-linee" class="plot-target" role="img" aria-label="Linee suburbane Trenord, indice 2019=100"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> La S8 è l'unica tra le linee considerate nettamente sopra il livello 2019: nel 2025 arriva a indice 157,7, mentre S1/S12, S5 e S6 restano sotto quota 100.</p>
+          <p class="chart-howto">Suggerimento: clicca sulle voci della legenda per isolare una linea e confrontarla direttamente con la S8.</p>
+          <div class="links"><a href="data/processed/linee_s_indice_2019_2025.csv">Dataset CSV</a><a href="figures/01_linee_suburbane_indice_2019_100.png">PNG statico</a></div>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>2. Variazione assoluta 2025-2024</h3>
+          <div class="plot-frame">
+            <div id="plot-delta" class="plot-target" role="img" aria-label="Variazione assoluta linee suburbane 2025-2024"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> Nel confronto tra campagne comparabili, la S8 è la linea con la crescita maggiore: +22.800. La S7 risulta in calo perché il confronto usa solo i mesi presenti in entrambi gli anni.</p>
+          <p class="chart-howto">Passa il mouse sulle barre per vedere valori 2024, 2025, differenza assoluta e differenza percentuale.</p>
+          <div class="links"><a href="data/processed/variazione_linee_suburbane_2024_2025.csv">Dataset CSV</a><a href="figures/02_variazione_assoluta_linee_suburbane.png">PNG statico</a></div>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>3. Passeggeri annui per linea</h3>
+          <div class="plot-frame">
+            <div id="plot-top20" class="plot-target" role="img" aria-label="Top 20 linee ferroviarie locali in Italia"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> La S8 è stimata al quarto posto tra le linee locali non AV considerate, con circa 14,8 milioni di passeggeri annui.</p>
+          <p class="chart-howto">Nel tooltip trovi nome completo della linea, operatore, anno/metodo e nota metodologica sintetica.</p>
+          <div class="links"><a href="data/processed/top20_linee_locali_italia.csv">Dataset CSV</a><a href="figures/04_top20_linee_locali_italia.png">PNG statico</a></div>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>4. S8 e metropolitane italiane</h3>
+          <div class="plot-frame">
+            <div id="plot-metro" class="plot-target" role="img" aria-label="Confronto S8 e metropolitane italiane"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> La S8 ha volumi annui paragonabili ad alcune metropolitane italiane, ma con una frequenza ordinaria molto più bassa: il dato serve come benchmark di ordine di grandezza.</p>
+          <p class="chart-howto">Passa il mouse sulle barre per leggere anche la frequenza indicativa usata nel confronto.</p>
+          <div class="links"><a href="data/processed/benchmark_metropolitane_s8.csv">Dataset CSV</a><a href="figures/03_comparazione_metro_s8.png">PNG statico</a></div>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>5. Passeggeri nelle stazioni S8, 2015-2025</h3>
+          <div class="plot-frame">
+            <div id="plot-stazioni" class="plot-target" role="img" aria-label="Passeggeri nelle stazioni S8 dal 2015 al 2025"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> Le quattro stazioni meratesi crescono tutte in modo marcato dopo il 2022. Il totale passa da 4.620 saliti24H nel 2019 a 8.980 nel 2025.</p>
+          <p class="chart-howto">Puoi nascondere le altre stazioni dalla legenda e lasciare visibili solo Airuno, Osnago, Cernusco-Merate e Olgiate-Calco-Brivio.</p>
+          <div class="links"><a href="data/processed/stazioni_s8_indice_2015_2025.csv">Dataset CSV</a><a href="figures/05_stazioni_s8_indice_2019_100.png">PNG statico</a></div>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>6. Crescita passeggeri nelle stazioni lombarde</h3>
+          <div class="plot-frame">
+            <div id="plot-scatter" class="plot-target" role="img" aria-label="Scatter stazioni lombarde crescita passeggeri e carico per corsa"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> Nel confronto con 148 stazioni lombarde comparabili, Airuno e Osnago sono prima e seconda per crescita percentuale; Cernusco-Merate e Olgiate-Calco-Brivio restano comunque nel gruppo di testa.</p>
+          <p class="chart-howto">La dimensione del punto rappresenta la crescita assoluta. Usa zoom e pan per leggere meglio le stazioni concentrate al centro.</p>
+          <div class="links"><a href="data/processed/scatter_stazioni_lombarde_2019_2025.csv">Dataset CSV</a><a href="figures/06_saliti_per_corsa_stazioni_s8.png">PNG statico</a></div>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>7. Peso della punta mattutina nelle stazioni S8</h3>
+          <div class="plot-frame">
+            <div id="plot-punta" class="plot-target" role="img" aria-label="Peso della punta nelle stazioni S8"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> Nelle stazioni meratesi la quota di saliti tra le 7 e le 9 diminuisce rispetto al totale giornaliero: la domanda cresce, ma non solo nella punta pendolare classica.</p>
+          <p class="chart-howto">Il tooltip mostra quota percentuale, saliti 7-9 e saliti24H per ogni anno.</p>
+          <div class="links"><a href="data/processed/peso_punta_stazioni_s8_2015_2025.csv">Dataset CSV</a><a href="figures/07_peso_punta_stazioni_s8.png">PNG statico</a></div>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>8. Quanto cresce in punta e quanto fuori punta?</h3>
+          <div class="plot-frame">
+            <div id="plot-morbida" class="plot-target" role="img" aria-label="Crescita meratese tra punta e morbida"></div>
+            <div class="plot-status">Preparazione grafico interattivo...</div>
+          </div>
+          <p class="chart-lede"><strong>Cosa mostra.</strong> Nel totale Meratese, solo 540 saliti/giorno della crescita sono nella fascia 7-9, mentre 3.820 sono fuori punta: l'87,6% della crescita è nel resto della giornata.</p>
+          <p class="chart-howto">Passa il mouse sulle sezioni della barra per vedere crescita in punta, crescita fuori punta e quota percentuale.</p>
+          <div class="links"><a href="data/processed/crescita_meratese_punta_morbida_2015_2025.csv">Dataset CSV</a><a href="figures/08_crescita_punta_morbida_meratese.png">PNG statico</a></div>
+        </figure>
+      </div>
+    </section>
+
+    <section id="metodo">
+      <div class="section-head">
+        <h2>Metodo e cautela interpretativa</h2>
+        <p>I grafici sono pensati per essere leggibili pubblicamente, ma restano collegati a file dati verificabili.</p>
+      </div>
+      <div class="dataset-grid">
+        <article class="dataset-card">
+          <h3>Definizioni principali</h3>
+          <p><code>Saliti24H</code> indica i passeggeri saliti in stazione nell'arco della giornata. <code>Saliti7-9</code> indica la fascia di punta mattutina. Gli indici sono normalizzati con base 2019=100.</p>
+          <div class="dataset-list">
+            <a href="docs/metodologia.md"><span>Leggi metodologia completa</span><span>MD</span></a>
+            <a href="docs/struttura_dati.md"><span>Struttura dei dataset</span><span>MD</span></a>
           </div>
         </article>
-
-        <article class="card">
-          <div class="figure-frame"><img src="figures/02_variazione_assoluta_linee_suburbane.png" alt="Variazione assoluta linee suburbane"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 5</div>
-            <h3>Variazione assoluta linee S</h3>
-            <p>2025 vs 2024 comparison using only campaigns available in both years.</p>
-            <div class="tags"><span class="tag">2024-2025</span><span class="tag">Comparable campaigns</span></div>
-            <div class="links"><a href="data/processed/variazione_linee_suburbane_2024_2025.csv">Dataset CSV</a><a href="figures/02_variazione_assoluta_linee_suburbane.png">PNG</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="figure-frame"><img src="figures/04_top20_linee_locali_italia.png" alt="Top 20 linee locali Italia"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 6</div>
-            <h3>Top 20 linee locali</h3>
-            <p>Positioning the S8 among the most used local rail lines considered in Italy.</p>
-            <div class="tags"><span class="tag">Annual passengers</span><span class="tag">Benchmark</span></div>
-            <div class="links"><a href="data/processed/top20_linee_locali_italia.csv">Dataset CSV</a><a href="figures/04_top20_linee_locali_italia.png">PNG</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="figure-frame"><img src="figures/03_comparazione_metro_s8.png" alt="S8 compared with metro lines"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 7</div>
-            <h3>Numeri da metropolitana</h3>
-            <p>A public benchmark comparing the S8 with selected Italian metro or metro-like services.</p>
-            <div class="tags"><span class="tag">Frequency</span><span class="tag">Passengers</span></div>
-            <div class="links"><a href="data/processed/benchmark_metropolitane_s8.csv">Dataset CSV</a><a href="figures/03_comparazione_metro_s8.png">PNG</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="figure-frame"><img src="figures/05_stazioni_s8_indice_2019_100.png" alt="Passengers in S8 stations 2015-2025"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 8</div>
-            <h3>Stazioni S8 2015-2025</h3>
-            <p>Station-level weekday boardings in November, indexed to 2019=100.</p>
-            <div class="tags"><span class="tag">Stations</span><span class="tag">Meratese</span></div>
-            <div class="links"><a href="data/processed/stazioni_s8_indice_2015_2025.csv">Dataset CSV</a><a href="figures/05_stazioni_s8_indice_2019_100.png">PNG</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="figure-frame"><img src="figures/06_saliti_per_corsa_stazioni_s8.png" alt="Lombardy station growth scatter plot"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 9</div>
-            <h3>Stazioni lombarde 2019-2025</h3>
-            <p>Growth in passengers and change in passengers per train across comparable Lombardy stations.</p>
-            <div class="tags"><span class="tag">Scatter</span><span class="tag">Filtered stations</span></div>
-            <div class="links"><a href="data/processed/scatter_stazioni_lombarde_2019_2025.csv">Dataset CSV</a><a href="figures/06_saliti_per_corsa_stazioni_s8.png">PNG</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="figure-frame"><img src="figures/07_peso_punta_stazioni_s8.png" alt="Morning peak share in S8 stations"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 10</div>
-            <h3>Peso della punta</h3>
-            <p>Share of 7-9 boardings over total daily station boardings.</p>
-            <div class="tags"><span class="tag">Peak</span><span class="tag">7-9</span></div>
-            <div class="links"><a href="data/processed/peso_punta_stazioni_s8_2015_2025.csv">Dataset CSV</a><a href="figures/07_peso_punta_stazioni_s8.png">PNG</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="figure-frame"><img src="figures/08_crescita_punta_morbida_meratese.png" alt="Meratese growth peak and off-peak"></div>
-          <div class="card-body">
-            <div class="project-kind">Slide 11</div>
-            <h3>Punta e morbida</h3>
-            <p>Decomposition of Meratese growth between the 7-9 peak and the rest of the day.</p>
-            <div class="tags"><span class="tag">Off-peak demand</span><span class="tag">Daily mobility</span></div>
-            <div class="links"><a href="data/processed/crescita_meratese_punta_morbida_2015_2025.csv">Dataset CSV</a><a href="figures/08_crescita_punta_morbida_meratese.png">PNG</a></div>
+        <article class="dataset-card">
+          <h3>Perché alcuni confronti sono delicati</h3>
+          <p>I dati derivano da campagne di frequentazione, non da conteggi continui. Per questo, nei confronti 2024-2025 si usano solo campagne presenti in entrambi gli anni.</p>
+          <div class="dataset-list">
+            <a href="docs/reference_dati_presentazione_S8.md"><span>Reference numeri presentazione</span><span>MD</span></a>
+            <a href="docs/micro_fonti_canva.txt"><span>Micro-fonti per grafici</span><span>TXT</span></a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="method" class="note-grid">
-      <div class="note">
-        <div class="project-kind">Documentation</div>
-        <h3>Method and structure</h3>
-        <p>Definitions, filters, caveats and file structure are documented in Markdown for quick review and reuse.</p>
-        <div class="source-list">
-          <a href="docs/metodologia.md"><span>Methodology</span><span>Open</span></a>
-          <a href="docs/struttura_dati.md"><span>Data structure</span><span>Open</span></a>
-          <a href="docs/reference_dati_presentazione_S8.md"><span>Speaker/data reference</span><span>Open</span></a>
-        </div>
+    <section id="dataset">
+      <div class="section-head">
+        <h2>Dataset scaricabili</h2>
+        <p>In alto i CSV già processati per i grafici; in fondo i dati originali e i link ai portali fonte.</p>
       </div>
+      <div class="dataset-grid">
+        <article class="dataset-card">
+          <h3>Dataset processati</h3>
+          <p>File già puliti o aggregati, consigliati per verificare e riusare i grafici.</p>
+          <div class="dataset-list">
+            <a href="data/manifest.csv"><span>Manifest grafici-dataset</span><span>CSV</span></a>
+            <a href="data/processed/linee_s_indice_2019_2025.csv"><span>Linee S, indice 2019-2025</span><span>CSV</span></a>
+            <a href="data/processed/variazione_linee_suburbane_2024_2025.csv"><span>Variazione linee 2024-2025</span><span>CSV</span></a>
+            <a href="data/processed/top20_linee_locali_italia.csv"><span>Top 20 linee locali Italia</span><span>CSV</span></a>
+            <a href="data/processed/benchmark_metropolitane_s8.csv"><span>Benchmark metropolitane</span><span>CSV</span></a>
+            <a href="data/processed/stazioni_s8_indice_2015_2025.csv"><span>Stazioni S8, indice 2015-2025</span><span>CSV</span></a>
+            <a href="data/processed/scatter_stazioni_lombarde_2019_2025.csv"><span>Scatter stazioni lombarde</span><span>CSV</span></a>
+            <a href="data/processed/peso_punta_stazioni_s8_2015_2025.csv"><span>Peso punta stazioni S8</span><span>CSV</span></a>
+            <a href="data/processed/crescita_meratese_punta_morbida_2015_2025.csv"><span>Crescita punta/morbida</span><span>CSV</span></a>
+          </div>
+        </article>
 
-      <div class="note">
-        <div class="project-kind">Raw data</div>
-        <h3>Source files</h3>
-        <p>Main raw files are included for auditability. Processed files remain the recommended entry point for reuse.</p>
-        <div class="source-list">
-          <a href="data/raw/regione_lombardia_frequentazione_linee_sfr_20260424.csv"><span>Line ridership</span><span>CSV</span></a>
-          <a href="data/raw/regione_lombardia_flussi_stazioni_2015_2023_20260424.csv"><span>Station flows 2015-2023</span><span>CSV</span></a>
-          <a href="data/raw/regione_lombardia_frequentazione_stazioni_sfr_20260424.csv"><span>Station ridership 2024-2025</span><span>CSV</span></a>
-        </div>
+        <article class="dataset-card">
+          <h3>Dataset originali e fonti</h3>
+          <p>Link ai portali fonte e copie locali dei file grezzi usati come base.</p>
+          <div class="dataset-list">
+            <a href="data/sources_originali.csv"><span>Indice fonti originali</span><span>CSV</span></a>
+            <a href="https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj" target="_blank" rel="noreferrer"><span>Regione Lombardia: frequentazione linee SFR</span><span>Portale</span></a>
+            <a href="data/raw/regione_lombardia_frequentazione_linee_sfr_20260424.csv"><span>Copia locale: linee SFR</span><span>CSV</span></a>
+            <a href="https://hub.dati.lombardia.it/w/ut63-s688/default" target="_blank" rel="noreferrer"><span>Regione Lombardia: frequentazione stazioni SFR</span><span>Portale</span></a>
+            <a href="data/raw/regione_lombardia_frequentazione_stazioni_sfr_20260424.csv"><span>Copia locale: stazioni SFR</span><span>CSV</span></a>
+            <a href="https://hub.dati.lombardia.it/widgets/m2u2-frtq" target="_blank" rel="noreferrer"><span>Regione Lombardia: flussi stazioni ferroviarie</span><span>Portale</span></a>
+            <a href="data/raw/regione_lombardia_flussi_stazioni_2015_2023_20260424.csv"><span>Copia locale: flussi stazioni</span><span>CSV</span></a>
+            <a href="data/processed/benchmark_metropolitane_s8.csv"><span>Fonti puntuali benchmark metropolitane</span><span>CSV</span></a>
+            <a href="data/processed/top20_linee_locali_italia.csv"><span>Fonti puntuali top 20 linee locali</span><span>CSV</span></a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer class="shell">
-    <div>© <span id="year"></span> Simone Ghezzi Colombo · Built for GitHub Pages.</div>
+  <footer class="shell footer">
+    <div>© <span id="year"></span> Simone Ghezzi Colombo · Analisi su dati Regione Lombardia, Trenord e fonti indicate nei dataset.</div>
   </footer>
-
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
