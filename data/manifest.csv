@@ -1,0 +1,9 @@
+slide,title,figure,dataset,source_note
+4,Evoluzione linee S,figures/01_linee_suburbane_indice_2019_100.png,data/processed/linee_s_indice_2019_2025.csv,Regione Lombardia/Trenord; indice 2019=100
+5,Variazione assoluta linee S,figures/02_variazione_assoluta_linee_suburbane.png,data/processed/variazione_linee_suburbane_2024_2025.csv,Regione Lombardia; solo campagne presenti in entrambi gli anni
+6,Top 20 linee locali Italia,figures/04_top20_linee_locali_italia.png,data/processed/top20_linee_locali_italia.csv,"Elaborazione su Trenord, Cotral, Trenitalia e Regioni"
+7,Benchmark metropolitane,figures/03_comparazione_metro_s8.png,data/processed/benchmark_metropolitane_s8.csv,Fonti operatori/schede indicate nel dataset
+8,Stazioni S8 2015-2025,figures/05_stazioni_s8_indice_2019_100.png,data/processed/stazioni_s8_indice_2015_2025.csv,Regione Lombardia; novembre feriale
+9,Stazioni lombarde 2019-2025,figures/06_saliti_per_corsa_stazioni_s8.png,data/processed/scatter_stazioni_lombarde_2019_2025.csv,Filtro: almeno 700 saliti24H nel 2019
+10,Peso della punta,figures/07_peso_punta_stazioni_s8.png,data/processed/peso_punta_stazioni_s8_2015_2025.csv,Quota saliti 7-9 su saliti24H
+11,Crescita punta e morbida,figures/08_crescita_punta_morbida_meratese.png,data/processed/crescita_meratese_punta_morbida_2015_2025.csv,Morbida = saliti24H al netto della fascia 7-9

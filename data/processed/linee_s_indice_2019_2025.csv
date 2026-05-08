@@ -1,0 +1,36 @@
+Anno,Serie,Valore,Unita,Tipo_dato,HEX,Indice_2019_100
+2019,S1/S12,43968,Utenti/giorno feriale,Stima: 820.300 (Nov 2019) × quota per linea (programma esercizio 2019),#E40520,100.0
+2020,S1/S12,18974,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#E40520,43.15411208151383
+2021,S1/S12,23847,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#E40520,54.23717248908297
+2022,S1/S12,30949,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#E40520,70.38982896652111
+2023,S1/S12,38722,Utenti/giorno feriale,Derivato: valore 2024 / (1 + % 2024 vs 2023),#E40520,88.06859534206696
+2024,S1/S12,40000,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati mobilità 2024),#E40520,90.97525473071325
+2025,S1/S12,35000,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati 2025),#E40520,79.60334788937409
+2019,S5,72432,Utenti/giorno feriale,Stima: 820.300 (Nov 2019) × quota per linea (programma esercizio 2019),#F39123,100.0
+2020,S5,31258,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F39123,43.15495913408438
+2021,S5,39284,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F39123,54.23569692953391
+2022,S5,50984,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F39123,70.3887784404683
+2023,S5,55769,Utenti/giorno feriale,Derivato: valore 2024 / (1 + % 2024 vs 2023),#F39123,76.99497459686326
+2024,S5,58000,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati mobilità 2024),#F39123,80.07510492599957
+2025,S5,58000,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati 2025),#F39123,80.07510492599957
+2019,S6,48890,Utenti/giorno feriale,Stima: 820.300 (Nov 2019) × quota per linea (programma esercizio 2019),#F6D200,100.0
+2020,S6,21099,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F6D200,43.15606463489466
+2021,S6,26516,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F6D200,54.23604008999795
+2022,S6,34413,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F6D200,70.38862753119247
+2023,S6,38785,Utenti/giorno feriale,Derivato: valore 2024 / (1 + % 2024 vs 2023),#F6D200,79.33115156473717
+2024,S6,41500,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati mobilità 2024),#F6D200,84.88443444467171
+2025,S6,42330,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati 2025),#F6D200,86.58212313356515
+2019,S8,32484,Utenti/giorno feriale,Stima: 820.300 (Nov 2019) × quota per linea (programma esercizio 2019),#F6B6B6,100.0
+2020,S8,14019,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F6B6B6,43.15663095677873
+2021,S8,17618,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F6B6B6,54.23593153552518
+2022,S8,22865,Utenti/giorno feriale,Stima: valori 2019 scalati su passeggeri annui Trenord,#F6B6B6,70.38849895333087
+2023,S8,36522,Utenti/giorno feriale,Derivato: valore 2024 / (1 + % 2024 vs 2023),#F6B6B6,112.43073513114147
+2024,S8,42000,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati mobilità 2024),#F6B6B6,129.29442186922793
+2025,S8,51240,Utenti/giorno feriale,Ufficiale: comunicato Trenord (dati 2025),#F6B6B6,157.73919468045807
+2019,Totale Trenord,214521000,Passeggeri/anno,Trenord (bilanci/comunicati stampa),#222222,100.0
+2020,Totale Trenord,92577000,Passeggeri/anno,Trenord (bilanci/comunicati stampa),#222222,43.15521557330052
+2021,Totale Trenord,116348000,Passeggeri/anno,Trenord (bilanci/comunicati stampa),#222222,54.23618200549131
+2022,Totale Trenord,151000000,Passeggeri/anno,Trenord (bilanci/comunicati stampa),#222222,70.3893791283837
+2023,Totale Trenord,190000000,Passeggeri/anno,Trenord (bilanci/comunicati stampa),#222222,88.56941744631061
+2024,Totale Trenord,201000000,Passeggeri/anno,Trenord (bilanci/comunicati stampa),#222222,93.69712056162334
+2025,Totale Trenord,205000000,Passeggeri/anno,Trenord (bilanci/comunicati stampa),#222222,95.5617398762825

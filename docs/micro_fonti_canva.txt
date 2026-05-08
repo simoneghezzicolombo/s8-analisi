@@ -1,0 +1,23 @@
+Slide 4 - Evoluzione linee S
+Fonte: Regione Lombardia/Trenord, dati linee S 2019-2025; indice 2019=100. Valori feriali per linee, annui per totale Trenord.
+
+Slide 5 - Variazione assoluta linee S
+Fonte: Regione Lombardia, frequentazione linee ferroviarie regionali 2024-2025; confronto solo campagne presenti in entrambi gli anni.
+
+Slide 6 - Top 20 linee locali Italia
+Fonte: elaborazione su dati Trenord, Cotral, Trenitalia e Regioni; per la Lombardia campagne di frequentazione 2025.
+
+Slide 7 - Numeri da metropolitana
+Fonti: schede/operatori indicati nel dataset; S8 da dati Trenord/utente. Frequenze di punta riportate come benchmark indicativo.
+
+Slide 8 - Stazioni S8 2015-2025
+Fonte: Regione Lombardia, Flussi Stazioni Ferroviarie 2015-2023 e frequentazione stazioni SFR 2024-2025; novembre feriale.
+
+Slide 9 - Stazioni lombarde 2019-2025
+Fonte: Regione Lombardia/Trenord; filtro: stazioni lombarde con almeno 700 saliti24H nel 2019; dimensione punto = crescita assoluta.
+
+Slide 10 - Peso della punta
+Fonte: Regione Lombardia, Flussi Stazioni Ferroviarie e frequentazione stazioni SFR; quota saliti 7-9 su saliti 24H, novembre feriale.
+
+Slide 11 - Punta e morbida
+Fonte: Regione Lombardia/Trenord; morbida = variazione saliti24H al netto della variazione 7-9.
