@@ -2,6 +2,10 @@
 
 Repository pubblico di supporto alla presentazione sulla linea S8 Lecco-Carnate-Milano e sulle stazioni del Meratese.
 
+Pagina navigabile, se GitHub Pages e' attivo:
+
+https://simoneghezzicolombo.github.io/s8-analisi/
+
 Il repository raccoglie:
 
 - i grafici finali usati nella presentazione;
@@ -75,4 +79,3 @@ Quando si riutilizzano grafici o tabelle:
 > Analisi di Simone Ghezzi Colombo su dati Regione Lombardia, Trenord e fonti indicate nei dataset.
 
 I dati di origine mantengono licenze e condizioni delle rispettive fonti pubbliche. Le elaborazioni, i grafici e la documentazione sono pensati per favorire verifica, discussione pubblica e riuso istituzionale con citazione della fonte.
-
