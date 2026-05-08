@@ -11,6 +11,7 @@ Il repository raccoglie:
 - i grafici finali usati nella presentazione;
 - i dataset CSV collegati a ciascun grafico;
 - i principali dati grezzi di partenza da Regione Lombardia;
+- gli script di analisi e visualizzazione usati per costruire grafici e pagina interattiva;
 - note metodologiche e reference sintetiche per verificare i numeri.
 
 ## Come usare il repository
@@ -27,6 +28,7 @@ Per una lettura piu' discorsiva, partire da:
 - [docs/reference_dati_presentazione_S8.md](docs/reference_dati_presentazione_S8.md)
 - [docs/metodologia.md](docs/metodologia.md)
 - [presentation/comparazione_s8_a_varie_linee_italiane.pdf](presentation/comparazione_s8_a_varie_linee_italiane.pdf)
+- [scripts/README.md](scripts/README.md)
 
 ## Grafici e dataset
 
@@ -59,6 +61,10 @@ I principali file grezzi sono in [data/raw](data/raw):
 - `regione_lombardia_frequentazione_stazioni_sfr_20260424.csv`
 
 I CSV in [data/processed](data/processed) sono invece dataset gia' puliti o aggregati per i grafici.
+
+## Script
+
+Gli script del progetto sono in [scripts](scripts). La pagina interattiva usa direttamente [assets/app.js](assets/app.js), mentre i grafici statici e le prove grafiche sono conservati nella cartella `scripts` per rendere tracciabile il lavoro di elaborazione e visualizzazione.
 
 ## Fonti
 
