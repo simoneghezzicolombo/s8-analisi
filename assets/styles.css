@@ -8,8 +8,9 @@
   --teal: #177a74;
   --teal-strong: #11655f;
   --teal-soft: #dff3f0;
-  --s8: #df6f91;
-  --s8-soft: #f7d1dc;
+  --s8: #F8B1B0;
+  --s8-strong: #8E435D;
+  --s8-soft: #FDE7E7;
   --shadow: 0 16px 36px rgba(23, 49, 58, 0.08);
   --radius: 24px;
   --max: 1180px;
@@ -212,6 +213,7 @@ h1 {
 
 main section {
   padding: 28px 0;
+  scroll-margin-top: 88px;
 }
 
 .section-head {
@@ -251,10 +253,14 @@ main section {
 .chart-stack {
   display: grid;
   gap: 26px;
+  min-width: 0;
 }
 
 .figure-card {
+  margin: 0;
   padding: 18px 18px 20px;
+  min-width: 0;
+  width: 100%;
 }
 
 .figure-card h3 {
@@ -267,6 +273,7 @@ main section {
 .plot-frame {
   position: relative;
   overflow: hidden;
+  min-width: 0;
   border-radius: 18px;
   border: 1px solid #ddebe8;
   background: #ffffff;
@@ -275,7 +282,15 @@ main section {
 
 .plot-target {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 430px;
+}
+
+.js-plotly-plot,
+.plot-container,
+.svg-container {
+  max-width: 100% !important;
 }
 
 .plot-status {
@@ -393,6 +408,11 @@ main section {
   white-space: nowrap;
 }
 
+.js-plotly-plot .plotly .modebar {
+  right: 8px;
+  top: 8px;
+}
+
 .footer {
   padding: 28px 0 42px;
   color: var(--muted);
@@ -408,31 +428,86 @@ main section {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --radius: 17px;
+    --shadow: 0 10px 24px rgba(23, 49, 58, 0.07);
+  }
+
   .shell {
-    width: min(var(--max), calc(100% - 24px));
+    width: min(var(--max), calc(100% - 18px));
   }
 
   .nav {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .brand {
+    flex: 0 0 auto;
+    font-size: 0.98rem;
   }
 
   .navlinks {
-    gap: 14px;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    gap: 12px;
     overflow-x: auto;
     white-space: nowrap;
-    width: 100%;
-    padding-bottom: 2px;
+    width: auto;
+    min-width: 0;
+    padding: 2px 0 4px;
+    scrollbar-width: none;
+  }
+
+  .navlinks::-webkit-scrollbar {
+    display: none;
   }
 
   .hero {
-    padding: 34px 0 24px;
+    padding: 28px 0 18px;
+    gap: 14px;
   }
 
   h1 {
-    font-size: clamp(2.35rem, 11vw, 3.35rem);
+    font-size: clamp(2.35rem, 12vw, 3.25rem);
     max-width: none;
+  }
+
+  .subtitle {
+    font-size: 1.03rem;
+  }
+
+  .hero-copy {
+    margin-top: 14px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .btn {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .card,
+  .figure-card,
+  .dataset-card,
+  .takeaway {
+    border-radius: var(--radius);
+  }
+
+  .card,
+  .dataset-card {
+    padding: 15px;
+  }
+
+  main section {
+    padding: 22px 0;
+    scroll-margin-top: 70px;
   }
 
   .section-head {
@@ -441,13 +516,92 @@ main section {
     gap: 8px;
   }
 
+  .takeaways,
+  .chart-stack,
+  .dataset-grid {
+    gap: 12px;
+  }
+
+  .takeaway {
+    padding: 14px;
+  }
+
+  .figure-card {
+    padding: 11px 10px 14px;
+  }
+
+  .figure-card h3 {
+    font-size: 1.04rem;
+    margin: 0 2px 8px;
+  }
+
   .plot-target,
   .plot-frame {
-    min-height: 360px;
+    min-height: 390px;
+  }
+
+  .plot-frame {
+    border-radius: 13px;
+  }
+
+  .chart-lede {
+    margin-top: 12px;
+    padding: 12px 13px;
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .chart-howto {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .links,
+  .source-links {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+
+  .links::-webkit-scrollbar,
+  .source-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .links a,
+  .source-links a {
+    flex: 0 0 auto;
+    margin-right: 0;
+    padding: 7px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #ffffff;
+    white-space: nowrap;
+    font-size: 0.88rem;
+  }
+
+  .source-links {
+    align-items: center;
+    font-size: 0;
+  }
+
+  .source-links::before {
+    content: "Fonti:";
+    flex: 0 0 auto;
+    align-self: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 700;
   }
 
   .dataset-list a {
     flex-direction: column;
     gap: 2px;
+  }
+
+  .footer {
+    padding-bottom: 28px;
   }
 }

@@ -4,13 +4,10 @@ const COLORS = {
   grid: "#d7e7e5",
   text: "#17313a",
   muted: "#60777d",
-  s8: "#df6f91",
-  s8Soft: "#f2b8c1",
+  s8: "#F8B1B0",
+  s8Strong: "#8E435D",
+  s8Soft: "#FDE7E7",
   grey: "#a8b6b8",
-  s1: "#e84b5f",
-  s5: "#f39a3d",
-  s6: "#d9c62c",
-  s9: "#a63ca5",
   meratese: {
     "Airuno": "#c9a52b",
     "Osnago": "#d64fd8",
@@ -18,6 +15,27 @@ const COLORS = {
     "Olgiate-Calco-Brivio": "#ef6bb8"
   }
 };
+
+const LINE_COLORS = {
+  "S1": "#E40520",
+  "S1/S12": "#E40520",
+  "S2": "#00AA87",
+  "S3": "#AA0130",
+  "S4": "#7EC340",
+  "S5": "#F79336",
+  "S6": "#F3D018",
+  "S7": "#EE007D",
+  "S8": "#F8B1B0",
+  "S9": "#9E3A98",
+  "S11": "#9B8EC4",
+  "S12": "#004728",
+  "S13": "#89580C",
+  "RE6": "#C73834",
+  "RE80": "#268BCC",
+  "Totale Trenord": "#222222"
+};
+
+const LOMBARDY_LINE_CODES = new Set(["S1", "S5", "S6", "S8", "S9", "S11", "S13", "RE6", "RE80"]);
 
 const DATASETS = {
   linee: "data/processed/linee_s_indice_2019_2025.csv",
@@ -34,6 +52,17 @@ const plotConfig = {
   responsive: true,
   displaylogo: false,
   modeBarButtonsToRemove: ["lasso2d", "select2d"]
+};
+
+const mobileHeights = {
+  "plot-linee": 430,
+  "plot-delta": 520,
+  "plot-top20": 640,
+  "plot-metro": 520,
+  "plot-stazioni": 500,
+  "plot-scatter": 540,
+  "plot-punta": 500,
+  "plot-morbida": 430
 };
 
 const baseLayout = {
@@ -149,20 +178,80 @@ function mergeLayout(layout) {
   };
 }
 
+function isMobile() {
+  return window.matchMedia("(max-width: 720px)").matches;
+}
+
+function viewportConfig() {
+  return {
+    ...plotConfig,
+    displayModeBar: isMobile() ? false : "hover"
+  };
+}
+
+function responsiveLayout(id, layout) {
+  if (!isMobile()) return layout;
+
+  const marginById = {
+    "plot-delta": { l: 68, r: 14, t: 56, b: 76 },
+    "plot-top20": { l: 82, r: 14, t: 56, b: 76 },
+    "plot-metro": { l: 118, r: 14, t: 56, b: 76 },
+    "plot-morbida": { l: 118, r: 14, t: 56, b: 76 },
+    "plot-scatter": { l: 56, r: 14, t: 56, b: 78 }
+  };
+
+  return {
+    ...layout,
+    height: mobileHeights[id] || 440,
+    font: { ...baseLayout.font, size: 11 },
+    title: {
+      ...(layout.title || {}),
+      font: { ...((layout.title || {}).font || {}), size: 15 }
+    },
+    margin: { l: 54, r: 14, t: 56, b: 76, ...(marginById[id] || {}) },
+    legend: {
+      ...(layout.legend || {}),
+      orientation: "h",
+      x: 0,
+      y: -0.28,
+      font: { size: 10 }
+    },
+    xaxis: {
+      ...(layout.xaxis || {}),
+      title: { text: (layout.xaxis || {}).title || "", font: { size: 11 } },
+      tickfont: { size: 10 },
+      automargin: true
+    },
+    yaxis: {
+      ...(layout.yaxis || {}),
+      title: { text: (layout.yaxis || {}).title || "", font: { size: 11 } },
+      tickfont: { size: 10 },
+      automargin: true
+    }
+  };
+}
+
 function render(id, traces, layout) {
   const frame = document.querySelector(`#${id}`).closest(".plot-frame");
-  return Plotly.newPlot(id, traces, mergeLayout(layout), plotConfig).then(() => {
+  return Plotly.newPlot(id, traces, mergeLayout(responsiveLayout(id, layout)), viewportConfig()).then(() => {
     frame.classList.add("ready");
   });
 }
 
 function lineColor(name) {
-  if (name === "S8") return COLORS.s8;
-  if (name === "S1/S12") return COLORS.s1;
-  if (name === "S5") return COLORS.s5;
-  if (name === "S6") return COLORS.s6;
-  if (name === "Totale Trenord") return COLORS.muted;
-  return COLORS.grey;
+  return LINE_COLORS[name] || COLORS.grey;
+}
+
+function shortMetroLabel(service) {
+  if (!isMobile()) return service;
+  return service
+    .replace("Trenord S8 Lecco-Milano", "S8 Lecco-Milano")
+    .replace("Brescia Metro 1", "Brescia M1")
+    .replace("Roma Metro C", "Roma C")
+    .replace("Genova Metro 1", "Genova M1")
+    .replace("Catania Metro 1", "Catania M1")
+    .replace("Napoli Linea 11 / Arcobaleno", "Napoli L11")
+    .replace("Napoli Linea 6", "Napoli L6");
 }
 
 async function chartLinee() {
@@ -171,14 +260,19 @@ async function chartLinee() {
   const bySerie = grouped(rows, "Serie");
   const traces = order.map((serie) => {
     const sub = [...(bySerie[serie] || [])].sort((a, b) => a.Anno - b.Anno);
+    const color = LINE_COLORS[serie] || sub.find((d) => d.HEX)?.HEX || COLORS.grey;
     return {
       type: "scatter",
       mode: "lines+markers",
       name: serie,
       x: sub.map((d) => d.Anno),
       y: sub.map((d) => d.Indice_2019_100),
-      line: { color: lineColor(serie), width: serie === "S8" ? 4 : 2.7, dash: serie === "Totale Trenord" ? "dot" : "solid" },
-      marker: { size: serie === "S8" ? 8 : 6 },
+      line: { color, width: serie === "S8" ? 4.4 : 2.7, dash: serie === "Totale Trenord" ? "dot" : "solid" },
+      marker: {
+        size: serie === "S8" ? 8 : 6,
+        color,
+        line: { color: serie === "S8" ? COLORS.s8Strong : "#ffffff", width: serie === "S8" ? 1.4 : 0.5 }
+      },
       customdata: sub.map((d) => [d.Valore, d.Unita, d.Tipo_dato]),
       hovertemplate: `<b>${serie}</b><br>Anno %{x}<br>Indice: %{y:.1f}<br>Valore: %{customdata[0]:,.0f}<br>%{customdata[1]}<br><extra>%{customdata[2]}</extra>`
     };
@@ -193,19 +287,20 @@ async function chartLinee() {
 async function chartDelta() {
   const rows = (await loadCSV(DATASETS.delta)).sort((a, b) => a.Delta - b.Delta);
   const names = rows.map((d) => d["N. linea"]);
-  const colors = names.map((name) => ({
-    "S8": COLORS.s8,
-    "S1/S12": COLORS.s1,
-    "S5": COLORS.s5,
-    "S6": COLORS.s6,
-    "S9": COLORS.s9
-  }[name] || COLORS.grey));
+  const colors = names.map((name) => lineColor(name));
   return render("plot-delta", [{
     type: "bar",
     orientation: "h",
     x: rows.map((d) => d.Delta),
     y: names,
-    marker: { color: colors, opacity: names.map((n) => n === "S8" ? 1 : 0.78) },
+    marker: {
+      color: colors,
+      opacity: names.map((n) => n === "S8" ? 1 : 0.86),
+      line: {
+        color: names.map((n) => n === "S8" ? COLORS.s8Strong : "rgba(255,255,255,0.95)"),
+        width: names.map((n) => n === "S8" ? 1.8 : 0.7)
+      }
+    },
     customdata: rows.map((d) => [d["2024"], d["2025"], d.Delta_pct]),
     hovertemplate: "<b>%{y}</b><br>2024: %{customdata[0]:,.0f}<br>2025: %{customdata[1]:,.0f}<br>Delta: %{x:+,.0f}<br>Delta %: %{customdata[2]:+.1f}%<extra></extra>"
   }], {
@@ -232,12 +327,24 @@ async function chartDelta() {
 
 async function chartTop20() {
   const rows = (await loadCSV(DATASETS.top20)).sort((a, b) => b.rank - a.rank);
+  const colors = rows.map((d) => {
+    if (d.line_code === "S8") return d.color_hex || COLORS.s8;
+    if (LOMBARDY_LINE_CODES.has(d.line_code)) return d.color_hex || lineColor(d.line_code);
+    return "#c5d0d1";
+  });
   return render("plot-top20", [{
     type: "bar",
     orientation: "h",
     x: rows.map((d) => d.central_mln),
     y: rows.map((d) => `${d.rank}. ${d.line_code}`),
-    marker: { color: rows.map((d) => d.line_code === "S8" ? COLORS.s8 : "#b7c5c7") },
+    marker: {
+      color: colors,
+      opacity: rows.map((d) => d.line_code === "S8" ? 1 : LOMBARDY_LINE_CODES.has(d.line_code) ? 0.9 : 0.58),
+      line: {
+        color: rows.map((d) => d.line_code === "S8" ? COLORS.s8Strong : "rgba(255,255,255,0.92)"),
+        width: rows.map((d) => d.line_code === "S8" ? 1.6 : 0.5)
+      }
+    },
     customdata: rows.map((d) => [d.line_name, d.operator, d.data_year, d.method]),
     hovertemplate: "<b>%{customdata[0]}</b><br>Operatore: %{customdata[1]}<br>Passeggeri annui: %{x:.1f} mln<br>Anno/metodo: %{customdata[2]}<br><extra>%{customdata[3]}</extra>"
   }], {
@@ -256,15 +363,23 @@ async function chartMetro() {
     type: "bar",
     orientation: "h",
     x: rows.map((d) => d.passeggeri_annui / 1_000_000),
-    y: rows.map((d) => d.servizio),
-    marker: { color: rows.map((d) => d.servizio.includes("S8") ? COLORS.s8 : "#b7c5c7") },
+    y: rows.map((d) => shortMetroLabel(d.servizio)),
+    marker: {
+      color: rows.map((d) => d.colore_hex || (d.servizio.includes("S8") ? COLORS.s8 : "#b7c5c7")),
+      opacity: rows.map((d) => d.servizio.includes("S8") ? 1 : 0.72),
+      line: {
+        color: rows.map((d) => d.servizio.includes("S8") ? COLORS.s8Strong : "rgba(255,255,255,0.95)"),
+        width: rows.map((d) => d.servizio.includes("S8") ? 1.6 : 0.5)
+      }
+    },
     customdata: rows.map((d) => [
+      d.servizio,
       d.passeggeri_annui_label || `${(d.passeggeri_annui / 1_000_000).toLocaleString("it-IT", { maximumFractionDigits: 2 })} mln`,
       d.frequenza_box || d.freq_label,
       d.tipo_dato_passeggeri || "",
       d.note || ""
     ]),
-    hovertemplate: "<b>%{y}</b><br>Passeggeri annui: %{customdata[0]}<br>Frequenza: %{customdata[1]}<br>Tipo dato: %{customdata[2]}<br><extra>%{customdata[3]}</extra>"
+    hovertemplate: "<b>%{customdata[0]}</b><br>Passeggeri annui: %{customdata[1]}<br>Frequenza: %{customdata[2]}<br>Tipo dato: %{customdata[3]}<br><extra>%{customdata[4]}</extra>"
   }], {
     title: { text: "La S8 ha numeri da metropolitana", x: 0, font: { size: 18 } },
     xaxis: { title: "Milioni di passeggeri annui" },
@@ -302,6 +417,7 @@ async function chartStazioni() {
 }
 
 async function chartScatter() {
+  const mobile = isMobile();
   const rows = await loadCSV(DATASETS.scatter);
   const others = rows.filter((d) => !d.IsMeratese);
   const mer = rows.filter((d) => d.IsMeratese);
@@ -322,17 +438,18 @@ async function chartScatter() {
   }];
   traces.push({
     type: "scatter",
-    mode: "markers+text",
+    mode: mobile ? "markers" : "markers+text",
     name: "Stazioni meratesi",
     x: mer.map((d) => d.Growth_pct_Saliti24H),
     y: mer.map((d) => d.Growth_pct_Saliti_per_corsa),
     text: mer.map((d) => d.Label),
     textposition: ["top right", "top right", "bottom right", "bottom right"],
     marker: {
-      size: 17,
+      size: mobile ? 15 : 17,
       color: mer.map((d) => COLORS.meratese[d.Label] || COLORS.s8),
       line: { color: "#ffffff", width: 1.5 }
     },
+    textfont: { size: mobile ? 10 : 12 },
     customdata: mer.map((d) => [d.Delta_abs_Saliti24H, d.Corse24H_2019, d.Corse24H_2025]),
     hovertemplate: "<b>%{text}</b><br>Crescita passeggeri: %{x:.1f}%<br>Cambio passeggeri/corsa: %{y:.1f}%<br>Delta saliti24H: %{customdata[0]:+,.0f}<br>Corse 2019→2025: %{customdata[1]:.0f}→%{customdata[2]:.0f}<extra></extra>"
   });
