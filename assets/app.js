@@ -9,10 +9,10 @@ const COLORS = {
   s8Soft: "#FDE7E7",
   grey: "#a8b6b8",
   meratese: {
-    "Airuno": "#c9a52b",
-    "Osnago": "#d64fd8",
-    "Cernusco-Merate": "#28b9c7",
-    "Olgiate-Calco-Brivio": "#ef6bb8"
+    "Airuno": "#7C2F51",
+    "Osnago": "#B44778",
+    "Cernusco-Merate": "#E25592",
+    "Olgiate-Calco-Brivio": "#F39AB7"
   }
 };
 
@@ -69,7 +69,7 @@ const baseLayout = {
   paper_bgcolor: "#ffffff",
   plot_bgcolor: "#ffffff",
   font: { family: "Aptos, Segoe UI, Arial, sans-serif", color: COLORS.text, size: 13 },
-  margin: { l: 58, r: 28, t: 30, b: 58 },
+  margin: { l: 74, r: 92, t: 56, b: 62 },
   hoverlabel: {
     bgcolor: "#ffffff",
     bordercolor: COLORS.grid,
@@ -193,11 +193,14 @@ function responsiveLayout(id, layout) {
   if (!isMobile()) return layout;
 
   const marginById = {
-    "plot-delta": { l: 68, r: 14, t: 56, b: 76 },
-    "plot-top20": { l: 82, r: 14, t: 56, b: 76 },
-    "plot-metro": { l: 118, r: 14, t: 56, b: 76 },
-    "plot-morbida": { l: 118, r: 14, t: 56, b: 76 },
-    "plot-scatter": { l: 56, r: 14, t: 56, b: 78 }
+    "plot-linee": { l: 62, r: 86, t: 58, b: 76 },
+    "plot-delta": { l: 68, r: 22, t: 58, b: 76 },
+    "plot-top20": { l: 82, r: 24, t: 58, b: 76 },
+    "plot-metro": { l: 118, r: 92, t: 58, b: 76 },
+    "plot-stazioni": { l: 62, r: 92, t: 58, b: 76 },
+    "plot-punta": { l: 68, r: 96, t: 58, b: 76 },
+    "plot-morbida": { l: 134, r: 100, t: 58, b: 76 },
+    "plot-scatter": { l: 56, r: 18, t: 58, b: 78 }
   };
 
   return {
@@ -242,6 +245,30 @@ function lineColor(name) {
   return LINE_COLORS[name] || COLORS.grey;
 }
 
+function endLabelAnnotations(items, options = {}) {
+  const minGap = options.minGap ?? 5;
+  const sorted = [...items].sort((a, b) => a.y - b.y);
+  let previous = -Infinity;
+  return sorted.map((item) => {
+    const adjustedY = Math.max(item.y, previous + minGap);
+    previous = adjustedY;
+    return {
+      x: options.x ?? item.x,
+      y: adjustedY,
+      text: item.text,
+      showarrow: false,
+      xanchor: "left",
+      yanchor: "middle",
+      align: "left",
+      font: { size: options.fontSize ?? 12, color: item.color || COLORS.text },
+      bgcolor: options.bgcolor ?? "rgba(255,255,255,0.88)",
+      bordercolor: item.color || COLORS.grid,
+      borderwidth: options.borderWidth ?? 0.8,
+      borderpad: options.borderpad ?? 3
+    };
+  });
+}
+
 function shortMetroLabel(service) {
   if (!isMobile()) return service;
   return service
@@ -254,13 +281,33 @@ function shortMetroLabel(service) {
     .replace("Napoli Linea 6", "Napoli L6");
 }
 
+function shortStationLabel(station) {
+  if (!isMobile()) return station;
+  return station
+    .replace("Cernusco-Merate", "Cernusco")
+    .replace("Olgiate-Calco-Brivio", "Olgiate")
+    .replace("Calolziocorte-Olginate", "Calolziocorte")
+    .replace("Milano Porta Garibaldi", "M. Garibaldi")
+    .replace("Milano Greco Pirelli", "M. Greco");
+}
+
 async function chartLinee() {
   const rows = await loadCSV(DATASETS.linee);
   const order = ["S8", "S1/S12", "S5", "S6", "Totale Trenord"];
   const bySerie = grouped(rows, "Serie");
+  const endLabels = [];
   const traces = order.map((serie) => {
     const sub = [...(bySerie[serie] || [])].sort((a, b) => a.Anno - b.Anno);
     const color = LINE_COLORS[serie] || sub.find((d) => d.HEX)?.HEX || COLORS.grey;
+    const last = sub[sub.length - 1];
+    if (last) {
+      endLabels.push({
+        x: 2025.18,
+        y: last.Indice_2019_100,
+        text: `${serie} ${fmt(last.Indice_2019_100, 0)}`,
+        color
+      });
+    }
     return {
       type: "scatter",
       mode: "lines+markers",
@@ -274,13 +321,15 @@ async function chartLinee() {
         line: { color: serie === "S8" ? COLORS.s8Strong : "#ffffff", width: serie === "S8" ? 1.4 : 0.5 }
       },
       customdata: sub.map((d) => [d.Valore, d.Unita, d.Tipo_dato]),
-      hovertemplate: `<b>${serie}</b><br>Anno %{x}<br>Indice: %{y:.1f}<br>Valore: %{customdata[0]:,.0f}<br>%{customdata[1]}<br><extra>%{customdata[2]}</extra>`
+      hovertemplate: `<b>${serie}</b><br>Anno %{x}<br>Indice: %{y:.1f}<br>Passeggeri: %{customdata[0]:,.0f}<br>%{customdata[1]}<br><extra>%{customdata[2]}</extra>`
     };
   });
   return render("plot-linee", traces, {
-    title: { text: "Linee suburbane Trenord, indice 2019=100", x: 0, font: { size: 18 } },
+    title: { text: "Linee suburbane Trenord, indice 2019=100", x: 0.02, font: { size: 18 } },
     yaxis: { title: "Indice 2019=100", range: [0, 170] },
-    xaxis: { title: "Anno", dtick: 1 }
+    xaxis: { title: "Anno", dtick: 1, range: [2019, 2026.7] },
+    margin: { l: 78, r: 138, t: 62, b: 62 },
+    annotations: endLabelAnnotations(endLabels, { x: 2025.22, minGap: isMobile() ? 22 : 14, fontSize: isMobile() ? 10 : 12 })
   });
 }
 
@@ -304,7 +353,7 @@ async function chartDelta() {
     customdata: rows.map((d) => [d["2024"], d["2025"], d.Delta_pct]),
     hovertemplate: "<b>%{y}</b><br>2024: %{customdata[0]:,.0f}<br>2025: %{customdata[1]:,.0f}<br>Delta: %{x:+,.0f}<br>Delta %: %{customdata[2]:+.1f}%<extra></extra>"
   }], {
-    title: { text: "Variazione assoluta 2025-2024", x: 0, font: { size: 18 } },
+    title: { text: "Variazione assoluta 2025-2024", x: 0.02, font: { size: 18 } },
     xaxis: { title: "Passeggeri/giorno feriale, somma campagne comparabili", zeroline: true },
     yaxis: { title: "" },
     showlegend: false,
@@ -329,7 +378,6 @@ async function chartTop20() {
   const rows = (await loadCSV(DATASETS.top20)).sort((a, b) => b.rank - a.rank);
   const colors = rows.map((d) => {
     if (d.line_code === "S8") return d.color_hex || COLORS.s8;
-    if (LOMBARDY_LINE_CODES.has(d.line_code)) return d.color_hex || lineColor(d.line_code);
     return "#c5d0d1";
   });
   return render("plot-top20", [{
@@ -348,22 +396,33 @@ async function chartTop20() {
     customdata: rows.map((d) => [d.line_name, d.operator, d.data_year, d.method]),
     hovertemplate: "<b>%{customdata[0]}</b><br>Operatore: %{customdata[1]}<br>Passeggeri annui: %{x:.1f} mln<br>Anno/metodo: %{customdata[2]}<br><extra>%{customdata[3]}</extra>"
   }], {
-    title: { text: "Passeggeri annui per linea", x: 0, font: { size: 18 } },
+    title: { text: "Passeggeri annui per linea", x: 0.02, font: { size: 18 } },
     xaxis: { title: "Milioni di passeggeri annui" },
     yaxis: { title: "", automargin: true },
     showlegend: false,
-    margin: { l: 92, r: 26, t: 42, b: 62 }
+    margin: { l: 96, r: 44, t: 62, b: 62 }
   });
 }
 
 async function chartMetro() {
   const rows = await loadCSV(DATASETS.metro);
   rows.sort((a, b) => a.passeggeri_annui - b.passeggeri_annui);
+  const labels = rows.map((d) => shortMetroLabel(d.servizio));
+  const annotations = rows.map((d, index) => ({
+    x: d.passeggeri_annui / 1_000_000 + 0.22,
+    y: labels[index],
+    text: `${d.passeggeri_annui_label || `${fmt(d.passeggeri_annui / 1_000_000, 1)} mln`} · freq. ${d.frequenza_box || d.freq_label}`,
+    showarrow: false,
+    xanchor: "left",
+    yanchor: "middle",
+    align: "left",
+    font: { size: isMobile() ? 10 : 11, color: d.servizio.includes("S8") ? COLORS.s8Strong : COLORS.muted }
+  }));
   return render("plot-metro", [{
     type: "bar",
     orientation: "h",
     x: rows.map((d) => d.passeggeri_annui / 1_000_000),
-    y: rows.map((d) => shortMetroLabel(d.servizio)),
+    y: labels,
     marker: {
       color: rows.map((d) => d.colore_hex || (d.servizio.includes("S8") ? COLORS.s8 : "#b7c5c7")),
       opacity: rows.map((d) => d.servizio.includes("S8") ? 1 : 0.72),
@@ -381,20 +440,32 @@ async function chartMetro() {
     ]),
     hovertemplate: "<b>%{customdata[0]}</b><br>Passeggeri annui: %{customdata[1]}<br>Frequenza: %{customdata[2]}<br>Tipo dato: %{customdata[3]}<br><extra>%{customdata[4]}</extra>"
   }], {
-    title: { text: "La S8 ha numeri da metropolitana", x: 0, font: { size: 18 } },
-    xaxis: { title: "Milioni di passeggeri annui" },
+    title: { text: "La S8 ha numeri da metropolitana", x: 0.02, font: { size: 18 } },
+    xaxis: { title: "Milioni di passeggeri annui", range: [0, 21.5] },
     yaxis: { title: "", automargin: true },
     showlegend: false,
-    margin: { l: 190, r: 26, t: 42, b: 62 }
+    margin: { l: 190, r: 210, t: 62, b: 62 },
+    annotations
   });
 }
 
 async function chartStazioni() {
   const rows = await loadCSV(DATASETS.stazioni);
-  const byStation = grouped(rows.filter((d) => d.Stazione !== "Vercurago-S. Girolamo"), "Stazione");
+  const byStation = grouped(rows, "Stazione");
+  const labelStations = new Set(Object.keys(COLORS.meratese));
+  const endLabels = [];
   const traces = Object.entries(byStation).map(([station, values]) => {
     const sub = values.sort((a, b) => a.Anno - b.Anno);
     const isMer = Boolean(COLORS.meratese[station]);
+    const last = sub[sub.length - 1];
+    if (last && labelStations.has(station)) {
+      endLabels.push({
+        x: 2025.18,
+        y: last.Indice_2019_100,
+        text: `${shortStationLabel(station)} ${fmt(last.Indice_2019_100, 0)}`,
+        color: isMer ? COLORS.meratese[station] : "#859399"
+      });
+    }
     return {
       type: "scatter",
       mode: "lines+markers",
@@ -405,14 +476,16 @@ async function chartStazioni() {
       marker: { size: isMer ? 7 : 4 },
       opacity: isMer ? 1 : 0.45,
       customdata: sub.map((d) => [d.Saliti24H, d.Fonte_periodo]),
-      hovertemplate: `<b>${station}</b><br>Anno %{x}<br>Indice: %{y:.1f}<br>Saliti24H: %{customdata[0]:,.0f}<br><extra>%{customdata[1]}</extra>`
+      hovertemplate: `<b>${station}</b><br>Anno %{x}<br>Indice: %{y:.1f}<br>Passeggeri saliti/giorno: %{customdata[0]:,.0f}<br><extra>%{customdata[1]}</extra>`
     };
   });
   return render("plot-stazioni", traces, {
-    title: { text: "Passeggeri nelle stazioni S8, base 2019=100", x: 0, font: { size: 18 } },
+    title: { text: "Passeggeri nelle stazioni S8, base 2019=100", x: 0.02, font: { size: 18 } },
     yaxis: { title: "Indice 2019=100" },
-    xaxis: { title: "Anno", dtick: 2 },
-    legend: { orientation: "h", y: -0.25, x: 0 }
+    xaxis: { title: "Anno", dtick: 2, range: [2015, 2027.3] },
+    legend: { orientation: "h", y: -0.25, x: 0 },
+    margin: { l: 78, r: isMobile() ? 86 : 190, t: 62, b: 68 },
+    annotations: endLabelAnnotations(endLabels, { x: 2025.22, minGap: isMobile() ? 30 : 21, fontSize: isMobile() ? 10 : 11 })
   });
 }
 
@@ -434,11 +507,11 @@ async function chartScatter() {
       line: { width: 0 }
     },
     customdata: others.map((d) => [d.Delta_abs_Saliti24H, d.Corse24H_2019, d.Corse24H_2025]),
-    hovertemplate: "<b>%{text}</b><br>Crescita passeggeri: %{x:.1f}%<br>Cambio passeggeri/corsa: %{y:.1f}%<br>Delta saliti24H: %{customdata[0]:+,.0f}<br>Corse 2019→2025: %{customdata[1]:.0f}→%{customdata[2]:.0f}<extra></extra>"
+    hovertemplate: "<b>%{text}</b><br>Crescita passeggeri: %{x:.1f}%<br>Cambio passeggeri/corsa: %{y:.1f}%<br>Crescita passeggeri/giorno: %{customdata[0]:+,.0f}<br>Corse 2019-2025: %{customdata[1]:.0f} -> %{customdata[2]:.0f}<extra></extra>"
   }];
   traces.push({
     type: "scatter",
-    mode: mobile ? "markers" : "markers+text",
+    mode: "markers",
     name: "Stazioni meratesi",
     x: mer.map((d) => d.Growth_pct_Saliti24H),
     y: mer.map((d) => d.Growth_pct_Saliti_per_corsa),
@@ -451,26 +524,61 @@ async function chartScatter() {
     },
     textfont: { size: mobile ? 10 : 12 },
     customdata: mer.map((d) => [d.Delta_abs_Saliti24H, d.Corse24H_2019, d.Corse24H_2025]),
-    hovertemplate: "<b>%{text}</b><br>Crescita passeggeri: %{x:.1f}%<br>Cambio passeggeri/corsa: %{y:.1f}%<br>Delta saliti24H: %{customdata[0]:+,.0f}<br>Corse 2019→2025: %{customdata[1]:.0f}→%{customdata[2]:.0f}<extra></extra>"
+    hovertemplate: "<b>%{text}</b><br>Crescita passeggeri: %{x:.1f}%<br>Cambio passeggeri/corsa: %{y:.1f}%<br>Crescita passeggeri/giorno: %{customdata[0]:+,.0f}<br>Corse 2019-2025: %{customdata[1]:.0f} -> %{customdata[2]:.0f}<extra></extra>"
   });
+  const keyLabels = ["MILANO S.CRISTOFORO", "Cernusco-Merate", "Olgiate-Calco-Brivio", "Airuno", "Osnago", "CARNATE USMATE", "ARCORE"];
+  const labelOffsets = {
+    "MILANO S.CRISTOFORO": { dx: 2, dy: 9 },
+    "Cernusco-Merate": { dx: 2.5, dy: 12 },
+    "Olgiate-Calco-Brivio": { dx: 2.5, dy: -8 },
+    "CARNATE USMATE": { dx: 2, dy: 7 },
+    "ARCORE": { dx: -7, dy: -5 }
+  };
+  const annotations = rows
+    .filter((d) => keyLabels.includes(d.Label))
+    .map((d) => ({
+      x: d.Growth_pct_Saliti24H + (labelOffsets[d.Label]?.dx ?? (d.IsMeratese ? 2.2 : 1.3)),
+      y: d.Growth_pct_Saliti_per_corsa + (labelOffsets[d.Label]?.dy ?? 2.5),
+      text: d.Label,
+      showarrow: false,
+      xanchor: "left",
+      yanchor: "middle",
+      font: { size: d.IsMeratese ? 12 : 10.5, color: d.IsMeratese ? (COLORS.meratese[d.Label] || COLORS.s8Strong) : "#69777d" },
+      bgcolor: "rgba(255,255,255,0.88)",
+      bordercolor: d.IsMeratese ? (COLORS.meratese[d.Label] || COLORS.s8Strong) : "#ccd7d9",
+      borderwidth: 0.8,
+      borderpad: 3
+    }));
   return render("plot-scatter", traces, {
-    title: { text: "Crescita passeggeri nelle stazioni lombarde", x: 0, font: { size: 18 } },
+    title: { text: "Crescita passeggeri nelle stazioni lombarde", x: 0.02, font: { size: 18 } },
     xaxis: { title: "Crescita % passeggeri 2019-2025", zeroline: true },
     yaxis: { title: "Cambiamento % passeggeri per corsa", zeroline: true },
     shapes: [
       { type: "line", x0: 0, x1: 0, y0: -80, y1: 150, line: { color: "#9fb1b4", width: 1, dash: "dot" } },
       { type: "line", x0: -80, x1: 170, y0: 0, y1: 0, line: { color: "#9fb1b4", width: 1, dash: "dot" } }
     ],
-    legend: { orientation: "h", y: -0.2, x: 0 }
+    legend: { orientation: "h", y: -0.2, x: 0 },
+    annotations
   });
 }
 
 async function chartPunta() {
   const rows = await loadCSV(DATASETS.punta);
   const byStation = grouped(rows, "Stazione");
+  const labelStations = new Set(Object.keys(COLORS.meratese));
+  const endLabels = [];
   const traces = Object.entries(byStation).map(([station, values]) => {
     const sub = values.sort((a, b) => a.Anno - b.Anno);
     const isMer = Boolean(COLORS.meratese[station]);
+    const last = sub[sub.length - 1];
+    if (last && labelStations.has(station)) {
+      endLabels.push({
+        x: 2025.18,
+        y: last.Peso_punta_pct,
+        text: `${shortStationLabel(station)} ${fmt(last.Peso_punta_pct, 1)}%`,
+        color: isMer ? COLORS.meratese[station] : "#859399"
+      });
+    }
     return {
       type: "scatter",
       mode: "lines+markers",
@@ -481,14 +589,16 @@ async function chartPunta() {
       marker: { size: isMer ? 7 : 4 },
       opacity: isMer ? 1 : 0.42,
       customdata: sub.map((d) => [d["Saliti7-9"], d.Saliti24H]),
-      hovertemplate: `<b>${station}</b><br>Anno %{x}<br>Peso punta: %{y:.1f}%<br>Saliti 7-9: %{customdata[0]:,.0f}<br>Saliti24H: %{customdata[1]:,.0f}<extra></extra>`
+      hovertemplate: `<b>${station}</b><br>Anno %{x}<br>Quota 7-9: %{y:.1f}%<br>Passeggeri 7-9: %{customdata[0]:,.0f}<br>Passeggeri/giorno: %{customdata[1]:,.0f}<extra></extra>`
     };
   });
   return render("plot-punta", traces, {
-    title: { text: "Peso della punta mattutina nelle stazioni S8", x: 0, font: { size: 18 } },
-    yaxis: { title: "Saliti 7-9 / saliti24H (%)", range: [0, 65] },
-    xaxis: { title: "Anno", dtick: 2 },
-    legend: { orientation: "h", y: -0.25, x: 0 }
+    title: { text: "Quota della punta mattutina nelle stazioni S8", x: 0.02, font: { size: 18 } },
+    yaxis: { title: "Quota dei passeggeri tra le 7 e le 9 (%)", range: [0, 65] },
+    xaxis: { title: "Anno", dtick: 2, range: [2015, 2027.3] },
+    legend: { orientation: "h", y: -0.25, x: 0 },
+    margin: { l: 88, r: isMobile() ? 92 : 190, t: 62, b: 68 },
+    annotations: endLabelAnnotations(endLabels, { x: 2025.22, minGap: isMobile() ? 9 : 7.5, fontSize: isMobile() ? 10 : 11 })
   });
 }
 
@@ -512,6 +622,18 @@ async function chartMorbida() {
   }), { punta: 0, morbida: 0, totale: 0 });
   const rowsPlot = [total, ...computed].reverse();
   const y = rowsPlot.map((d) => d.station);
+  const annotations = rowsPlot.map((d) => ({
+    x: d.totale + 120,
+    y: d.station,
+    text: `+${fmt(d.morbida)} fuori 7-9`,
+    showarrow: false,
+    xanchor: "left",
+    yanchor: "middle",
+    font: { size: isMobile() ? 10 : 12, color: COLORS.s8Strong },
+    bgcolor: "rgba(255,255,255,0.88)",
+    bordercolor: COLORS.s8Soft,
+    borderpad: 3
+  }));
   return render("plot-morbida", [
     {
       type: "bar",
@@ -534,11 +656,13 @@ async function chartMorbida() {
       hovertemplate: "<b>%{y}</b><br>Crescita fuori 7-9: %{x:+,.0f}<br>Quota fuori punta: %{customdata[1]:.1f}%<br>Crescita totale: %{customdata[0]:+,.0f}<extra></extra>"
     }
   ], {
-    title: { text: "Crescita meratese: punta e resto della giornata", x: 0, font: { size: 18 } },
+    title: { text: "Crescita meratese: punta e resto della giornata", x: 0.02, font: { size: 18 } },
     barmode: "stack",
-    xaxis: { title: "Saliti/giorno, variazione 2025-2019" },
-    yaxis: { title: "" },
-    legend: { orientation: "h", y: -0.18, x: 0 }
+    xaxis: { title: "Passeggeri/giorno, variazione 2025-2019", range: [0, 5200] },
+    yaxis: { title: "", automargin: true, tickfont: { size: 13 } },
+    legend: { orientation: "h", y: -0.18, x: 0 },
+    margin: { l: 190, r: 160, t: 62, b: 68 },
+    annotations
   });
 }
 

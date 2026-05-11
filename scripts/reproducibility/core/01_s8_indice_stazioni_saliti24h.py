@@ -45,7 +45,7 @@ SITE_STATION_CODES = {
 }
 
 
-def make_dataset(master: pd.DataFrame, include_maggianico=False, include_vercurago=True, include_sesto=False) -> pd.DataFrame:
+def make_dataset(master: pd.DataFrame, include_maggianico=False, include_vercurago=False, include_sesto=False) -> pd.DataFrame:
     d = s8_novembre_feriale(master)
     exclude = []
     if not include_maggianico:
@@ -155,12 +155,12 @@ def main():
     ap.add_argument("--frequentazione", required=True, type=Path)
     ap.add_argument("--outdir", default="outputs/s8_indice_stazioni", type=Path)
     ap.add_argument("--include-maggianico", action="store_true")
-    ap.add_argument("--exclude-vercurago", action="store_true")
+    ap.add_argument("--include-vercurago", action="store_true")
     ap.add_argument("--include-sesto", action="store_true")
     args = ap.parse_args()
     outdir = ensure_outdir(args.outdir)
     master = load_station_data(args.flussi, args.frequentazione)
-    ds = make_dataset(master, args.include_maggianico, include_vercurago=not args.exclude_vercurago, include_sesto=args.include_sesto)
+    ds = make_dataset(master, args.include_maggianico, include_vercurago=args.include_vercurago, include_sesto=args.include_sesto)
     site = site_dataset(ds)
     site.to_csv(outdir / "stazioni_s8_indice_2015_2025.csv", index=False)
     site.to_csv(outdir / "s8_indice_stazioni_saliti24h_2015_2025.csv", index=False)
