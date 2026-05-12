@@ -639,8 +639,8 @@ main section {
   }
 
   .map-frame iframe {
-    height: 820px;
-    min-height: 820px;
+    height: 1380px;
+    min-height: 1380px;
   }
 
   .dataset-list a {

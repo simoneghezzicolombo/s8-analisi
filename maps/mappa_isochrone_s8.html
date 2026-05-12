@@ -19,8 +19,9 @@
   .chartGrid{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:12px;}
   .chartGrid.wide{margin-top:12px;}
   .chartGrid.staticStack{grid-template-columns:1fr;margin-top:12px;}
-  .chartGrid.staticStack .chartBox{height:260px;}
+  .chartGrid.staticStack .chartBox{height:350px;}
   .chartCard.full{grid-column:1 / -1;}
+  .chartNote{font-size:12px;line-height:1.35;color:#5f767d;margin:-2px 0 10px;}
   .hint{font-size:11.5px;color:#64748b;line-height:1.35;margin:4px 0 0;}
   select[multiple]{height:150px;padding:6px 8px;}
   optgroup{font-style:normal;color:#334155;}
@@ -79,21 +80,38 @@
   .topNote{position:absolute;z-index:450;top:14px;left:430px;right:18px;pointer-events:none;}
   .topNote span{display:inline-block;background:rgba(255,255,255,.94);border:1px solid var(--border);border-radius:999px;padding:7px 11px;font-size:12.5px;color:#334155;box-shadow:0 4px 16px rgba(15,23,42,.12);}
   .small{font-size:11.5px;color:#64748b;line-height:1.35;}
-  @media(max-width:900px){#app{grid-template-columns:1fr;grid-template-rows:auto 1fr}#panel{max-height:52vh;border-right:0;border-bottom:1px solid var(--border)}#mainArea{grid-template-rows:420px auto}.chartGrid{grid-template-columns:1fr}.topNote{left:12px;top:calc(52vh + 10px)}}
+  @media(max-width:900px){
+    html,body{height:auto;min-height:100%;}
+    #app{display:block;height:auto;min-height:100%;}
+    #panel{max-height:none;border-right:0;border-bottom:1px solid var(--border);box-shadow:none;overflow:visible;}
+    #mainArea{display:block;height:auto;}
+    #map{height:560px;min-height:560px;}
+    #chartsPanel{overflow:visible;}
+    .chartGrid{grid-template-columns:1fr;}
+    .methodGrid{grid-template-columns:1fr;}
+    .chartGrid.staticStack .chartBox{height:390px;}
+    .topNote{display:none;}
+  }
+  @media(max-width:560px){
+    #panel{padding:16px 14px;}
+    #map{height:620px;min-height:620px;}
+    select[multiple]{height:172px;}
+    .chartGrid.staticStack .chartBox{height:430px;}
+  }
 </style>
 </head>
 <body>
 <div id="app">
   <aside id="panel">
     <h1>Bacini potenziali lungo la S8</h1>
-    <p class="sub">Questa mappa stima quanta popolazione si trova nel bacino di accesso delle fermate S8 tra <b>Arcore e Lecco</b>, a piedi o in auto, entro 1-15 minuti. I numeri pubblicati riguardano solo le 9 fermate di questo tratto: le stazioni di confronto servono a non attribuire alla S8 popolazione che, nella rete reale, è più vicina ad altre stazioni.</p>
+    <p class="sub">Questa mappa stima quanta popolazione si trova nel bacino di accesso delle fermate S8 tra <b>Arcore e Lecco</b>, a piedi o in auto, entro 1-15 minuti. I numeri pubblicati riguardano solo le 9 fermate di questo tratto: le stazioni di confronto servono a non attribuire alla S8 popolazione che, nella rete reale, è servita meglio da altre fermate.</p>
 
     <label>Modalità</label>
     <div class="seg"><button id="modeWalk">A piedi</button><button id="modeCar" class="active">Auto</button></div>
 
     <label>Vista mappa</label>
     <select id="stationSelect" multiple size="9"></select>
-    <p class="hint">La selezione aggiorna mappa, indicatori e grafici. Le viste aggregate sono le più utili per leggere il bacino S8 e il Meratese.</p>
+    <p class="hint">La selezione aggiorna mappa, indicatori e grafici. Le viste aggregate sono le più utili per leggere il bacino S8 e il Meratese. Per selezionare più voci usa Ctrl+clic su Windows o Cmd+clic su Mac.</p>
 
     <div class="rangeRow"><label style="margin-bottom:0">Minuti</label><span class="badge"><span id="minuteLabel">15</span> min</span></div>
     <input id="minuteRange" type="range" min="1" max="15" step="1" value="15" />
@@ -101,7 +119,7 @@
     <label>Layer</label>
     <div class="tog"><input type="checkbox" id="cumulativeToggle"><span>Mostra tutti i contorni fino alla soglia selezionata</span></div>
     <div class="tog"><input type="checkbox" id="showMarkers" checked><span>Mostra marker e nomi stazioni</span></div>
-    <details class="exclusionDetails" open><summary>Perché compaiono stazioni non S8?</summary><p class="small">Sono stazioni di confronto: non entrano nei totali pubblicati, ma partecipano al calcolo per rendere più onesto il perimetro. Se una cella di popolazione è più vicina via rete a Monza, Villasanta, Paderno-Robbiate o Macherio-Canonica, non viene assegnata ad Arcore o Carnate. In questo modo il bacino S8 non viene gonfiato artificialmente.</p></details>
+    <details class="exclusionDetails" open><summary>Perché compaiono stazioni non S8?</summary><p class="small">Sono stazioni di confronto: non entrano nei totali pubblicati, ma partecipano al calcolo per rendere più onesto il perimetro. Ogni cella di popolazione viene assegnata una sola volta alla stazione raggiungibile più rapidamente via rete: se è tra due fermate S8 non viene contata due volte, e se è servita meglio da una stazione esterna non viene attribuita alla S8.</p></details>
     <button id="fitBtn" class="btn primary">Adatta zoom</button>
 
     <div class="cards">
@@ -139,8 +157,8 @@
         <div class="chartCard"><div class="chartTitle">Ranking S8 al minuto selezionato</div><div class="chartBox"><canvas id="barChart"></canvas></div></div>
       </div>
       <div class="chartGrid staticStack">
-        <div class="chartCard"><div class="chartTitle">A piedi · confronto 5, 10 e 15 minuti per tutte le fermate S8</div><div class="chartBox"><canvas id="staticWalkChart"></canvas></div></div>
-        <div class="chartCard"><div class="chartTitle">Auto · confronto 5, 10 e 15 minuti per tutte le fermate S8</div><div class="chartBox"><canvas id="staticCarChart"></canvas></div></div>
+        <div class="chartCard"><div class="chartTitle">A piedi: abitanti entro 5, 10 e 15 minuti dalla stazione</div><p class="chartNote">Le stazioni sono ordinate lungo la S8, da Arcore a Lecco. Ogni linea mostra quanta popolazione entra nel bacino camminando fino alla fermata.</p><div class="chartBox"><canvas id="staticWalkChart"></canvas></div></div>
+        <div class="chartCard"><div class="chartTitle">In auto: abitanti entro 5, 10 e 15 minuti dalla stazione</div><p class="chartNote">Qui si legge il bacino potenziale raggiungibile in auto: il salto tra 5, 10 e 15 minuti mostra quanto si allarga l'area servita da ciascuna fermata.</p><div class="chartBox"><canvas id="staticCarChart"></canvas></div></div>
       </div>
       <details class="methodDetails" open>
         <summary>Metodo, fonti dati e riproducibilità</summary>
@@ -152,14 +170,14 @@
             <ul>
               <li>Per ogni stazione vengono scaricate isocrone 1–15 minuti a piedi e in auto.</li>
               <li>Ogni cella WorldPop viene assegnata alla stazione raggiungibile prima via rete, non alla stazione geometricamente più vicina.</li>
-              <li>Le stazioni di confronto partecipano all'assegnazione e possono sottrarre celle alle S8, ma non entrano nei totali pubblicati.</li>
+              <li>La stessa cella non viene mai contata due volte: tra due fermate S8 viene attribuita alla più accessibile, mentre le stazioni di confronto possono sottrarre celle ma non entrano nei totali pubblicati.</li>
               <li>I grafici e le KPI usano solo popolazione assegnata alle 9 S8 conteggiate.</li>
             </ul>
           </div>
           <div class="sourceLinks">
             <h3>Fonti e script</h3>
             <ul>
-              <li><a href="https://www.worldpop.org/" target="_blank" rel="noopener">WorldPop</a>: raster popolazione usato per stimare gli abitanti nelle celle.</li>
+              <li><a href="https://www.worldpop.org/" target="_blank" rel="noopener">WorldPop</a>: griglia di popolazione residente 2020, con risoluzione circa 100 metri. Ogni cella contiene una stima degli abitanti: non è un dato puntuale su singoli indirizzi, ma una base demografica utile per confrontare bacini territoriali.</li>
               <li><a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a>: rete stradale e base cartografica.</li>
               <li><a href="https://valhalla.github.io/valhalla/" target="_blank" rel="noopener">Valhalla</a>: motore per isocrone su rete.</li>
               <li><a href="../data/reproducibility/isochrone_s8/sources.csv">Indice fonti e file pubblicati</a>.</li>
@@ -415,17 +433,57 @@ const lastValueLabelPlugin = {
 };
 function staticDataForMode(modeName){
   const stations=countedStations();
+  const colors=['#A64F58','#177a74','#C66B75'];
   return {
-    labels:stations.map(s=>s.station),
+    labels:stations.map(s=>stationAxisLabel(s.station)),
     datasets:[5,10,15].map((m,i)=>({
-      label:`${m} min`,
+      label:`${m} minuti`,
       data:stations.map(s=>Math.round(countValueForMode('network_nearest_station',s.station,m,modeName))),
-      backgroundColor:colorForIndex(i)
+      borderColor:colors[i],
+      backgroundColor:colors[i],
+      pointBackgroundColor:colors[i],
+      pointBorderColor:'#fff',
+      pointBorderWidth:2,
+      pointRadius:4,
+      pointHoverRadius:6,
+      borderWidth:i===2?3:2,
+      tension:.25,
+      fill:false
     }))
   };
 }
+function stationAxisLabel(name){
+  const labels={
+    'Carnate-Usmate':'Carnate',
+    'Cernusco-Merate':'Cernusco',
+    'Olgiate-Calco-Brivio':'Olgiate-Calco',
+    'Calolziocorte-Olginate':'Calolzio',
+    'Lecco Maggianico':'Maggianico'
+  };
+  return labels[name] || name;
+}
 function chartOptionsHorizontal(labelPrefix, clickable=true){
   return {indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:(ctx)=>`${ctx.dataset.label}: ${fmt(ctx.parsed.x)}`}}},scales:{x:{beginAtZero:true,ticks:{callback:v=>fmt(v)}},y:{ticks:{autoSkip:false,font:{size:10}}}},onClick:clickable?(evt,elements)=>{if(elements.length){const idx=elements[0].index; const r=latestBarRows[idx]; if(r){selectedViews=[r.station]; setSelectValues(selectedViews); updateMap(true);}}}:undefined};
+}
+function chartOptionsStationLines(modeLabel){
+  const stations=countedStations();
+  const narrow=window.innerWidth<=560;
+  return {
+    responsive:true,
+    maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{
+      legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8,boxHeight:8}},
+      tooltip:{callbacks:{
+        title:(items)=>stations[items[0]?.dataIndex]?.station || '',
+        label:(ctx)=>`${ctx.dataset.label}: ${fmt(ctx.parsed.y)} abitanti`
+      }}
+    },
+    scales:{
+      x:{title:{display:true,text:'fermate S8, da Arcore a Lecco'},ticks:{autoSkip:false,maxRotation:narrow?45:0,minRotation:narrow?45:0,font:{size:narrow?9:10}},grid:{display:false}},
+      y:{beginAtZero:true,title:{display:true,text:'abitanti stimati'},ticks:{callback:v=>fmt(v)}}
+    }
+  };
 }
 function updateCharts(rows,total,mer){
   const badge=$('chartModeBadge');
@@ -451,10 +509,10 @@ function updateCharts(rows,total,mer){
     });
   }else{ barChart.data.labels=barLabels; barChart.data.datasets[0].data=barValues; barChart.update(); }
   if(!staticCarChart){
-    staticCarChart=new Chart($('staticCarChart'),{type:'bar',data:staticDataForMode('car'),options:chartOptionsHorizontal('Auto', false)});
+    staticCarChart=new Chart($('staticCarChart'),{type:'line',data:staticDataForMode('car'),options:chartOptionsStationLines('Auto')});
   }
   if(!staticWalkChart){
-    staticWalkChart=new Chart($('staticWalkChart'),{type:'bar',data:staticDataForMode('walk'),options:chartOptionsHorizontal('A piedi', false)});
+    staticWalkChart=new Chart($('staticWalkChart'),{type:'line',data:staticDataForMode('walk'),options:chartOptionsStationLines('A piedi')});
   }
 }
 
