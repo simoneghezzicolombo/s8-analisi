@@ -28,7 +28,7 @@ Per una lettura piu' discorsiva, partire da:
 
 - [docs/reference_dati_presentazione_S8.md](docs/reference_dati_presentazione_S8.md)
 - [docs/metodologia.md](docs/metodologia.md)
-- [presentation/comparazione_s8_a_varie_linee_italiane.pdf](presentation/comparazione_s8_a_varie_linee_italiane.pdf)
+- [presentation/s8_milano_lecco_linea_che_traina_trenord.pdf](presentation/s8_milano_lecco_linea_che_traina_trenord.pdf)
 - [scripts/README.md](scripts/README.md)
 
 ## Grafici e dataset
