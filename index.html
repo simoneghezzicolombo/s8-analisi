@@ -17,6 +17,7 @@
       <nav class="navlinks" aria-label="Navigazione principale">
         <a href="#risultati">Risultati</a>
         <a href="#grafici">Grafici</a>
+        <a href="#mappa">Mappa</a>
         <a href="#metodo">Metodo</a>
         <a href="#dataset">Dataset</a>
         <a href="https://github.com/simoneghezzicolombo/s8-analisi" target="_blank" rel="noreferrer">GitHub</a>
@@ -200,6 +201,29 @@
       </div>
     </section>
 
+    <section id="mappa">
+      <div class="section-head">
+        <h2>Extra: bacini potenziali delle fermate S8</h2>
+        <p>Una lettura territoriale complementare ai grafici di frequentazione: non misura i passeggeri, ma la popolazione raggiungibile dalle fermate.</p>
+      </div>
+      <figure class="figure-card map-card">
+        <div class="map-copy">
+          <p class="chart-lede"><strong>Cosa mostra.</strong> La mappa stima il bacino potenziale delle 9 fermate S8 tra Arcore e Lecco, a piedi o in auto, fino a 15 minuti. È utile per capire dove la domanda può crescere: non solo quante persone usano oggi la linea, ma quante persone vivono abbastanza vicino alle fermate da poterla usare con maggiore facilità se il servizio diventa più attrattivo.</p>
+          <div>
+            <p>Le stazioni di confronto non entrano nei totali S8: servono a evitare attribuzioni troppo generose. Se una cella di popolazione è più vicina via rete a una stazione esterna, non viene conteggiata nel bacino della fermata S8.</p>
+            <div class="links">
+              <a href="maps/mappa_isochrone_s8.html">Apri mappa standalone</a>
+              <a href="data/reproducibility/isochrone_s8/sources.csv">Fonti mappa</a>
+              <a href="maps/README.md">Nota riproducibilità</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe src="maps/mappa_isochrone_s8.html" title="Mappa interattiva dei bacini potenziali S8 Arcore-Lecco" loading="lazy"></iframe>
+        </div>
+      </figure>
+    </section>
+
     <section id="dataset">
       <div class="section-head">
         <h2>Dataset scaricabili</h2>
@@ -229,6 +253,7 @@
             <a href="data/sources_originali.csv"><span>Indice fonti originali</span><span>CSV</span></a>
             <a href="data/source_links_by_chart.csv"><span>Fonti dirette per grafico</span><span>CSV</span></a>
             <a href="data/sources_intervento_iniziale.csv"><span>Fonti citate nell'intervento iniziale</span><span>CSV</span></a>
+            <a href="data/reproducibility/isochrone_s8/sources.csv"><span>Fonti mappa bacini potenziali S8</span><span>CSV</span></a>
             <a href="https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj" target="_blank" rel="noreferrer"><span>Regione Lombardia: frequentazione linee SFR</span><span>Portale</span></a>
             <a href="data/raw/regione_lombardia_frequentazione_linee_sfr_20260424.csv"><span>Copia locale: linee SFR</span><span>CSV</span></a>
             <a href="https://hub.dati.lombardia.it/w/ut63-s688/default" target="_blank" rel="noreferrer"><span>Regione Lombardia: frequentazione stazioni SFR</span><span>Portale</span></a>

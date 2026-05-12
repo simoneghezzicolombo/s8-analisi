@@ -15,3 +15,6 @@ chart_id,grafico,tipo,label,url,local_dataset,nota
 07_peso_punta,Peso punta stazioni S8,fonte_dati,Regione Lombardia Flussi Stazioni Ferroviarie,https://hub.dati.lombardia.it/widgets/m2u2-frtq,data/processed/peso_punta_stazioni_s8_2015_2025.csv,Saliti7-9 e Saliti24H
 08_punta_morbida,Crescita punta e fuori punta,fonte_dati,Regione Lombardia Flussi Stazioni Ferroviarie,https://hub.dati.lombardia.it/widgets/m2u2-frtq,data/processed/punta_morbida_meratese_2019_2025.csv,Calcolo 2019-2025 su saliti 7-9 e 24H
 08_punta_morbida,Crescita punta e fuori punta,fonte_dati,Regione Lombardia frequentazione stazioni SFR,https://hub.dati.lombardia.it/w/ut63-s688/default,data/processed/punta_morbida_meratese_2019_2025.csv,Valori 2025
+09_mappa_bacini,Bacini potenziali fermate S8,fonte_dati,WorldPop,https://www.worldpop.org/,data/reproducibility/isochrone_s8/sources.csv,Raster popolazione usato nel calcolo dei bacini
+09_mappa_bacini,Bacini potenziali fermate S8,fonte_dati,OpenStreetMap,https://www.openstreetmap.org/,data/reproducibility/isochrone_s8/sources.csv,Rete e base cartografica
+09_mappa_bacini,Bacini potenziali fermate S8,metodologia,Valhalla,https://valhalla.github.io/valhalla/,data/reproducibility/isochrone_s8/sources.csv,Motore isocrone su rete

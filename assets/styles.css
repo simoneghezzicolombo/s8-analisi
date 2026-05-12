@@ -370,6 +370,41 @@ main section {
   margin-top: 12px;
 }
 
+.map-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.map-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+  gap: 18px;
+  padding: 20px 20px 16px;
+  align-items: start;
+}
+
+.map-copy p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.map-copy .chart-lede {
+  margin: 0;
+}
+
+.map-frame {
+  border-top: 1px solid var(--line);
+  background: #ffffff;
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: min(920px, 88vh);
+  min-height: 760px;
+  border: 0;
+}
+
 .dataset-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -422,6 +457,7 @@ main section {
 @media (max-width: 980px) {
   .hero,
   .takeaways,
+  .map-copy,
   .dataset-grid {
     grid-template-columns: 1fr;
   }
@@ -518,6 +554,7 @@ main section {
 
   .takeaways,
   .chart-stack,
+  .map-copy,
   .dataset-grid {
     gap: 12px;
   }
@@ -594,6 +631,16 @@ main section {
     color: var(--muted);
     font-size: 0.88rem;
     font-weight: 700;
+  }
+
+  .map-copy {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .map-frame iframe {
+    height: 820px;
+    min-height: 820px;
   }
 
   .dataset-list a {

@@ -1,0 +1,6 @@
+tipo,nome,descrizione,link_o_file,note
+fonte,WorldPop,Raster popolazione usato per stimare la popolazione nelle celle,https://www.worldpop.org/,"Fonte demografica di base; la mappa pubblicata contiene i conteggi gia' incorporati."
+fonte,OpenStreetMap,Rete stradale e base cartografica,https://www.openstreetmap.org/,"Usata come riferimento cartografico e come rete per il calcolo delle percorrenze."
+fonte,Valhalla,Motore per isocrone su rete,https://valhalla.github.io/valhalla/,"Usato per generare le isocrone a piedi e in auto."
+file_pubblicato,Mappa standalone,HTML interattivo con GeoJSON isocrone e conteggi incorporati,maps/mappa_isochrone_s8.html,"Il file e' auto-contenuto per permettere verifica e riuso anche fuori dalla pagina principale."
+metodo,Network-nearest,Assegnazione della popolazione alla stazione raggiungibile prima via rete,,"Le stazioni di confronto partecipano al calcolo ma non entrano nei totali pubblicati per la S8."

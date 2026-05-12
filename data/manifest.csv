@@ -7,3 +7,4 @@ slide,title,figure,dataset,source_note
 9,Stazioni lombarde 2019-2025,figures/06_saliti_per_corsa_stazioni_s8.png,data/processed/scatter_stazioni_lombarde_2019_2025.csv,Filtro: almeno 700 saliti24H nel 2019
 10,Peso della punta,figures/07_peso_punta_stazioni_s8.png,data/processed/peso_punta_stazioni_s8_2015_2025.csv,Quota saliti 7-9 su saliti24H
 11,Crescita punta e morbida,figures/08_crescita_punta_morbida_meratese.png,data/processed/crescita_meratese_punta_morbida_2015_2025.csv,Morbida = saliti24H al netto della fascia 7-9
+Extra,Bacini potenziali fermate S8,maps/mappa_isochrone_s8.html,data/reproducibility/isochrone_s8/sources.csv,"Mappa standalone con GeoJSON, conteggi e fonti incorporati"

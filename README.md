@@ -12,6 +12,7 @@ Il repository raccoglie:
 - i dataset CSV collegati a ciascun grafico;
 - i principali dati grezzi di partenza da Regione Lombardia;
 - gli script di analisi e visualizzazione usati per costruire grafici e pagina interattiva;
+- una mappa extra dei bacini potenziali delle fermate S8 tra Arcore e Lecco;
 - note metodologiche e reference sintetiche per verificare i numeri.
 
 ## Come usare il repository
@@ -42,6 +43,7 @@ Per una lettura piu' discorsiva, partire da:
 | 9 | Crescita stazioni lombarde e carico per corsa | [PNG](figures/06_saliti_per_corsa_stazioni_s8.png) | [CSV](data/processed/scatter_stazioni_lombarde_2019_2025.csv) |
 | 10 | Peso della punta nelle stazioni S8 | [PNG](figures/07_peso_punta_stazioni_s8.png) | [CSV](data/processed/peso_punta_stazioni_s8_2015_2025.csv) |
 | 11 | Crescita meratese: punta e morbida | [PNG](figures/08_crescita_punta_morbida_meratese.png) | [CSV](data/processed/crescita_meratese_punta_morbida_2015_2025.csv) |
+| Extra | Bacini potenziali delle fermate S8 | [HTML](maps/mappa_isochrone_s8.html) | [Fonti](data/reproducibility/isochrone_s8/sources.csv) |
 
 ## Numeri principali
 
