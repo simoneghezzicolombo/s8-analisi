@@ -11,6 +11,7 @@ Questa cartella raccoglie gli script usati per costruire i grafici e la pagina d
 
 - [`reproducibility/core/build_all.py`](reproducibility/core/build_all.py): ricostruisce i CSV pubblicati per linee suburbane, stazioni S8, peso punta, punta/morbida e scatter Lombardia dai raw regionali/locali. Il controllo `reproducibility/core/validate_against_processed.py` verifica che i CSV rigenerati corrispondano a quelli pubblicati in `data/processed`.
 - [`reproducibility/top20`](reproducibility/top20): calcolo della classifica Top 20 e controllo dell'annualizzazione Lombardia/Trenord 2025, inclusa la S8 a 14,8063 mln.
+- [`reproducibility/source_audit`](reproducibility/source_audit): audit automatico delle fonti web/PDF per Top 20 nazionale e benchmark metropolitane; verifica link, download, ancoraggi numerici e gap rimasti.
 - [`reproducibility/scatter/make_scatter_intensificazione_carico.py`](reproducibility/scatter/make_scatter_intensificazione_carico.py): costruzione dello scatter stazioni lombarde 2019-2025 dal raw Regione Lombardia.
 - [`reproducibility/linee_meratese/02_variazione_linee_suburbane_2024_2025.py`](reproducibility/linee_meratese/02_variazione_linee_suburbane_2024_2025.py): variazione assoluta 2025-2024 delle linee suburbane con confronto solo tra campagne disponibili in entrambi gli anni.
 - [`reproducibility/linee_meratese/01_punta_morbida_meratese.py`](reproducibility/linee_meratese/01_punta_morbida_meratese.py): scomposizione della crescita meratese tra punta 7-9 e resto della giornata.

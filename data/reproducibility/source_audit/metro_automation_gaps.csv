@@ -1,0 +1,5 @@
+servizio,source_field,expected_anchor,audit_status,fetch_ok,http_status,url,error
+Brescia Metro 1,fonte_frequenza,frequency,blocked_or_unavailable,False,403,https://www.bresciamobilita.it/metro/servizio-tpl,403 Client Error: Forbidden for url: https://www.bresciamobilita.it/metro/servizio-tpl
+Catania Metro 1,fonte_passeggeri,passenger,source_reachable_context_found_anchor_missing,True,200,https://www.lasicilia.it/news/catania/2210725/metropolitana-catania-l-apertura-della-nuova-tratta-nesima-monte-po-ci-siamo.html,
+Napoli Linea 11 / Arcobaleno,fonte_passeggeri,passenger,source_reachable_context_found_anchor_missing,True,200,https://it.wikipedia.org/wiki/Linea_Napoli-Giugliano-Aversa,
+Napoli Linea 6,fonte_passeggeri,passenger,blocked_or_unavailable,False,403,https://www.fanpage.it/napoli/su-metro-e-funicolari-a-napoli-superati-100-milioni-di-passeggeri-nel-2025-il-comune-chiede-10-milioni-in-piu-a-fico-per-anm/,403 Client Error: Forbidden for url: https://www.fanpage.it/napoli/su-metro-e-funicolari-a-napoli-superati-100-milioni-di-passeggeri-nel-2025-il-comune-chiede-10-milioni-in-piu-a-fico-per-anm/

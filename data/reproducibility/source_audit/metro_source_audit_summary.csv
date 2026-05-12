@@ -1,0 +1,8 @@
+servizio,sources_checked,fetch_ok,passenger_anchor_match,frequency_anchor_match,expected_anchor_match
+Brescia Metro 1,2,1,1,1,1
+Catania Metro 1,2,2,0,2,1
+Genova Metro 1,2,2,1,2,2
+Napoli Linea 11 / Arcobaleno,2,2,0,2,1
+Napoli Linea 6,2,1,0,1,1
+Roma Metro C,2,2,1,2,2
+Trenord S8 Lecco-Milano,1,1,1,1,1
