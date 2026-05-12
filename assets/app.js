@@ -5,14 +5,14 @@ const COLORS = {
   text: "#17313a",
   muted: "#60777d",
   s8: "#F8B1B0",
-  s8Strong: "#8E435D",
-  s8Soft: "#FDE7E7",
+  s8Strong: "#A64F58",
+  s8Soft: "#FDEAEA",
   grey: "#a8b6b8",
   meratese: {
-    "Airuno": "#7C2F51",
-    "Osnago": "#B44778",
-    "Cernusco-Merate": "#E25592",
-    "Olgiate-Calco-Brivio": "#F39AB7"
+    "Airuno": "#A64F58",
+    "Osnago": "#C66B75",
+    "Cernusco-Merate": "#E4878F",
+    "Olgiate-Calco-Brivio": "#F3B8BA"
   }
 };
 

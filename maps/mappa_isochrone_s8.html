@@ -6,7 +6,7 @@
 <title>Bacini potenziali S8 Arcore-Lecco</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
-  :root{--panel:#ffffff;--border:#d7e7e5;--text:#17313a;--muted:#5f767d;--dark:#102a32;--teal:#177a74;--tealStrong:#11655f;--s8:#F8B1B0;--s8Strong:#8E435D;--s8Soft:#FDE7E7;--walk:#177a74;--excl:#9aa8ab;--shadow:0 16px 36px rgba(23,49,58,.12)}
+  :root{--panel:#ffffff;--border:#d7e7e5;--text:#17313a;--muted:#5f767d;--dark:#102a32;--teal:#177a74;--tealStrong:#11655f;--s8:#F8B1B0;--s8Strong:#A64F58;--s8Soft:#FDEAEA;--walk:#177a74;--excl:#9aa8ab;--shadow:0 16px 36px rgba(23,49,58,.12)}
   html,body{height:100%;margin:0;font-family:Aptos,Segoe UI,Helvetica Neue,Arial,sans-serif;color:var(--text);background:#f7fbfb;}
   #app{display:grid;grid-template-columns:410px minmax(0,1fr);height:100%;}
   #panel{z-index:500;background:var(--panel);border-right:1px solid var(--border);box-shadow:var(--shadow);padding:18px 16px;overflow:auto;box-sizing:border-box;}
@@ -66,11 +66,10 @@
   #status{margin-top:12px;font-size:12.5px;color:#475569;line-height:1.35;background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:10px;}
   .warn{color:#8a4b08;background:#fff7ed!important;border-color:#fed7aa!important;}
   .leaflet-popup-content{font-size:13px;line-height:1.35;}
-  .stationDot{width:13px;height:13px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(23,49,58,.28);background:var(--s8Strong);}
+  .stationDot{width:13px;height:13px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(23,49,58,.28);background:var(--s8);}
   .stationDot.excl{background:var(--excl);} .stationDot.selected{width:18px;height:18px;background:var(--s8);border:3px solid var(--s8Strong);}
-  .stationLabel{position:absolute;pointer-events:none;background:rgba(255,255,255,.96);border:1px solid #cfe0de;border-radius:999px;padding:4px 9px;font-weight:850;font-size:12px;line-height:1.05;box-shadow:0 5px 16px rgba(23,49,58,.15);white-space:nowrap;color:var(--text);}
-  .stationLabel.meratese{border-color:#f3bfd0;color:var(--s8Strong);background:#fff7f8;}
-  .stationLabel.competitor{font-size:10.5px;color:#66777c;border-color:#d9e2e0;background:rgba(255,255,255,.88);}
+  .stationLabel{position:absolute;pointer-events:none;padding:0;font-weight:800;font-size:11px;line-height:1.05;white-space:nowrap;color:var(--text);text-shadow:none;}
+  .stationLabel.meratese,.stationLabel.competitor{color:var(--text);font-size:11px;}
   .topNote{position:absolute;z-index:450;top:14px;left:430px;right:18px;pointer-events:none;}
   .topNote span{display:inline-block;background:rgba(255,255,255,.94);border:1px solid var(--border);border-radius:999px;padding:7px 11px;font-size:12.5px;color:#334155;box-shadow:0 4px 16px rgba(15,23,42,.12);}
   .small{font-size:11.5px;color:#64748b;line-height:1.35;}
@@ -255,7 +254,7 @@ function selectedCountRows(m=minute, modeName=mode){
 function colorForFeature(p){
   if(p.counted===0){ return '#9aa8ab'; }
   if(mode==='walk') return p.minutes<=5?'#80c9c3':(p.minutes<=10?'#177a74':'#11655f');
-  return p.minutes<=5?'#FDE7E7':(p.minutes<=10?'#F8B1B0':'#8E435D');
+  return p.minutes<=5?'#FDEAEA':(p.minutes<=10?'#F8B1B0':'#A64F58');
 }
 function styleIso(f){
   const p=f.properties, c=colorForFeature(p), exact=p.minutes===minute;
@@ -351,7 +350,7 @@ let barChart=null;
 let staticCarChart=null;
 let staticWalkChart=null;
 let latestBarRows=[];
-function colorForIndex(i){ return ['#8E435D','#177a74','#B44778','#5f767d','#E25592','#11655f','#F39AB7','#9aa8ab','#17313a'][i%9]; }
+function colorForIndex(i){ return ['#A64F58','#177a74','#C66B75','#5f767d','#E4878F','#11655f','#F3B8BA','#9aa8ab','#17313a'][i%9]; }
 function buildLineDatasets(){
   const labels=Array.from({length:minute},(_,i)=>i+1);
   const datasets=[];
@@ -361,11 +360,11 @@ function buildLineDatasets(){
     datasets.push({label, data, borderColor:color, backgroundColor:color+'22', tension:.28, fill:false, pointRadius:2.2, pointHoverRadius:4, borderDash:dash||[]});
   }
   selectedViews.forEach((v,idx)=>{
-    if(v==='__ALL__' || v==='__S8__') addDataset('Totale S8 Arcore-Lecco', labels.map(m=>Math.round(countValueForMode('network_nearest_total_s8','ALL_S8',m,mode))), '#8E435D');
+    if(v==='__ALL__' || v==='__S8__') addDataset('Totale S8 Arcore-Lecco', labels.map(m=>Math.round(countValueForMode('network_nearest_total_s8','ALL_S8',m,mode))), '#A64F58');
     else if(v==='__MERATESE__') addDataset('Totale Meratese', labels.map(m=>Math.round(countValueForMode('network_nearest_total_meratese','ALL_MERATESE',m,mode))), '#177a74');
     else { const s=stationByName(v); if(s && s.counted===1) addDataset(s.station, labels.map(m=>Math.round(countValueForMode('network_nearest_station',s.station,m,mode))), colorForIndex(idx), [5,4]); }
   });
-  if(!datasets.length) addDataset('Totale S8 Arcore-Lecco', labels.map(m=>Math.round(countValueForMode('network_nearest_total_s8','ALL_S8',m,mode))), '#8E435D');
+  if(!datasets.length) addDataset('Totale S8 Arcore-Lecco', labels.map(m=>Math.round(countValueForMode('network_nearest_total_s8','ALL_S8',m,mode))), '#A64F58');
   return {labels,datasets};
 }
 
@@ -436,7 +435,7 @@ function updateCharts(rows,total,mer){
   if(!barChart){
     barChart=new Chart($('barChart'),{
       type:'bar',
-      data:{labels:barLabels,datasets:[{label:'Popolazione assegnata',data:barValues,backgroundColor:'#8E435D'}]},
+      data:{labels:barLabels,datasets:[{label:'Popolazione assegnata',data:barValues,backgroundColor:'#A64F58'}]},
       options:chartOptionsHorizontal('Popolazione', true)
     });
   }else{ barChart.data.labels=barLabels; barChart.data.datasets[0].data=barValues; barChart.update(); }
