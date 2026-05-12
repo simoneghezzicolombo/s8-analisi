@@ -66,10 +66,16 @@
   #status{margin-top:12px;font-size:12.5px;color:#475569;line-height:1.35;background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:10px;}
   .warn{color:#8a4b08;background:#fff7ed!important;border-color:#fed7aa!important;}
   .leaflet-popup-content{font-size:13px;line-height:1.35;}
-  .stationDot{width:13px;height:13px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(23,49,58,.28);background:var(--s8);}
-  .stationDot.excl{background:var(--excl);} .stationDot.selected{width:18px;height:18px;background:var(--s8);border:3px solid var(--s8Strong);}
-  .stationLabel{position:absolute;pointer-events:none;padding:0;font-weight:800;font-size:11px;line-height:1.05;white-space:nowrap;color:var(--text);text-shadow:none;}
-  .stationLabel.meratese,.stationLabel.competitor{color:var(--text);font-size:11px;}
+  .stationDot{width:15px;height:15px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--s8Strong),0 3px 9px rgba(23,49,58,.32);background:var(--s8);}
+  .stationDot.excl{background:#fff;border-color:#fff;box-shadow:0 0 0 2px var(--excl),0 3px 9px rgba(23,49,58,.22);}
+  .stationDot.selected{width:20px;height:20px;background:var(--s8);border:3px solid #fff;box-shadow:0 0 0 3px var(--s8Strong),0 4px 12px rgba(23,49,58,.34);}
+  .stationLabel{position:absolute;pointer-events:none;padding:3px 6px 3px 7px;font-weight:850;font-size:12px;line-height:1.04;white-space:nowrap;color:#102a32;background:rgba(255,255,255,.92);border:1px solid rgba(166,79,88,.28);border-left:4px solid var(--s8);border-radius:7px;box-shadow:0 3px 10px rgba(23,49,58,.16);letter-spacing:0;}
+  .stationLabel.left{text-align:right;border-left:1px solid rgba(166,79,88,.28);border-right:4px solid var(--s8);}
+  .stationLabel::before{content:none;}
+  .stationLabel.meratese{border-left-color:var(--s8Strong);border-color:rgba(166,79,88,.38);background:rgba(255,255,255,.94);}
+  .stationLabel.meratese.left{border-left-color:rgba(166,79,88,.38);border-right-color:var(--s8Strong);}
+  .stationLabel.competitor{font-size:11px;font-weight:800;color:#475569;border-color:rgba(100,116,139,.28);border-left-color:#9aa8ab;background:rgba(255,255,255,.88);}
+  .stationLabel.competitor.left{border-left-color:rgba(100,116,139,.28);border-right-color:#9aa8ab;}
   .topNote{position:absolute;z-index:450;top:14px;left:430px;right:18px;pointer-events:none;}
   .topNote span{display:inline-block;background:rgba(255,255,255,.94);border:1px solid var(--border);border-radius:999px;padding:7px 11px;font-size:12.5px;color:#334155;box-shadow:0 4px 16px rgba(15,23,42,.12);}
   .small{font-size:11.5px;color:#64748b;line-height:1.35;}
@@ -274,39 +280,44 @@ function stationIcon(s, selected=false){
   const cls = s.counted ? '' : 'excl';
   return L.divIcon({className:'', html:`<div class="stationDot ${cls} ${selected?'selected':''}"></div>`, iconSize:selected?[24,24]:[17,17], iconAnchor:selected?[12,12]:[8,8]});
 }
-const LABEL_OFFSETS = {
-  'Arcore': [14, -34],
-  'Carnate-Usmate': [14, -34],
-  'Osnago': [-88, -34],
-  'Cernusco-Merate': [14, -34],
-  'Olgiate-Calco-Brivio': [14, -34],
-  'Airuno': [14, -34],
-  'Calolziocorte-Olginate': [14, -34],
-  'Lecco Maggianico': [-130, 8],
-  'Lecco': [-58, -38],
-  'Paderno-Robbiate': [12, 10],
-  'Macherio-Canonica': [-132, -24],
-  'Villasanta': [-86, -28],
-  'Monza': [-58, 10],
-  'Valmadrera': [12, -30],
-  'Abbadia Lariana': [12, -30],
-  'Cisano-Caprino Bergamasco': [12, 8],
-  'Biassono-Lesmo Parco': [12, 8],
-  'Buttafava': [-76, 10]
+const LABEL_PLACEMENT = {
+  'Arcore': {dx:18, dy:31, side:'right'},
+  'Carnate-Usmate': {dx:-90, dy:22, side:'left'},
+  'Osnago': {dx:-76, dy:-12, side:'left'},
+  'Cernusco-Merate': {dx:18, dy:19, side:'right'},
+  'Olgiate-Calco-Brivio': {dx:18, dy:0, side:'right'},
+  'Airuno': {dx:-76, dy:-10, side:'left'},
+  'Calolziocorte-Olginate': {dx:18, dy:-5, side:'right'},
+  'Lecco Maggianico': {dx:-126, dy:-5, side:'left'},
+  'Lecco': {dx:-70, dy:-40, side:'left'},
+  'Paderno-Robbiate': {dx:18, dy:-8, side:'right'},
+  'Macherio-Canonica': {dx:-126, dy:-10, side:'left'},
+  'Villasanta': {dx:-84, dy:-8, side:'left'},
+  'Monza': {dx:-60, dy:8, side:'left'},
+  'Valmadrera': {dx:-94, dy:-10, side:'left'},
+  'Abbadia Lariana': {dx:18, dy:-8, side:'right'},
+  'Cisano-Caprino Bergamasco': {dx:18, dy:-9, side:'right'},
+  'Biassono-Lesmo Parco': {dx:18, dy:-9, side:'right'},
+  'Buttafava': {dx:-78, dy:8, side:'left'}
 };
 const LABEL_NAMES = {
-  'Calolziocorte-Olginate': 'Calolziocorte',
-  'Lecco Maggianico': 'Lecco Magg.',
-  'Cisano-Caprino Bergamasco': 'Cisano-Caprino',
-  'Biassono-Lesmo Parco': 'Biassono-Lesmo'
+  'Carnate-Usmate': ['Carnate', 'Usmate'],
+  'Cernusco-Merate': ['Cernusco', 'Merate'],
+  'Olgiate-Calco-Brivio': ['Olgiate-Calco', 'Brivio'],
+  'Calolziocorte-Olginate': ['Calolziocorte', 'Olginate'],
+  'Lecco Maggianico': ['Lecco', 'Maggianico'],
+  'Cisano-Caprino Bergamasco': ['Cisano-Caprino'],
+  'Biassono-Lesmo Parco': ['Biassono-Lesmo']
 };
 function labelIcon(s){
-  const [dx,dy]=LABEL_OFFSETS[s.station] || [14,-34];
+  const placement=LABEL_PLACEMENT[s.station] || {dx:18,dy:-8,side:'right'};
+  const {dx,dy,side}=placement;
   const cls = s.counted ? (MERATESE_GROUP.has(s.station) ? 'meratese' : '') : 'competitor';
-  const label = LABEL_NAMES[s.station] || s.station;
+  const labelLines = LABEL_NAMES[s.station] || [s.station];
+  const labelHtml = (Array.isArray(labelLines) ? labelLines : [labelLines]).map(escapeHtml).join('<br>');
   return L.divIcon({
     className:'',
-    html:`<div class="stationLabel ${cls}" style="transform:translate(${dx}px,${dy}px)">${escapeHtml(label)}</div>`,
+    html:`<div class="stationLabel ${cls} ${side}" style="transform:translate(${dx}px,${dy}px)">${labelHtml}</div>`,
     iconSize:[1,1],
     iconAnchor:[0,0]
   });
