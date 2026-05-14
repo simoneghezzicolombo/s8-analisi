@@ -685,37 +685,32 @@ function init() {
 }
 
 function initMapFrameResize() {
-  const iframe = document.querySelector(".map-frame iframe");
-  if (!iframe) return;
-  const mobile = window.matchMedia("(max-width: 720px)");
+  const iframes = Array.from(document.querySelectorAll(".map-frame iframe, .isochrone-static-frame iframe"));
+  if (!iframes.length) return;
   const resize = () => {
-    if (!mobile.matches) {
-      iframe.style.height = "";
-      iframe.style.minHeight = "";
-      return;
-    }
-    try {
-      const doc = iframe.contentDocument || iframe.contentWindow?.document;
-      if (!doc) return;
-      const height = Math.max(
-        doc.body?.scrollHeight || 0,
-        doc.documentElement?.scrollHeight || 0
-      );
-      if (height > 0) {
-        iframe.style.height = `${height}px`;
-        iframe.style.minHeight = `${height}px`;
+    iframes.forEach((iframe) => {
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (!doc) return;
+        const height = Math.max(
+          doc.body?.scrollHeight || 0,
+          doc.documentElement?.scrollHeight || 0
+        );
+        if (height > 0) {
+          iframe.style.height = `${height}px`;
+          iframe.style.minHeight = `${height}px`;
+        }
+      } catch (error) {
+        console.warn("Impossibile ridimensionare la mappa incorporata.", error);
       }
-    } catch (error) {
-      console.warn("Impossibile ridimensionare la mappa incorporata.", error);
-    }
+    });
   };
-  iframe.addEventListener("load", () => {
+  iframes.forEach((iframe) => iframe.addEventListener("load", () => {
     resize();
     window.setTimeout(resize, 800);
     window.setTimeout(resize, 1800);
-  });
+  }));
   window.addEventListener("resize", resize);
-  mobile.addEventListener?.("change", resize);
   resize();
 }
 

@@ -400,8 +400,49 @@ main section {
 .map-frame iframe {
   display: block;
   width: 100%;
-  height: min(920px, 88vh);
-  min-height: 760px;
+  height: 1000px;
+  min-height: 1000px;
+  border: 0;
+}
+
+.isochrone-static-card {
+  margin-top: 16px;
+}
+
+.isochrone-static {
+  background: #ffffff;
+  padding: 18px 20px 20px;
+}
+
+.isochrone-static-copy {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.34fr) minmax(0, 0.66fr);
+  gap: 18px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.isochrone-static-copy h3 {
+  margin: 0;
+  font-size: 1.06rem;
+}
+
+.isochrone-static-copy p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.isochrone-static-frame {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.isochrone-static-frame iframe {
+  display: block;
+  width: 100%;
+  height: 940px;
   border: 0;
 }
 
@@ -639,8 +680,25 @@ main section {
   }
 
   .map-frame iframe {
-    height: 1380px;
-    min-height: 1380px;
+    height: 1120px;
+    min-height: 1120px;
+  }
+
+  .isochrone-static {
+    padding: 14px;
+  }
+
+  .isochrone-static-copy {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .isochrone-static-frame {
+    border-radius: 13px;
+  }
+
+  .isochrone-static-frame iframe {
+    height: 1220px;
   }
 
   .dataset-list a {
