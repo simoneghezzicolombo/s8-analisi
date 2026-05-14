@@ -124,7 +124,7 @@
     #map{height:60vh;min-height:460px;}
     html.embed-view #map{height:500px;min-height:500px;}
     select[multiple]{height:92px;}
-    .chartGrid.staticStack .chartBox{height:420px;min-height:420px;}
+    .chartGrid.staticStack .chartBox{height:620px;min-height:620px;}
     .cards{grid-template-columns:1fr 1fr;}
     .metric{min-height:50px;padding:8px;}
   }
@@ -471,7 +471,7 @@ function staticDataForMode(modeName){
   const stations=countedStations();
   const colors=['#A64F58','#177a74','#D16A74'];
   return {
-    labels:stations.map(s=>stationAxisLabel(s.station)),
+    labels:stations.map(s=>s.station),
     datasets:[5,10,15].map((m,i)=>({
       label:`${m} minuti`,
       data:stations.map(s=>Math.round(countValueForMode('network_nearest_station',s.station,m,modeName))),
@@ -485,11 +485,11 @@ function staticDataForMode(modeName){
 }
 function stationAxisLabel(name){
   const labels={
-    'Carnate-Usmate':'Carnate',
-    'Cernusco-Merate':'Cernusco',
-    'Olgiate-Calco-Brivio':'Olgiate-Calco',
-    'Calolziocorte-Olginate':'Calolzio',
-    'Lecco Maggianico':'Maggianico'
+    'Carnate-Usmate':['Carnate-', 'Usmate'],
+    'Cernusco-Merate':['Cernusco-', 'Merate'],
+    'Olgiate-Calco-Brivio':['Olgiate-Calco-', 'Brivio'],
+    'Calolziocorte-Olginate':['Calolziocorte-', 'Olginate'],
+    'Lecco Maggianico':['Lecco', 'Maggianico']
   };
   return labels[name] || name;
 }
@@ -499,7 +499,18 @@ function chartOptionsHorizontal(labelPrefix, clickable=true){
 function chartOptionsStationBars(modeLabel){
   const stations=countedStations();
   const narrow=window.innerWidth<=560;
+  const valueAxis = {
+    beginAtZero:true,
+    title:{display:true,text:'abitanti stimati'},
+    ticks:{callback:v=>fmt(v)}
+  };
+  const stationAxis = {
+    title:{display:true,text:'fermate S8, da Arcore a Lecco'},
+    ticks:{autoSkip:false,font:{size:narrow?8.5:10},callback:function(value){return stationAxisLabel(this.getLabelForValue(value));}},
+    grid:{display:false}
+  };
   return {
+    indexAxis:narrow?'y':'x',
     responsive:true,
     maintainAspectRatio:false,
     interaction:{mode:'index',intersect:false},
@@ -507,12 +518,12 @@ function chartOptionsStationBars(modeLabel){
       legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8,boxHeight:8}},
       tooltip:{callbacks:{
         title:(items)=>stations[items[0]?.dataIndex]?.station || '',
-        label:(ctx)=>`${ctx.dataset.label}: ${fmt(ctx.parsed.y)} abitanti`
+        label:(ctx)=>`${ctx.dataset.label}: ${fmt(narrow?ctx.parsed.x:ctx.parsed.y)} abitanti`
       }}
     },
     scales:{
-      x:{title:{display:true,text:'fermate S8, da Arcore a Lecco'},ticks:{autoSkip:false,maxRotation:narrow?45:28,minRotation:narrow?45:0,font:{size:narrow?9:10}},grid:{display:false}},
-      y:{beginAtZero:true,title:{display:true,text:'abitanti stimati'},ticks:{callback:v=>fmt(v)}}
+      x:narrow?valueAxis:stationAxis,
+      y:narrow?stationAxis:valueAxis
     }
   };
 }
