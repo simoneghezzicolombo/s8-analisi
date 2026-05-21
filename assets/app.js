@@ -717,4 +717,130 @@ function initMapFrameResize() {
 window.addEventListener("DOMContentLoaded", () => {
   init();
   initMapFrameResize();
+  initLanguageToggle();
 });
+
+const S8_TRANSLATIONS = [
+  ["Navigazione principale", "Primary navigation"],
+  ["Risultati", "Results"],
+  ["Grafici", "Charts"],
+  ["Mappa", "Map"],
+  ["Metodo", "Method"],
+  ["Dataset", "Datasets"],
+  ["Trasporto pubblico · Open data · Analisi territoriale", "Public transport · Open data · Territorial analysis"],
+  ["Dati e grafici interattivi sulla linea S8 Lecco-Carnate-Milano e sulle stazioni del Meratese.", "Interactive data and charts on the S8 Lecco-Carnate-Milano rail line and the Meratese stations."],
+  ["Questa pagina raccoglie la versione esplorabile dei grafici della presentazione, con dataset, fonti e script collegati per rendere verificabili i numeri discussi nell'incontro.", "This page collects the explorable version of the presentation charts, with datasets, sources and linked scripts so that the figures discussed in the meeting can be checked."],
+  ["Esplora i grafici", "Explore the charts"],
+  ["Scarica manifest CSV", "Download CSV manifest"],
+  ["Presentazione PDF", "Presentation PDF"],
+  ["Metodologia completa", "Full methodology"],
+  ["Lettura sintetica", "Short reading"],
+  ["La S8 non appare come una linea locale marginale: cresce più delle altre linee suburbane considerate, ha volumi annui comparabili ad alcune metropolitane italiane e mostra una crescita molto marcata nelle stazioni del Meratese.", "The S8 does not look like a marginal local line: it grows more than the other suburban lines considered, has annual volumes comparable to some Italian metros, and shows very strong growth in the Meratese stations."],
+  ["Il punto più interessante è che la crescita non è concentrata solo nella punta 7-9: una quota molto ampia avviene nel resto della giornata, suggerendo un uso più ordinario e distribuito del treno.", "The most interesting point is that growth is not concentrated only in the 7-9 peak: a very large share happens during the rest of the day, suggesting a more ordinary and distributed use of the train."],
+  ["Quattro numeri chiave", "Four key numbers"],
+  ["Una lettura rapida prima di entrare nei grafici interattivi.", "A quick reading before entering the interactive charts."],
+  ["S8 nel 2025 rispetto al 2019, indice sugli utenti/giorno feriale.", "S8 in 2025 compared with 2019, index on weekday users."],
+  ["Stima dei passeggeri annui della S8 Lecco-Carnate-Milano.", "Estimated annual passengers on the S8 Lecco-Carnate-Milano."],
+  ["Crescita 2019-2025 delle quattro stazioni meratesi considerate.", "2019-2025 growth of the four Meratese stations considered."],
+  ["Quota della crescita meratese fuori dalla fascia 7-9.", "Share of Meratese growth outside the 7-9 time band."],
+  ["Grafici interattivi", "Interactive charts"],
+  ["Ogni grafico è collegato al proprio CSV, alle fonti dei dati e agli script utili per ricostruire l'analisi.", "Each chart is linked to its CSV, data sources and scripts useful to reconstruct the analysis."],
+  ["1. Evoluzione delle linee suburbane Trenord", "1. Evolution of Trenord suburban lines"],
+  ["Cosa mostra.", "What it shows."],
+  ["La S8 è confrontata con le altre grandi linee suburbane Trenord: S1/S12, S5, S6 e totale Trenord. Nel 2025 arriva a indice 157,7: non è solo recupero post-Covid, ma un cambio di scala per la Lecco-Milano e per il Meratese, dove la crescita delle stazioni è molto più intensa della media.", "The S8 is compared with the other major Trenord suburban lines: S1/S12, S5, S6 and the Trenord total. In 2025 it reaches index 157.7: this is not just a post-Covid recovery, but a scale change for the Lecco-Milano corridor and for the Meratese area, where station growth is far stronger than average."],
+  ["2. Variazione assoluta 2025-2024", "2. Absolute change 2025-2024"],
+  ["Nel confronto 2025-2024 la S8 è la linea con la crescita assoluta maggiore: +22.800 passeggeri/giorno feriale nelle campagne comparabili. Il caso S1/S12 va letto insieme all'offerta: il servizio passa circa da 70 a 130 corse al giorno grazie alla S12, quindi l'aumento è legato anche a un forte incremento di frequenza.", "In the 2025-2024 comparison, the S8 has the largest absolute increase: +22,800 weekday passengers in comparable counts. The S1/S12 case should be read together with service supply: thanks to the S12, service rises from roughly 70 to 130 trains per day, so the increase is also tied to a strong frequency increase."],
+  ["3. Passeggeri annui per linea", "3. Annual passengers by line"],
+  ["La S8 è stimata al quarto posto tra le linee locali non AV considerate, con circa 14,8 milioni di passeggeri annui. Prima del Covid non compariva in questa classifica: oggi entra nel gruppo delle linee locali più usate d'Italia, sopra molte relazioni storicamente più riconosciute.", "The S8 is estimated in fourth place among the non-high-speed local lines considered, with around 14.8 million annual passengers. Before Covid it did not appear in this ranking: today it enters the group of Italy's most-used local rail lines, above several historically better-known routes."],
+  ["4. S8 e metropolitane italiane", "4. S8 and Italian metro systems"],
+  ["Con circa 14,8 milioni di passeggeri annui, la S8 è vicina alla metropolitana di Genova e poco sotto Roma C e Brescia. La differenza decisiva è l'offerta: la S8 viaggia con frequenza indicativa di 30 minuti, mentre molte metropolitane hanno passaggi ogni pochi minuti.", "With around 14.8 million annual passengers, the S8 is close to the Genoa metro and just below Rome C and Brescia. The decisive difference is service supply: the S8 runs roughly every 30 minutes, while many metro systems run every few minutes."],
+  ["5. Passeggeri nelle stazioni S8, 2015-2025", "5. Passengers in S8 stations, 2015-2025"],
+  ["Le quattro stazioni meratesi crescono tutte in modo marcato dopo il 2022. Nel complesso passano da 4.620 a 8.980 passeggeri saliti in un giorno feriale di novembre: quasi un raddoppio rispetto al 2019, con Airuno e Osnago che superano quota 200 nell'indice.", "The four Meratese stations all grow markedly after 2022. Together they rise from 4,620 to 8,980 passengers boarding on a November weekday: almost double the 2019 level, with Airuno and Osnago both exceeding index 200."],
+  ["6. Crescita passeggeri nelle stazioni lombarde", "6. Passenger growth in Lombardy stations"],
+  ["Nel confronto con 148 stazioni lombarde comparabili, Airuno e Osnago sono prima e seconda per crescita percentuale; Cernusco-Merate e Olgiate-Calco-Brivio sono quarta e quinta. In mezzo c'è Milano S. Cristoforo, un caso particolare perché pesa l'apertura della M4 e la riorganizzazione legata alla chiusura di Porta Genova. Sono escluse le stazioni sotto 700 passeggeri/giorno nel 2019 e quelle senza confronto omogeneo 2019-2025.", "Compared with 148 comparable Lombardy stations, Airuno and Osnago rank first and second for percentage growth; Cernusco-Merate and Olgiate-Calco-Brivio rank fourth and fifth. Milano S. Cristoforo sits in between, a special case affected by the opening of M4 and the reorganisation linked to the Porta Genova closure. Stations below 700 passengers/day in 2019 and those without a homogeneous 2019-2025 comparison are excluded."],
+  ["7. Quota della punta mattutina nelle stazioni S8", "7. Morning-peak share in S8 stations"],
+  ["Nel Meratese i passeggeri crescono molto, ma non più solo nella punta pendolare classica. Le quattro stazioni passano da 4.620 a 8.980 passeggeri/giorno tra 2019 e 2025; la fascia 7-9 cresce da 1.990 a 2.530, ma la sua quota scende dal 43,1% al 28,2%. Significa abitudini più distribuite: lavoro ibrido, studio, servizi e spostamenti non concentrati solo sull'andata mattutina.", "In the Meratese area, passengers grow sharply, but no longer only in the classic commuter peak. The four stations rise from 4,620 to 8,980 passengers/day between 2019 and 2025; the 7-9 band grows from 1,990 to 2,530, but its share falls from 43.1% to 28.2%. This suggests more distributed habits: hybrid work, study, services and trips that are not concentrated only in the morning outbound journey."],
+  ["8. Quanto cresce in punta e quanto fuori punta?", "8. How much growth is peak and off-peak?"],
+  ["La crescita meratese 2019-2025 è di +4.360 passeggeri/giorno. Di questi, +540 sono nella fascia 7-9 e +3.820 sono nel resto della giornata: quasi nove nuovi passeggeri su dieci arrivano fuori dalla punta mattutina. Il problema quindi non è solo \"più pendolari al mattino\", ma una domanda quotidiana più larga e continua.", "Meratese growth in 2019-2025 is +4,360 passengers/day. Of these, +540 are in the 7-9 band and +3,820 are in the rest of the day: almost nine new passengers out of ten arrive outside the morning peak. The issue, then, is not only \"more morning commuters\", but broader and more continuous daily demand."],
+  ["Preparazione grafico interattivo...", "Preparing interactive chart..."],
+  ["Dataset CSV", "CSV dataset"],
+  ["PNG statico", "Static PNG"],
+  ["Fonti del grafico:", "Chart sources:"],
+  ["tutte le fonti", "all sources"],
+  ["Metodo e cautela interpretativa", "Method and interpretive caution"],
+  ["I grafici sono pensati per essere leggibili pubblicamente, ma restano collegati a file dati verificabili.", "The charts are designed to be publicly readable, while remaining linked to verifiable data files."],
+  ["Definizioni principali", "Main definitions"],
+  ["indica i passeggeri saliti in stazione nell'arco della giornata.", "indicates passengers boarding at the station across the day."],
+  ["indica la fascia di punta mattutina. Gli indici sono normalizzati con base 2019=100.", "indicates the morning peak band. Indices are normalised with 2019=100 as the base."],
+  ["Leggi metodologia completa", "Read full methodology"],
+  ["Struttura dei dataset", "Dataset structure"],
+  ["Perché alcuni confronti sono delicati", "Why some comparisons are delicate"],
+  ["I dati derivano da campagne di frequentazione, non da conteggi continui. Per questo, nei confronti 2024-2025 si usano solo campagne presenti in entrambi gli anni.", "The data comes from ridership campaigns, not continuous counts. For this reason, 2024-2025 comparisons use only campaigns that are present in both years."],
+  ["Reference numeri presentazione", "Presentation figures reference"],
+  ["Micro-fonti per grafici", "Micro-sources for charts"],
+  ["Script e riproducibilità", "Scripts and reproducibility"],
+  ["Il codice usato per grafici statici, prove grafiche e pagina interattiva è pubblicato insieme ai dataset.", "The code used for static charts, graphic tests and the interactive page is published together with the datasets."],
+  ["Indice degli script", "Script index"],
+  ["Riproducibilità grafico per grafico", "Chart-by-chart reproducibility"],
+  ["Grafici interattivi della pagina", "Interactive charts on the page"],
+  ["Grafici statici per Canva", "Static charts for Canva"],
+  ["Extra: bacini potenziali delle fermate S8", "Extra: potential catchment areas of S8 stops"],
+  ["Una lettura territoriale complementare ai grafici di frequentazione: non misura i passeggeri, ma la popolazione raggiungibile dalle fermate.", "A territorial reading that complements ridership charts: it does not measure passengers, but the population reachable from the stops."],
+  ["La mappa stima il bacino potenziale delle 9 fermate S8 tra Arcore e Lecco, a piedi o in auto, fino a 15 minuti. È utile per capire dove la domanda può crescere: non solo quante persone usano oggi la linea, ma quante persone vivono abbastanza vicino alle fermate da poterla usare con maggiore facilità se il servizio diventa più attrattivo.", "The map estimates the potential catchment area of the 9 S8 stops between Arcore and Lecco, on foot or by car, up to 15 minutes. It helps show where demand can grow: not only how many people use the line today, but how many people live close enough to the stops to use it more easily if the service becomes more attractive."],
+  ["Le stazioni di confronto non entrano nei totali S8: servono a delimitare il bacino in modo prudente. Ogni cella di popolazione viene assegnata una sola volta alla stazione più accessibile via rete: se è tra due fermate S8 non viene duplicata, e se è servita meglio da una stazione esterna non entra nel bacino S8 pubblicato.", "Comparison stations are not included in S8 totals: they are used to delimit the catchment area prudently. Each population cell is assigned only once to the most accessible station on the network: if it lies between two S8 stops it is not duplicated, and if it is better served by an external station it is not included in the published S8 catchment."],
+  ["Apri mappa standalone", "Open standalone map"],
+  ["Fonti mappa", "Map sources"],
+  ["Nota riproducibilità", "Reproducibility note"],
+  ["Confronto 5, 10 e 15 minuti", "5, 10 and 15-minute comparison"],
+  ["La popolazione deriva da WorldPop 2020, una griglia di popolazione residente a circa 100 metri di risoluzione. Ogni cella viene assegnata alla fermata raggiungibile prima via rete, senza duplicare chi sta tra due stazioni.", "Population comes from WorldPop 2020, a resident-population grid at roughly 100-metre resolution. Each cell is assigned to the stop that can be reached first through the network, without duplicating people located between two stations."],
+  ["Dataset scaricabili", "Downloadable datasets"],
+  ["In alto i CSV già processati per i grafici; in fondo i dati originali e i link ai portali fonte.", "Processed CSV files for the charts are listed first; original data and source portals are listed below."],
+  ["Dataset processati", "Processed datasets"],
+  ["File già puliti o aggregati, consigliati per verificare e riusare i grafici.", "Cleaned or aggregated files, recommended to verify and reuse the charts."],
+  ["Dataset originali e fonti", "Original datasets and sources"],
+  ["Link ai portali fonte e copie locali dei file grezzi usati come base.", "Links to source portals and local copies of the raw files used as a base."],
+  ["Analisi su dati Regione Lombardia, Trenord e fonti indicate nei dataset.", "Analysis based on Regione Lombardia, Trenord and the sources listed in the datasets."],
+  ["Pagina interattiva con dati, grafici e metodologia sulla linea S8 Milano-Lecco e sulle stazioni del Meratese.", "Interactive page with data, charts and methodology on the S8 Milano-Lecco line and the Meratese stations."]
+];
+
+function initLanguageToggle() {
+  const toEn = new Map(S8_TRANSLATIONS);
+  const toIt = new Map(S8_TRANSLATIONS.map(([it, en]) => [en, it]));
+
+  function translate(lang) {
+    const map = lang === "en" ? toEn : toIt;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement && ["SCRIPT", "STYLE"].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      const value = node.nodeValue;
+      const trimmed = value.trim();
+      const replacement = map.get(trimmed);
+      if (replacement) node.nodeValue = value.replace(trimmed, replacement);
+    });
+
+    document.querySelectorAll("[aria-label], [title], [content]").forEach((element) => {
+      ["aria-label", "title", "content"].forEach((attr) => {
+        const value = element.getAttribute(attr);
+        if (value && map.has(value)) element.setAttribute(attr, map.get(value));
+      });
+    });
+
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.langToggle === lang));
+    });
+    localStorage.setItem("sgc-s8-language", lang);
+  }
+
+  document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
+    button.addEventListener("click", () => translate(button.dataset.langToggle));
+  });
+  translate(localStorage.getItem("sgc-s8-language") || "it");
+}
