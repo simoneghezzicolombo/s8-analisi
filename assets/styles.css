@@ -119,6 +119,55 @@ button {
   color: #ffffff;
 }
 
+/* In evidenza: citazione istituzionale della ricerca S8 */
+.institutional-highlight {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.26fr) minmax(0, 1fr);
+  gap: 26px;
+  margin-top: 26px;
+  padding: clamp(22px, 3.5vw, 34px);
+  border-radius: var(--radius);
+  background: #17313a;
+  color: #f8fffd;
+  box-shadow: 0 18px 40px rgba(23, 49, 58, 0.18);
+}
+.institutional-highlight-meta {
+  color: #acd5d0;
+  font-size: 0.75rem;
+  font-weight: 800;
+  line-height: 1.65;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding-top: 7px;
+  border-top: 3px solid var(--s8);
+}
+.institutional-highlight-title {
+  margin: 0 0 10px;
+  font: 400 clamp(1.6rem, 3.4vw, 2.55rem)/1.07 "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+.institutional-highlight-content > p:not(.institutional-highlight-title) {
+  margin: 0;
+  max-width: 74ch;
+  line-height: 1.65;
+}
+.institutional-highlight-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 18px;
+}
+.institutional-highlight-links a {
+  color: #ffdcdb;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.institutional-highlight-links a:hover { color: #ffffff; }
+.policy-card--institutions { grid-column: 1 / -1; border-top-color: var(--s8-strong); }
+.policy-card--institutions a { color: var(--teal-strong); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
 .hero {
   padding: 64px 0 28px;
   display: grid;
@@ -765,4 +814,11 @@ main section {
   .footer {
     padding-bottom: 28px;
   }
+}
+
+@media (max-width: 720px) {
+  .institutional-highlight { grid-template-columns: 1fr; gap: 14px; margin-top: 14px; padding: 19px; }
+  .institutional-highlight-meta { padding-top: 9px; }
+  .institutional-highlight-title { font-size: 1.75rem; }
+  .institutional-highlight-links { display: grid; gap: 9px; }
 }
