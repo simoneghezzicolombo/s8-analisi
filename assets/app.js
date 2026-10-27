@@ -875,6 +875,12 @@ function initLanguageToggle() {
     document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical);
     document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonical);
     const metadata = JSON.parse(document.getElementById("search-locale-metadata")?.textContent || "{}")[lang];
+    const researchNetwork = document.querySelector('[data-research-network]');
+    if (researchNetwork) {
+      const label = lang === "en" ? "Research projects and datasets" : "Progetti di ricerca e dataset";
+      researchNetwork.setAttribute("aria-label", label);
+      researchNetwork.querySelector('a:last-child').textContent = label;
+    }
     if (metadata) {
       document.title = metadata.title;
       document.querySelectorAll('meta[property="og:title"],meta[name="twitter:title"]').forEach((element) => element.setAttribute("content", metadata.title));
