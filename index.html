@@ -3,13 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>S8 Milano-Lecco | Dati e grafici interattivi</title>
-  <meta name="description" content="Pagina interattiva con dati, grafici e metodologia sulla linea S8 Milano-Lecco e sulle stazioni del Meratese.">
+  <title>S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025</title>
+  <meta name="description" content="Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile.">
   <meta name="theme-color" content="#177a74">
   <link rel="icon" href="assets/favicon-s8.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
   <script src="assets/app.js" defer></script>
+
+
+
+
+<!-- search-discovery:start -->
+<link rel="canonical" href="https://simoneghezzicolombo.github.io/s8-analisi/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Simone Ghezzi Colombo">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Analisi S8 Milano-Lecco">
+<meta property="og:title" content="S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025">
+<meta property="og:description" content="Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile.">
+<meta property="og:url" content="https://simoneghezzicolombo.github.io/s8-analisi/">
+<meta property="og:image" content="https://simoneghezzicolombo.github.io/s8-analisi/social-preview.png">
+<meta property="og:image:alt" content="Analisi S8 Milano-Lecco">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025">
+<meta name="twitter:description" content="Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile.">
+<meta name="twitter:image" content="https://simoneghezzicolombo.github.io/s8-analisi/social-preview.png">
+<link rel="alternate" hreflang="it" href="https://simoneghezzicolombo.github.io/s8-analisi/">
+<link rel="alternate" hreflang="en" href="https://simoneghezzicolombo.github.io/s8-analisi/index-en.html">
+<link rel="alternate" hreflang="x-default" href="https://simoneghezzicolombo.github.io/s8-analisi/">
+<script id="search-locale-metadata" type="application/json">{"it": {"title": "S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025", "description": "Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile."}, "en": {"title": "S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025", "description": "Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods."}}</script>
+<link rel="alternate" type="application/rss+xml" title="Analisi S8 Milano-Lecco" href="https://simoneghezzicolombo.github.io/s8-analisi/feed.xml">
+<link rel="sitemap" type="application/xml" href="https://simoneghezzicolombo.github.io/s8-analisi/sitemap.xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://simoneghezzicolombo.github.io/s8-analisi/#website", "url": "https://simoneghezzicolombo.github.io/s8-analisi/", "name": "Analisi S8 Milano-Lecco", "description": "Analisi riproducibile di Simone Ghezzi Colombo su passeggeri, stazioni e domanda ferroviaria della S8 Milano-Lecco e del Meratese, 2015-2025.", "inLanguage": ["it", "en"], "creator": {"@id": "https://simoneghezzicolombo.github.io/#person"}}, {"@type": "WebPage", "@id": "https://simoneghezzicolombo.github.io/s8-analisi/#webpage", "url": "https://simoneghezzicolombo.github.io/s8-analisi/", "name": "S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025", "description": "Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile.", "inLanguage": "it", "isPartOf": {"@id": "https://simoneghezzicolombo.github.io/s8-analisi/#website"}, "author": {"@id": "https://simoneghezzicolombo.github.io/#person"}, "mainEntity": {"@id": "https://simoneghezzicolombo.github.io/s8-analisi/#dataset"}}, {"@type": "Person", "@id": "https://simoneghezzicolombo.github.io/#person", "name": "Simone Ghezzi Colombo", "url": "https://simoneghezzicolombo.github.io/"}, {"@type": "Dataset", "@id": "https://simoneghezzicolombo.github.io/s8-analisi/#dataset", "url": "https://simoneghezzicolombo.github.io/s8-analisi/", "name": "S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025", "description": "Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile.", "creator": {"@id": "https://simoneghezzicolombo.github.io/#person"}, "temporalCoverage": "2015/2025", "spatialCoverage": {"@type": "Place", "name": "S8 Milano-Lecco railway, Lombardy, Italy"}, "variableMeasured": ["Weekday station boardings", "Passenger index, 2019=100", "Peak and off-peak demand"], "distribution": [{"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://simoneghezzicolombo.github.io/s8-analisi/data/manifest.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://simoneghezzicolombo.github.io/s8-analisi/data/processed/stazioni_s8_indice_2015_2025.csv"}]}]}</script>
+<!-- search-discovery:end -->
 </head>
 <body>
   <header class="topbar">
@@ -26,8 +54,8 @@
         <a href="https://simoneghezzicolombo.github.io/#projects">Portfolio</a>
       </nav>
       <div class="language-toggle" aria-label="Language">
-        <button type="button" data-lang-toggle="it" aria-pressed="true">IT</button>
-        <button type="button" data-lang-toggle="en" aria-pressed="false">EN</button>
+        <a href="./" data-lang-toggle="it" lang="it" aria-current="page">IT</a>
+        <a href="index-en.html" data-lang-toggle="en" lang="en">EN</a>
       </div>
     </div>
   </header>
@@ -90,7 +118,7 @@
 
     <section id="policy">
       <div class="section-head">
-        <h2>Policy and institutional relevance</h2>
+        <h2>Rilevanza istituzionale e di policy</h2>
         <p>La lettura politica resta separata dall'analisi: qui sono esplicitate le domande che i dati aiutano a porre.</p>
       </div>
       <div class="policy-grid">
@@ -101,21 +129,21 @@
           <p>Gli atti non indicano nominalmente l'autore dell'analisi, ma il riferimento del 12 ottobre coincide per data, periodo e contenuti con la ricerca presentata a Merate. Entrambi gli ordini del giorno sono stati respinti, rispettivamente il 23 luglio e il 21 ottobre 2026. Sullo scambio di Olgiate è stato presentato anche l'<a href="https://gedasi.consiglio.regione.lombardia.it/dasi/public/affe91e2-62c5-4ad3-a160-c4dfb44057c6/pdf" target="_blank" rel="noopener noreferrer">ODG 3190</a> di ottobre, anch'esso respinto. La richiesta infrastrutturale precede questa analisi e non ne viene rivendicata la paternità.</p>
         </article>
         <article class="dataset-card policy-card">
-          <h3>Policy relevance</h3>
+          <h3>Rilevanza per le politiche pubbliche</h3>
           <p>Questa analisi offre una base empirica trasparente per il dibattito pubblico sulla linea S8 Milano-Lecco. I dati suggeriscono una crescita rilevante della domanda rispetto al 2019, non limitata alla fascia tradizionale 7-9, e indicano che la linea funziona sempre più come infrastruttura ordinaria del territorio meratese.</p>
           <p>Queste evidenze aprono domande di programmazione su frequenza, affidabilità, capacità, accessibilità alle stazioni e integrazione con autobus, bici e parcheggi.</p>
         </article>
         <article class="dataset-card policy-card">
-          <h3>Evidence-based priorities</h3>
+          <h3>Priorità basate sui dati</h3>
           <p>I dati indicano che la S8 non dovrebbe essere letta solo come corridoio pendolare del mattino. La crescita distribuita nella giornata rende rilevanti anche servizio fuori punta, connessioni locali, qualità delle stazioni e accessibilità reale per chi vive nel bacino della linea.</p>
         </article>
         <article class="dataset-card policy-card">
-          <h3>Policy engagement</h3>
+          <h3>Interlocuzione istituzionale</h3>
           <p>L'analisi è entrata nel dibattito pubblico locale e ha supportato discussioni evidence-based su domanda ferroviaria, accessibilità territoriale e programmazione del servizio. In alcuni casi sono stati preparati approfondimenti specifici a livello di stazione per rispondere a domande emerse nelle interlocuzioni locali.</p>
           <p>Il mio contributo resta tecnico e analitico: dati, metodo, visualizzazioni e interpretazione. Le proposte politiche sono tenute distinte dalla base empirica.</p>
         </article>
         <article class="dataset-card policy-card">
-          <h3>Limits of the analysis</h3>
+          <h3>Limiti dell'analisi</h3>
           <p>Questa analisi non misura direttamente sovraffollamento, domanda repressa, qualità operativa o effetto causale di specifiche modifiche d'orario. Serve a informare la discussione pubblica e le domande istituzionali, non a sostituire la programmazione operativa o i dati interni di gestori e autorità regionali.</p>
         </article>
       </div>
@@ -337,5 +365,6 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+<nav data-research-network aria-label="Progetti di ricerca e dataset" style="max-width:1100px;margin:24px auto;padding:20px;display:flex;flex-wrap:wrap;gap:16px;font:15px/1.5 system-ui,sans-serif"><a href="https://simoneghezzicolombo.github.io/">Simone Ghezzi Colombo</a><a href="https://simoneghezzicolombo.github.io/progetti/">Progetti di ricerca e dataset</a></nav>
 </body>
 </html>

@@ -868,13 +868,28 @@ function initLanguageToggle() {
 
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.langToggle === lang));
+      if (button.dataset.langToggle === lang) button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
     });
-    localStorage.setItem("sgc-s8-language", lang);
+    const canonical = new URL(lang === "en" ? "index-en.html" : "./", location.href).href;
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonical);
+    const metadata = JSON.parse(document.getElementById("search-locale-metadata")?.textContent || "{}")[lang];
+    if (metadata) {
+      document.title = metadata.title;
+      document.querySelectorAll('meta[property="og:title"],meta[name="twitter:title"]').forEach((element) => element.setAttribute("content", metadata.title));
+      document.querySelectorAll('meta[name="description"],meta[property="og:description"],meta[name="twitter:description"]').forEach((element) => element.setAttribute("content", metadata.description));
+    }
   }
 
   document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
-    button.addEventListener("click", () => translate(button.dataset.langToggle));
+    button.addEventListener("click", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      history.pushState(null, "", new URL(button.getAttribute("href"), location.href).pathname + location.hash);
+      translate(button.dataset.langToggle);
+    });
   });
-  translate(localStorage.getItem("sgc-s8-language") || "it");
+  window.addEventListener("popstate", () => translate(location.pathname.endsWith("/index-en.html") ? "en" : "it"));
+  translate(location.pathname.endsWith("/index-en.html") ? "en" : "it");
 }

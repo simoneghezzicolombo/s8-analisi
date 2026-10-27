@@ -1,0 +1,14 @@
+# Analisi S8 Milano-Lecco
+
+> Analisi riproducibile di Simone Ghezzi Colombo su passeggeri, stazioni e domanda ferroviaria della S8 Milano-Lecco e del Meratese, 2015-2025.
+
+## Public pages
+
+- [S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025](https://simoneghezzicolombo.github.io/s8-analisi/): Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile.
+- [Dataset inventory](https://simoneghezzicolombo.github.io/s8-analisi/data/manifest.csv): CSV inventory of public datasets and their provenance.
+- [Methods](https://simoneghezzicolombo.github.io/s8-analisi/docs/metodologia.md): Definitions, aggregation and limitations.
+- [Public presentation](https://simoneghezzicolombo.github.io/s8-analisi/presentation/s8_milano_lecco_linea_che_traina_trenord.pdf): Charts and public-policy discussion based on the analysis.
+
+## Attribution and interpretation
+
+Author: Simone Ghezzi Colombo. Cite the relevant page and the original data sources. These are independent research projects, not official institutional services.

@@ -1,0 +1,15 @@
+{
+  "name": "Analisi S8 Milano-Lecco",
+  "url": "https://simoneghezzicolombo.github.io/s8-analisi/",
+  "description": "Analisi riproducibile di Simone Ghezzi Colombo su passeggeri, stazioni e domanda ferroviaria della S8 Milano-Lecco e del Meratese, 2015-2025.",
+  "published": "2026-10-27", "languages": ["it", "en"], "image": "social-preview.png",
+  "translate": {"kind": "pairs", "source": "assets/app.js", "constant": "S8_TRANSLATIONS", "order": ["it", "en"]},
+  "pages": [{"path": "index.html", "url": "", "localized": true,
+    "title": "S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025",
+    "title_en": "S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025",
+    "description": "Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile.",
+    "description_en": "Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods.",
+    "dataset": {"temporalCoverage": "2015/2025", "spatialCoverage": {"@type": "Place", "name": "S8 Milano-Lecco railway, Lombardy, Italy"}, "variableMeasured": ["Weekday station boardings", "Passenger index, 2019=100", "Peak and off-peak demand"], "distribution": [{"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://simoneghezzicolombo.github.io/s8-analisi/data/manifest.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://simoneghezzicolombo.github.io/s8-analisi/data/processed/stazioni_s8_indice_2015_2025.csv"}]}
+  }],
+  "resources": [{"name": "Dataset inventory", "url": "data/manifest.csv", "description": "CSV inventory of public datasets and their provenance."}, {"name": "Methods", "url": "docs/metodologia.md", "description": "Definitions, aggregation and limitations."}, {"name": "Public presentation", "url": "presentation/s8_milano_lecco_linea_che_traina_trenord.pdf", "description": "Charts and public-policy discussion based on the analysis."}]
+}

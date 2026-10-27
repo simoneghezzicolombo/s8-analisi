@@ -102,7 +102,10 @@ button {
   flex: 0 0 auto;
 }
 
-.language-toggle button {
+.language-toggle [data-lang-toggle] {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
   border: 0;
   border-radius: 999px;
   background: transparent;
@@ -114,7 +117,7 @@ button {
   padding: 8px 10px;
 }
 
-.language-toggle button[aria-pressed="true"] {
+.language-toggle [aria-current="page"] {
   background: var(--text);
   color: #ffffff;
 }

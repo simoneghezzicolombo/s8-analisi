@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025</title>
+  <meta name="description" content="Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods.">
+  <meta name="theme-color" content="#177a74">
+  <link rel="icon" href="assets/favicon-s8.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
+
+
+
+
+<!-- search-discovery:start -->
+<link rel="canonical" href="https://simoneghezzicolombo.github.io/s8-analisi/index-en.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Simone Ghezzi Colombo">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Analisi S8 Milano-Lecco">
+<meta property="og:title" content="S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025">
+<meta property="og:description" content="Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods.">
+<meta property="og:url" content="https://simoneghezzicolombo.github.io/s8-analisi/index-en.html">
+<meta property="og:image" content="https://simoneghezzicolombo.github.io/s8-analisi/social-preview.png">
+<meta property="og:image:alt" content="Analisi S8 Milano-Lecco">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025">
+<meta name="twitter:description" content="Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods.">
+<meta name="twitter:image" content="https://simoneghezzicolombo.github.io/s8-analisi/social-preview.png">
+<link rel="alternate" hreflang="it" href="https://simoneghezzicolombo.github.io/s8-analisi/">
+<link rel="alternate" hreflang="en" href="https://simoneghezzicolombo.github.io/s8-analisi/index-en.html">
+<link rel="alternate" hreflang="x-default" href="https://simoneghezzicolombo.github.io/s8-analisi/">
+<script id="search-locale-metadata" type="application/json">{"it": {"title": "S8 Milano-Lecco: passeggeri e stazioni del Meratese, 2015-2025", "description": "Dati e grafici sulla S8 Milano-Lecco: crescita dei passeggeri, stazioni del Meratese, punta e resto della giornata. CSV, fonti e metodologia riproducibile."}, "en": {"title": "S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025", "description": "Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods."}}</script>
+<link rel="alternate" type="application/rss+xml" title="Analisi S8 Milano-Lecco" href="https://simoneghezzicolombo.github.io/s8-analisi/feed.xml">
+<link rel="sitemap" type="application/xml" href="https://simoneghezzicolombo.github.io/s8-analisi/sitemap.xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://simoneghezzicolombo.github.io/s8-analisi/#website", "url": "https://simoneghezzicolombo.github.io/s8-analisi/", "name": "Analisi S8 Milano-Lecco", "description": "Analisi riproducibile di Simone Ghezzi Colombo su passeggeri, stazioni e domanda ferroviaria della S8 Milano-Lecco e del Meratese, 2015-2025.", "inLanguage": ["it", "en"], "creator": {"@id": "https://simoneghezzicolombo.github.io/#person"}}, {"@type": "WebPage", "@id": "https://simoneghezzicolombo.github.io/s8-analisi/index-en.html#webpage", "url": "https://simoneghezzicolombo.github.io/s8-analisi/index-en.html", "name": "S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025", "description": "Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods.", "inLanguage": "en", "isPartOf": {"@id": "https://simoneghezzicolombo.github.io/s8-analisi/#website"}, "author": {"@id": "https://simoneghezzicolombo.github.io/#person"}, "mainEntity": {"@id": "https://simoneghezzicolombo.github.io/s8-analisi/index-en.html#dataset"}}, {"@type": "Person", "@id": "https://simoneghezzicolombo.github.io/#person", "name": "Simone Ghezzi Colombo", "url": "https://simoneghezzicolombo.github.io/"}, {"@type": "Dataset", "@id": "https://simoneghezzicolombo.github.io/s8-analisi/index-en.html#dataset", "url": "https://simoneghezzicolombo.github.io/s8-analisi/index-en.html", "name": "S8 Milan-Lecco railway: passengers and Meratese stations, 2015-2025", "description": "Data and charts on the S8 Milan-Lecco railway: passenger growth, Meratese stations, peak and off-peak demand. CSV datasets, sources and reproducible methods.", "creator": {"@id": "https://simoneghezzicolombo.github.io/#person"}, "temporalCoverage": "2015/2025", "spatialCoverage": {"@type": "Place", "name": "S8 Milano-Lecco railway, Lombardy, Italy"}, "variableMeasured": ["Weekday station boardings", "Passenger index, 2019=100", "Peak and off-peak demand"], "distribution": [{"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://simoneghezzicolombo.github.io/s8-analisi/data/manifest.csv"}, {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://simoneghezzicolombo.github.io/s8-analisi/data/processed/stazioni_s8_indice_2015_2025.csv"}]}]}</script>
+<!-- search-discovery:end -->
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#top">S8 Milano-Lecco</a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#risultati">Results</a>
+        <a href="#grafici">Charts</a>
+        <a href="#policy">Policy</a>
+        <a href="#mappa">Map</a>
+        <a href="#metodo">Method</a>
+        <a href="#dataset">Datasets</a>
+        <a href="https://github.com/simoneghezzicolombo/s8-analisi" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://simoneghezzicolombo.github.io/#projects">Portfolio</a>
+      </nav>
+      <div class="language-toggle" aria-label="Language">
+        <a href="./" data-lang-toggle="it" lang="it">IT</a>
+        <a href="index-en.html" data-lang-toggle="en" lang="en" aria-current="page">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell" id="top">
+  <div class="institutional-highlight" role="note" aria-label="Research cited in Lombardy Regional Council documents">
+    <div class="institutional-highlight-meta">7 May 2026<br>Merate → Regional Council</div>
+    <div class="institutional-highlight-content">
+      <p class="institutional-highlight-title">My S8 research cited in the Regional Council</p>
+      <p>Presented in Merate on 7 May 2026, my analysis of S8 passenger flows in 2019–2025 is referenced in<strong>Order of the Day 3184 of 12 October 2026</strong>, which explicitly refers to a study published on that date. The earlier<strong>Order of the Day 2329 of 16 July 2026</strong> already cited figures on the 51,000 weekday passengers and the line's position in national comparisons.</p>
+      <div class="institutional-highlight-links">
+        <a href="https://gedasi.consiglio.regione.lombardia.it/dasi/public/fe88d07b-5f83-4546-8a51-6b37fbdd4334/pdf" target="_blank" rel="noopener noreferrer">ODG 3184 · October 2026 ↗</a>
+        <a href="https://gedasi.consiglio.regione.lombardia.it/dasi/public/0fca6f01-4c2d-4ae8-958d-eafe6992efc8" target="_blank" rel="noopener noreferrer">ODG 2329 · July 2026 ↗</a>
+        <a href="https://www.merateonline.it/notizie/156214/trasporto-pubblico-locale-tra-il-passato-e-un-futuro-senza-quot-regia-quot" target="_blank" rel="noopener noreferrer">7 May public presentation ↗</a>
+      </div>
+    </div>
+  </div>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Public transport · Open data · Territorial analysis</div>
+        <h1>S8 Milano-Lecco</h1>
+        <p class="subtitle">
+          Interactive data and charts on the S8 Lecco-Carnate-Milano rail line and the Meratese stations.
+        </p>
+        <p class="hero-copy">
+          This page collects the explorable version of the presentation charts, with datasets, sources and linked scripts so that the figures discussed in public presentations and local conversations can be checked.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#grafici">Explore the charts</a>
+          <a class="btn" href="data/manifest.csv">Download CSV manifest</a>
+          <a class="btn" href="presentation/s8_milano_lecco_linea_che_traina_trenord.pdf">Presentation PDF</a>
+          <a class="btn" href="docs/metodologia.md">Full methodology</a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <div class="eyebrow">Short reading</div>
+        <p>
+          The S8 does not look like a marginal local line: it grows more than the other suburban lines considered, has annual volumes comparable to some Italian metros, and shows very strong growth in the Meratese stations.
+        </p>
+        <p>
+          The most interesting point is that growth is not concentrated only in the 7-9 peak: a very large share happens during the rest of the day, suggesting a more ordinary and distributed use of the train.
+        </p>
+      </aside>
+    </section>
+
+    <section id="risultati">
+      <div class="section-head">
+        <h2>Four key numbers</h2>
+        <p>A quick reading before entering the interactive charts.</p>
+      </div>
+      <div class="takeaways">
+        <div class="takeaway"><strong>+57,7%</strong><span>S8 in 2025 compared with 2019, index on weekday users.</span></div>
+        <div class="takeaway"><strong>14,8 mln</strong><span>Estimated annual passengers on the S8 Lecco-Carnate-Milano.</span></div>
+        <div class="takeaway"><strong>+94,4%</strong><span>2019-2025 growth of the four Meratese stations considered.</span></div>
+        <div class="takeaway"><strong>87,6%</strong><span>Share of Meratese growth outside the 7-9 time band.</span></div>
+      </div>
+    </section>
+
+    <section id="policy">
+      <div class="section-head">
+        <h2>Policy and institutional relevance</h2>
+        <p>The political reading remains separate from the analysis: this section makes explicit the questions that the data help raise.</p>
+      </div>
+      <div class="policy-grid">
+        <article class="dataset-card policy-card policy-card--institutions">
+          <h3>The research in the Regional Council records</h3>
+          <p>On 7 May 2026 I presented my S8 passenger-flow analysis at a public meeting in Merate, also attended by regional councillor Gian Mario Fragomeli. On 9 May <a href="https://www.merateonline.it/notizie/156214/trasporto-pubblico-locale-tra-il-passato-e-un-futuro-senza-quot-regia-quot" target="_blank" rel="noopener noreferrer">MerateOnline reported on the meeting</a> and its findings.</p>
+          <p>On 16 July, the<a href="https://gedasi.consiglio.regione.lombardia.it/dasi/public/0fca6f01-4c2d-4ae8-958d-eafe6992efc8" target="_blank" rel="noopener noreferrer">ODG 2329</a>, concerning a railway crossover in Olgiate Molgora, was tabled. It repeated figures on weekday passengers and the S8's position in national comparisons. On 12 October,<a href="https://gedasi.consiglio.regione.lombardia.it/dasi/public/fe88d07b-5f83-4546-8a51-6b37fbdd4334/pdf" target="_blank" rel="noopener noreferrer">ODG 3184</a>, concerning improvements to the line, explicitly referenced an analysis of regional open data published on 7 May 2026, covering 2019–2025 passenger flows, S8 stations and growth in off-peak demand.</p>
+          <p>The documents do not name the study's author, but the 12 October reference matches the date, period and content of the research presented in Merate. Both orders of the day were rejected, on 23 July and 21 October 2026 respectively. Another order of the day concerning the Olgiate crossover,<a href="https://gedasi.consiglio.regione.lombardia.it/dasi/public/affe91e2-62c5-4ad3-a160-c4dfb44057c6/pdf" target="_blank" rel="noopener noreferrer">ODG 3190</a> was submitted in October and also rejected. The infrastructure proposal predates this research; no claim is made to having originated it.</p>
+        </article>
+        <article class="dataset-card policy-card">
+          <h3>Policy relevance</h3>
+          <p>This analysis provides a transparent evidence base for public discussion on the S8 Milano-Lecco rail line. The data suggest substantial demand growth compared with 2019, not limited to the traditional 7-9 morning peak, and indicate that the line increasingly works as everyday territorial infrastructure for the Meratese area.</p>
+          <p>These findings raise planning questions about frequency, reliability, capacity, station accessibility and integration with buses, cycling infrastructure and parking.</p>
+        </article>
+        <article class="dataset-card policy-card">
+          <h3>Evidence-based priorities</h3>
+          <p>The data indicate that the S8 should not be read only as a morning commuter corridor. Growth distributed across the day makes off-peak service, local connections, station quality and real accessibility for people living in the line's catchment area relevant planning issues.</p>
+        </article>
+        <article class="dataset-card policy-card">
+          <h3>Policy engagement</h3>
+          <p>The analysis has circulated in local public discussion and has supported evidence-based conversations on rail demand, territorial access and service planning. In some cases, station-level deep dives were prepared to respond to questions raised in local conversations.</p>
+          <p>My contribution remains technical and analytical: data, methods, visualisations and interpretation. Political proposals are kept separate from the evidence base.</p>
+        </article>
+        <article class="dataset-card policy-card">
+          <h3>Limits of the analysis</h3>
+          <p>This analysis does not directly measure overcrowding, suppressed demand, operational quality or the causal effect of specific timetable changes. It should inform public discussion and institutional questions, not replace operational planning or internal data held by transport providers and regional authorities.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="grafici">
+      <div class="section-head">
+        <h2>Interactive charts</h2>
+        <p>Each chart is linked to its CSV, data sources and scripts useful to reconstruct the analysis.</p>
+      </div>
+
+      <div class="chart-stack">
+        <figure class="figure-card">
+          <h3>1. Evolution of Trenord suburban lines</h3>
+          <div class="plot-frame">
+            <div id="plot-linee" class="plot-target" role="img" aria-label="Linee suburbane Trenord, indice 2019=100"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> The S8 is compared with the other major Trenord suburban lines: S1/S12, S5, S6 and the Trenord total. In 2025 it reaches index 157.7: this is not just a post-Covid recovery, but a scale change for the Lecco-Milano corridor and for the Meratese area, where station growth is far stronger than average.</p>
+          <div class="links"><a href="data/processed/linee_s_indice_2019_2025.csv">CSV dataset</a><a href="figures/01_linee_suburbane_indice_2019_100.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="https://www.trenord.it/news/trenord-informa/comunicati-stampa/dati-2025-trenord/" target="_blank" rel="noreferrer">Trenord 2025</a><a href="https://www.trenord.it/news/trenord-informa/comunicati-stampa/dati-mobilita-2024/" target="_blank" rel="noreferrer">Trenord 2024</a><a href="data/reproducibility/linee_suburbane/linee_suburbane_press_sources.csv">fonti e ipotesi linea per linea</a><a href="#dataset">all sources</a></p>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>2. Absolute change 2025-2024</h3>
+          <div class="plot-frame">
+            <div id="plot-delta" class="plot-target" role="img" aria-label="Variazione assoluta linee suburbane 2025-2024"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> In the 2025-2024 comparison, the S8 has the largest absolute increase: +22,800 weekday passengers in comparable counts. The S1/S12 case should be read together with service supply: thanks to the S12, service rises from roughly 70 to 130 trains per day, so the increase is also tied to a strong frequency increase.</p>
+          <div class="links"><a href="data/processed/variazione_linee_suburbane_2024_2025.csv">CSV dataset</a><a href="data/processed/variazione_linee_suburbane_2024_2025_dettaglio.csv">Dettaglio campagne</a><a href="figures/02_variazione_assoluta_linee_suburbane.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj" target="_blank" rel="noreferrer">Regione Lombardia linee SFR</a><a href="data/processed/disponibilita_campagne_linee_suburbane_2024_2025.csv">campagne confrontate</a><a href="#dataset">all sources</a></p>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>3. Annual passengers by line</h3>
+          <div class="plot-frame">
+            <div id="plot-top20" class="plot-target" role="img" aria-label="Top 20 linee ferroviarie locali in Italia"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> The S8 is estimated in fourth place among the non-high-speed local lines considered, with around 14.8 million annual passengers. Before Covid it did not appear in this ranking: today it enters the group of Italy's most-used local rail lines, above several historically better-known routes.</p>
+          <div class="links"><a href="data/processed/top20_linee_locali_italia.csv">CSV dataset</a><a href="data/reproducibility/top20/sources_by_line.csv">Fonti riga per riga</a><a href="figures/04_top20_linee_locali_italia.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="data/reproducibility/top20/sources_by_line.csv">fonti riga per riga</a><a href="data/reproducibility/top20/DATA_SOURCES.md">fonti top20</a><a href="data/reproducibility/top20/TRENORD_L25_CALCULATION.md">calcolo Lombardia/S8</a><a href="data/reproducibility/top20/estimation_log.csv">log stime</a><a href="#dataset">all sources</a></p>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>4. S8 and Italian metro systems</h3>
+          <div class="plot-frame">
+            <div id="plot-metro" class="plot-target" role="img" aria-label="Confronto S8 e metropolitane italiane"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> With around 14.8 million annual passengers, the S8 is close to the Genoa metro and just below Rome C and Brescia. The decisive difference is service supply: the S8 runs roughly every 30 minutes, while many metro systems run every few minutes.</p>
+          <div class="links"><a href="data/processed/benchmark_metropolitane_s8.csv">Dataset CSV con fonti</a><a href="figures/03_comparazione_metro_s8.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="data/processed/benchmark_metropolitane_s8.csv">CSV con fonti per ogni riga</a><a href="https://www.trenord.it/news/trenord-informa/comunicati-stampa/dati-2025-trenord/" target="_blank" rel="noreferrer">S8/Trenord</a><a href="https://www.amt.genova.it/amt/la-tua-metropolitana-pronto-al-via-il-progetto-di-comune-di-genova-e-amt-per-la-valorizzazione-della-metropolitana-genovese/" target="_blank" rel="noreferrer">Genova</a><a href="https://www.comune.roma.it/web-resources/cms/documents/09_Mobilita_Annuario2025_finale.pdf" target="_blank" rel="noreferrer">Roma C</a><a href="https://bsnews.it/2024/03/02/metro-brescia-compie-11-anni-ha-gia-trasportato-165-milioni-di-passeggeri/" target="_blank" rel="noreferrer">Brescia</a><a href="#dataset">all sources</a></p>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>5. Passengers in S8 stations, 2015-2025</h3>
+          <div class="plot-frame">
+            <div id="plot-stazioni" class="plot-target" role="img" aria-label="Passeggeri nelle stazioni S8 dal 2015 al 2025"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> The four Meratese stations all grow markedly after 2022. Together they rise from 4,620 to 8,980 passengers boarding on a November weekday: almost double the 2019 level, with Airuno and Osnago both exceeding index 200.</p>
+          <div class="links"><a href="data/processed/stazioni_s8_indice_2015_2025.csv">CSV dataset</a><a href="figures/05_stazioni_s8_indice_2019_100.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="https://hub.dati.lombardia.it/widgets/m2u2-frtq" target="_blank" rel="noreferrer">Flussi stazioni 2015-2023</a><a href="https://hub.dati.lombardia.it/w/ut63-s688/default" target="_blank" rel="noreferrer">Frequentazione stazioni 2024-2025</a><a href="scripts/reproducibility/core/01_s8_indice_stazioni_saliti24h.py">script</a><a href="#dataset">all sources</a></p>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>6. Passenger growth in Lombardy stations</h3>
+          <div class="plot-frame">
+            <div id="plot-scatter" class="plot-target" role="img" aria-label="Scatter stazioni lombarde crescita passeggeri e carico per corsa"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> Compared with 148 comparable Lombardy stations, Airuno and Osnago rank first and second for percentage growth; Cernusco-Merate and Olgiate-Calco-Brivio rank fourth and fifth. Milano S. Cristoforo sits in between, a special case affected by the opening of M4 and the reorganisation linked to the Porta Genova closure. Stations below 700 passengers/day in 2019 and those without a homogeneous 2019-2025 comparison are excluded.</p>
+          <div class="links"><a href="data/processed/scatter_stazioni_lombarde_2019_2025.csv">CSV dataset</a><a href="scripts/reproducibility/scatter/make_scatter_intensificazione_carico.py">Script scatter</a><a href="figures/06_saliti_per_corsa_stazioni_s8.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="https://hub.dati.lombardia.it/widgets/m2u2-frtq" target="_blank" rel="noreferrer">Flussi stazioni</a><a href="https://hub.dati.lombardia.it/w/ut63-s688/default" target="_blank" rel="noreferrer">Frequentazione stazioni</a><a href="scripts/reproducibility/core/04_scatter_lombardia_crescita_carico.py">script</a><a href="#dataset">all sources</a></p>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>7. Morning-peak share in S8 stations</h3>
+          <div class="plot-frame">
+            <div id="plot-punta" class="plot-target" role="img" aria-label="Peso della punta nelle stazioni S8"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> In the Meratese area, passengers grow sharply, but no longer only in the classic commuter peak. The four stations rise from 4,620 to 8,980 passengers/day between 2019 and 2025; the 7-9 band grows from 1,990 to 2,530, but its share falls from 43.1% to 28.2%. This suggests more distributed habits: hybrid work, study, services and trips that are not concentrated only in the morning outbound journey.</p>
+          <div class="links"><a href="data/processed/peso_punta_stazioni_s8_2015_2025.csv">CSV dataset</a><a href="figures/07_peso_punta_stazioni_s8.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="https://hub.dati.lombardia.it/widgets/m2u2-frtq" target="_blank" rel="noreferrer">Flussi stazioni</a><a href="https://hub.dati.lombardia.it/w/ut63-s688/default" target="_blank" rel="noreferrer">Frequentazione stazioni</a><a href="scripts/reproducibility/core/03_s8_peso_punta_mattutina.py">script</a><a href="#dataset">all sources</a></p>
+        </figure>
+
+        <figure class="figure-card">
+          <h3>8. How much growth is peak and off-peak?</h3>
+          <div class="plot-frame">
+            <div id="plot-morbida" class="plot-target" role="img" aria-label="Crescita meratese tra punta e morbida"></div>
+            <div class="plot-status">Preparing interactive chart...</div>
+          </div>
+          <p class="chart-lede"><strong>What it shows.</strong> Meratese growth in 2019-2025 is +4,360 passengers/day. Of these, +540 are in the 7-9 band and +3,820 are in the rest of the day: almost nine new passengers out of ten arrive outside the morning peak. The issue, then, is not only "more morning commuters", but broader and more continuous daily demand.</p>
+          <div class="links"><a href="data/processed/crescita_meratese_punta_morbida_2015_2025.csv">Serie CSV</a><a href="data/processed/punta_morbida_meratese_2019_2025.csv">Riepilogo 2019-2025</a><a href="figures/08_crescita_punta_morbida_meratese.png">Static PNG</a></div>
+          <p class="source-links">Chart sources: <a href="https://hub.dati.lombardia.it/widgets/m2u2-frtq" target="_blank" rel="noreferrer">Flussi stazioni</a><a href="https://hub.dati.lombardia.it/w/ut63-s688/default" target="_blank" rel="noreferrer">Frequentazione stazioni</a><a href="scripts/reproducibility/core/03_s8_peso_punta_mattutina.py">script serie</a><a href="scripts/reproducibility/linee_meratese/01_punta_morbida_meratese.py">script riepilogo</a><a href="#dataset">all sources</a></p>
+        </figure>
+      </div>
+    </section>
+
+    <section id="metodo">
+      <div class="section-head">
+        <h2>Method and interpretive caution</h2>
+        <p>The charts are designed to be publicly readable, while remaining linked to verifiable data files.</p>
+      </div>
+      <div class="dataset-grid">
+        <article class="dataset-card">
+          <h3>Main definitions</h3>
+          <p><code>Saliti24H</code> indicates passengers boarding at the station across the day. <code>Saliti7-9</code> indicates the morning peak band. Indices are normalised with 2019=100 as the base.</p>
+          <div class="dataset-list">
+            <a href="docs/metodologia.md"><span>Read full methodology</span><span>MD</span></a>
+            <a href="docs/struttura_dati.md"><span>Dataset structure</span><span>MD</span></a>
+          </div>
+        </article>
+        <article class="dataset-card">
+          <h3>Why some comparisons are delicate</h3>
+          <p>The data comes from ridership campaigns, not continuous counts. For this reason, 2024-2025 comparisons use only campaigns that are present in both years.</p>
+          <div class="dataset-list">
+            <a href="docs/reference_dati_presentazione_S8.md"><span>Presentation figures reference</span><span>MD</span></a>
+            <a href="docs/micro_fonti_canva.txt"><span>Micro-sources for charts</span><span>TXT</span></a>
+          </div>
+        </article>
+        <article class="dataset-card">
+          <h3>Scripts and reproducibility</h3>
+          <p>The code used for static charts, graphic tests and the interactive page is published together with the datasets.</p>
+          <div class="dataset-list">
+            <a href="scripts/README.md"><span>Script index</span><span>MD</span></a>
+            <a href="docs/riproducibilita_grafici.md"><span>Chart-by-chart reproducibility</span><span>MD</span></a>
+            <a href="assets/app.js"><span>Interactive charts on the page</span><span>JS</span></a>
+            <a href="scripts/static_charts/genera_grafici_fedeli_canva.py"><span>Static charts for Canva</span><span>PY</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="mappa">
+      <div class="section-head">
+        <h2>Extra: potential catchment areas of S8 stops</h2>
+        <p>A territorial reading that complements ridership charts: it does not measure passengers, but the population reachable from the stops.</p>
+      </div>
+      <figure class="figure-card map-card">
+        <div class="map-copy">
+          <p class="chart-lede"><strong>What it shows.</strong> The map estimates the potential catchment area of the 9 S8 stops between Arcore and Lecco, on foot or by car, up to 15 minutes. It helps show where demand can grow: not only how many people use the line today, but how many people live close enough to the stops to use it more easily if the service becomes more attractive.</p>
+          <div>
+            <p>Comparison stations are not included in S8 totals: they are used to delimit the catchment area prudently. Each population cell is assigned only once to the most accessible station on the network: if it lies between two S8 stops it is not duplicated, and if it is better served by an external station it is not included in the published S8 catchment.</p>
+            <div class="links">
+              <a href="maps/mappa_isochrone_s8.html">Open standalone map</a>
+              <a href="data/reproducibility/isochrone_s8/sources.csv">Map sources</a>
+              <a href="maps/README.md">Reproducibility note</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe src="maps/mappa_isochrone_s8.html?embed=1" title="Mappa interattiva dei bacini potenziali S8 Arcore-Lecco" loading="lazy"></iframe>
+        </div>
+      </figure>
+      <figure class="figure-card isochrone-static-card">
+        <div class="isochrone-static">
+          <div class="isochrone-static-copy">
+            <h3>5, 10 and 15-minute comparison</h3>
+            <p>Population comes from WorldPop 2020, a resident-population grid at roughly 100-metre resolution. Each cell is assigned to the stop that can be reached first through the network, without duplicating people located between two stations.</p>
+          </div>
+          <div class="isochrone-static-frame">
+            <iframe src="maps/mappa_isochrone_s8.html?view=static" title="Confronto 5 10 15 minuti dei bacini potenziali S8" loading="lazy"></iframe>
+          </div>
+        </div>
+      </figure>
+    </section>
+
+    <section id="dataset">
+      <div class="section-head">
+        <h2>Downloadable datasets</h2>
+        <p>Processed CSV files for the charts are listed first; original data and source portals are listed below.</p>
+      </div>
+      <div class="dataset-grid">
+        <article class="dataset-card">
+          <h3>Processed datasets</h3>
+          <p>Cleaned or aggregated files, recommended to verify and reuse the charts.</p>
+          <div class="dataset-list">
+            <a href="data/manifest.csv"><span>Manifest grafici-dataset</span><span>CSV</span></a>
+            <a href="data/processed/linee_s_indice_2019_2025.csv"><span>Linee S, indice 2019-2025</span><span>CSV</span></a>
+            <a href="data/processed/variazione_linee_suburbane_2024_2025.csv"><span>Variazione linee 2024-2025</span><span>CSV</span></a>
+            <a href="data/processed/top20_linee_locali_italia.csv"><span>Top 20 linee locali Italia</span><span>CSV</span></a>
+            <a href="data/processed/benchmark_metropolitane_s8.csv"><span>Benchmark metropolitane</span><span>CSV</span></a>
+            <a href="data/processed/stazioni_s8_indice_2015_2025.csv"><span>Stazioni S8, indice 2015-2025</span><span>CSV</span></a>
+            <a href="data/processed/scatter_stazioni_lombarde_2019_2025.csv"><span>Scatter stazioni lombarde</span><span>CSV</span></a>
+            <a href="data/processed/peso_punta_stazioni_s8_2015_2025.csv"><span>Peso punta stazioni S8</span><span>CSV</span></a>
+            <a href="data/processed/crescita_meratese_punta_morbida_2015_2025.csv"><span>Crescita punta/morbida</span><span>CSV</span></a>
+          </div>
+        </article>
+
+        <article class="dataset-card">
+          <h3>Original datasets and sources</h3>
+          <p>Links to source portals and local copies of the raw files used as a base.</p>
+          <div class="dataset-list">
+            <a href="data/sources_originali.csv"><span>Indice fonti originali</span><span>CSV</span></a>
+            <a href="data/source_links_by_chart.csv"><span>Fonti dirette per grafico</span><span>CSV</span></a>
+            <a href="data/sources_intervento_iniziale.csv"><span>Fonti citate nell'intervento iniziale</span><span>CSV</span></a>
+            <a href="data/reproducibility/isochrone_s8/sources.csv"><span>Fonti mappa bacini potenziali S8</span><span>CSV</span></a>
+            <a href="https://hub.dati.lombardia.it/Mobilit-e-trasporti/Dati-di-frequentazione-delle-linee-del-servizio-fe/dpns-ehdj" target="_blank" rel="noreferrer"><span>Regione Lombardia: frequentazione linee SFR</span><span>Portale</span></a>
+            <a href="data/raw/regione_lombardia_frequentazione_linee_sfr_20260424.csv"><span>Copia locale: linee SFR</span><span>CSV</span></a>
+            <a href="https://hub.dati.lombardia.it/w/ut63-s688/default" target="_blank" rel="noreferrer"><span>Regione Lombardia: frequentazione stazioni SFR</span><span>Portale</span></a>
+            <a href="data/raw/regione_lombardia_frequentazione_stazioni_sfr_20260424.csv"><span>Copia locale: stazioni SFR</span><span>CSV</span></a>
+            <a href="https://hub.dati.lombardia.it/widgets/m2u2-frtq" target="_blank" rel="noreferrer"><span>Regione Lombardia: flussi stazioni ferroviarie</span><span>Portale</span></a>
+            <a href="data/raw/regione_lombardia_flussi_stazioni_2015_2023_20260424.csv"><span>Copia locale: flussi stazioni</span><span>CSV</span></a>
+            <a href="data/processed/benchmark_metropolitane_s8.csv"><span>Fonti puntuali benchmark metropolitane</span><span>CSV</span></a>
+            <a href="data/processed/top20_linee_locali_italia.csv"><span>Fonti puntuali top 20 linee locali</span><span>CSV</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <div>© <span id="year"></span> Simone Ghezzi Colombo · Analisi su dati Regione Lombardia, Trenord e fonti indicate nei dataset.</div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+<nav data-research-network aria-label="Research projects and datasets" style="max-width:1100px;margin:24px auto;padding:20px;display:flex;flex-wrap:wrap;gap:16px;font:15px/1.5 system-ui,sans-serif"><a href="https://simoneghezzicolombo.github.io/">Simone Ghezzi Colombo</a><a href="https://simoneghezzicolombo.github.io/progetti/">Research projects and datasets</a></nav>
+</body>
+</html>
